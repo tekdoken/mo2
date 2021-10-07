@@ -2,7 +2,7 @@ package Bai1;
 
 import java.util.Scanner;
 
-public class songaythang {
+public class Songaythang {
     public static void main(String[] args) {
         Scanner sa = new Scanner(System.in);
 
