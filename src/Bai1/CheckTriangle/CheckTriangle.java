@@ -1,4 +1,4 @@
-package CheckTriangle;
+package Bai1.CheckTriangle;
 
 
 import java.util.Scanner;
