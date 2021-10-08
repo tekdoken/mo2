@@ -2,7 +2,7 @@ package bai2;
 
 import java.util.Scanner;
 
-public class Uoc_so {
+public class UocSo {
     public static void main(String[] args) {
         Scanner sa = new Scanner(System.in);
         System.out.println("nhap so nguyen a: ");
