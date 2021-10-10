@@ -1,5 +1,5 @@
 package Bai3;
-public class MinChoSan {
+public class Min {
     public static void main(String[] args) {
         int[] arr = {4, 12, 7, 8, 1, 6, 9};
         System.out.println("The smallest element in the array is: " + timMin(arr));

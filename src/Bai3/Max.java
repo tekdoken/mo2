@@ -2,7 +2,7 @@ package Bai3;
 
 import java.util.Scanner;
 
-public class MaxTuNhap {
+public class Max {
     public static void main(String[] args) {
         timMax();
     }
