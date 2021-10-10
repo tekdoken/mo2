@@ -1,10 +1,14 @@
-package bai2;
+package Bai2;
 
+import java.util.Scanner;
 
-public class H100songuyento {
+public class TimSoNguyenTo {
     public static void main(String[] args) {
-        int n;
-        for (n = 2; n < 100; n++) {
+        Scanner sa=new Scanner(System.in);
+        int nhap = sa.nextInt();
+        int n = 2;
+        int c = 0;
+        while (c < nhap) {
             boolean check = true;
             for (int i = 2; i * i <= n; i++) {
                 if (n % i == 0) {
@@ -14,8 +18,9 @@ public class H100songuyento {
             }
             if (check) {
                 System.out.println(n);
+                c++;
             }
+            n++;
         }
     }
 }
-
