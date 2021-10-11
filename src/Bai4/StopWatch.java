@@ -22,27 +22,33 @@ public class StopWatch {
             getElapsedTime();
         }
     }
+
     private static long millis1;
     private static long millis2;
     private Date sta, end;
+
     public Date startTime() {
         return sta;
     }
+
     public Date endTime() {
         return end;
     }
+
     public void start() {
         Date now2 = new Date();
-         millis2 = System.currentTimeMillis();
-        this.sta=now2;
+        millis2 = System.currentTimeMillis();
+        this.sta = now2;
     }
+
     public void stop() {
         Date now1 = new Date();
-         millis1 = System.currentTimeMillis();
+        millis1 = System.currentTimeMillis();
         this.end = now1;
     }
+
     public static void getElapsedTime() {
-        System.out.println("số thời gian: "+(millis1-millis2)+"mili giây");
-        System.out.println("số thời gian: "+((millis1-millis2)/1000L)+" giây");
+        System.out.println("số thời gian: " + (millis1 - millis2) + "mili giây");
+        System.out.println("số thời gian: " + ((millis1 - millis2) / 1000L) + " giây");
     }
 }
