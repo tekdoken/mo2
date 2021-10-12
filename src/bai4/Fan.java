@@ -67,7 +67,5 @@ public class Fan {
         } else {
             return "Fan :{" + " radius=" + radius + ", color='" + color + "' ,fan is off}";
         }
-
     }
-
 }
