@@ -110,10 +110,16 @@ public class MainProduct {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the product code you want to delete");
         String codep = sc.nextLine();
+        Product[] listProduct2 = new Product[listProduct.length - 1];
         for (int i = 0; i < listProduct.length; i++) {
             if (!listProduct[i].name.equals(codep)) {
-                System.out.println(listProduct[i]);
+                for (int j = 0; j < listProduct2.length; j++) {
+                    listProduct2[j] = listProduct[i];
+                }
             }
+        }
+        for (int i = 0; i < listProduct2.length; i++) {
+            System.out.println(listProduct2[i]);
         }
     }
 }
