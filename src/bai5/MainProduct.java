@@ -75,7 +75,7 @@ public class MainProduct {
         int codep = sc.nextInt();
         boolean check = true;
         for (int i = 0; i < listProduct.length; i++) {
-            if (listProduct[i].code==(codep)) {
+            if (listProduct[i].code == (codep)) {
                 check = false;
                 System.out.println(listProduct[i]);
                 Scanner sa = new Scanner(System.in);
@@ -111,13 +111,14 @@ public class MainProduct {
         System.out.println("Enter the product code you want to delete");
         int codep = sc.nextInt();
         Product[] listProduct2 = new Product[listProduct.length - 1];
+        int j=0;
         for (int i = 0; i < listProduct.length; i++) {
-            if (listProduct[i].code==(codep)) {
-                for (int j = 0; j < listProduct2.length; j++) {
-                    listProduct2[j] = listProduct[i];
-                }
+            if (listProduct[i].code != (codep)) {
+                listProduct2[j] = listProduct[i];
+                j++;
             }
         }
+
         for (int i = 0; i < listProduct2.length; i++) {
             System.out.println(listProduct2[i]);
         }
