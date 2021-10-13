@@ -5,15 +5,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sa = new Scanner(System.in);
-        System.out.println("enter book list: ");
-        int lb=sa.nextInt();
+        int lb;
+        do {
+            System.out.println("enter book list: ");
+            lb = sa.nextInt();
+            if (lb > 20)
+                System.out.println("Size does not exceed ");
+        } while (lb > 20);
         Book[] listBook = new Book[lb];
         input(listBook);
         output(listBook);
         totalPrice(listBook);
         searchBook(listBook);
     }
-
     public static void input(Book[] listBook) {
         for (int i = 0; i < listBook.length; i++) {
             Scanner sa = new Scanner(System.in);
@@ -39,7 +43,7 @@ public class Main {
         for (int i = 0; i < listBook.length; i++) {
             t += listBook[i].price * listBook[i].amount;
         }
-        System.out.println("total price: "+t);
+        System.out.println("total price: " + t);
     }
 
     public static void searchBook(Book[] listBook) {
