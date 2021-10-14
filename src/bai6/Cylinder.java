@@ -19,22 +19,16 @@ public class Cylinder extends Circle {
         super(radius, color);
         this.height = height;
     }
-    public void setRadiusc(double radius) {
-        setRadius(radius);
-    }
-
-    @Override
     public void setRadius(double radius) {
-        setRadius(radius);
-    }
-    public void setColorc(String color) {
-        setColor(color);
+        super.setRadius(radius);
     }
 
-    @Override
+
     public void setColor(String color) {
-        setColor(color);
+        super.setColor(color);
     }
+
+
     public double CylindricalVolume(double radius){
         return this.height*Math.pow(getRadius(),2)*Math.PI;
     }
