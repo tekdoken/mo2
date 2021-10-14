@@ -8,15 +8,12 @@ public class CheckTriangle {
         int a, b, c;
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập a: ");
-
         a = sc.nextInt();
         System.out.print("Nhập b: ");
         b = sc.nextInt();
         System.out.print("Nhập c: ");
         c = sc.nextInt();
         checkTriangle(a, b, c);
-
-
     }
 
     public static void checkTriangle(int a, int b, int c) {
