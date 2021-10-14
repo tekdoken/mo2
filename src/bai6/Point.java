@@ -1,15 +1,15 @@
 package bai6;
 
-public class Point2D {
+public class Point {
     private float x;
     private float y;
 
-    public Point2D(float x, float y) {
+    public Point(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public Point2D() {
+    public Point() {
     }
 
     public float getX() {
@@ -23,14 +23,12 @@ public class Point2D {
     public float getY() {
         return y;
     }
-
     public void setY(float y) {
         this.y = y;
     }
-    public void setXY(float x, float y){
-//        float[] a={this.x,this.y};
-        this.x=x;
-        this.y=y;
+    public void setXY(float x,float y) {
+        this.y = y;
+        this.x = x;
     }
     public float[] getXY(){
         return new float[]{this.x, this.y};
@@ -38,7 +36,7 @@ public class Point2D {
 
     @Override
     public String toString() {
-        return "Point2D{" +
+        return "Point{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
