@@ -1,19 +1,7 @@
 package bai6;
 
 public class Cylinder extends Circle {
-    private double radius;
     private double height;
-    private String color;
-
-    @Override
-    public double getRadius() {
-        return radius;
-    }
-
-    @Override
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
 
     public double getHeight() {
         return height;
@@ -21,16 +9,6 @@ public class Cylinder extends Circle {
 
     public void setHeight(double height) {
         this.height = height;
-    }
-
-    @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public Cylinder(double radius, String color) {
@@ -41,16 +19,32 @@ public class Cylinder extends Circle {
         super(radius, color);
         this.height = height;
     }
+    public void setRadiusc(double radius) {
+        setRadius(radius);
+    }
+
+    @Override
+    public void setRadius(double radius) {
+        setRadius(radius);
+    }
+    public void setColorc(String color) {
+        setColor(color);
+    }
+
+    @Override
+    public void setColor(String color) {
+        setColor(color);
+    }
     public double CylindricalVolume(double radius){
-        return this.height*Math.pow(this.radius,2)*Math.PI;
+        return this.height*Math.pow(getRadius(),2)*Math.PI;
     }
 
     @Override
     public String toString() {
         return "Cylinder{" +
-                "radius=" + radius +
+                "radius=" + getRadius() +
                 ", height=" + height +
-                ", color='" + color + '\'' +
+                ", color='" + getColor() + '\'' +
                 '}';
     }
 }
