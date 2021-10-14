@@ -1,6 +1,6 @@
 package bai6;
 
-public class M {
+public class MainCylinder {
     public static void main(String[] args) {
         Circle circle = new Circle(5, "red");
         System.out.println(circle);
