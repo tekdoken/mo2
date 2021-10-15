@@ -36,7 +36,12 @@ public class QuanLyNhanVien implements QuanLy<NhanVien> {
 
     @Override
     public void xoa(int id) {
+        for (int i = 0; i < size; i++) {
+            if (id == danhSach[i].getId()) {
+                danhSach[i]=null;
+            }
 
+        }
 
     }
 
@@ -50,7 +55,9 @@ public class QuanLyNhanVien implements QuanLy<NhanVien> {
         qlnv.inra();
         System.out.println(qlnv.tim(1));
         qlnv.sua(2, nv3);
+        qlnv.xoa(1);
         qlnv.inra();
+
 
     }
 }
