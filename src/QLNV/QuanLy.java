@@ -6,5 +6,4 @@ public interface QuanLy<Q> {
     int tim(int id);
     void sua(int id,Q q);
     void xoa(int id);
-
 }

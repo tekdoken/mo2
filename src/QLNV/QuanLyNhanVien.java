@@ -1,8 +1,8 @@
 package QLNV;
 
 public class QuanLyNhanVien implements QuanLy<NhanVien> {
-    private NhanVien[] danhSach = new NhanVien[2];
     private int size = 0;
+    private NhanVien[] danhSach = new NhanVien[2];
 
     @Override
     public void them(NhanVien nhanVien) {
