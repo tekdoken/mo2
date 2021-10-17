@@ -1,4 +1,4 @@
-package bai7;
+package bai7.th1.animal;
 
 
 public class Tiger extends Animal {
@@ -6,4 +6,5 @@ public class Tiger extends Animal {
     public String makeSound() {
         return "Tiger: roarrrrr!";
     }
+
 }
