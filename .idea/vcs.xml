@@ -5,6 +5,9 @@
     <mapping directory="$PROJECT_DIR$/apj-cylinder" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/apj-fizzbuzz" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/bai8/apj-tennis-game" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/bai9/apj-junit-calculator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/bai9/th1/apj-junit-calculator" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/demohj/apj-calculator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/th1/apj-junit-calculator" vcs="Git" />
   </component>
 </project>

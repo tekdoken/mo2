@@ -19,31 +19,25 @@ public class TennisGame {
         }
         else
         {
-            score = scorePlus(m_score1, m_score2, score);
-        }
-        return score;
-    }
-
-    private static String scorePlus(int m_score1, int m_score2, String score) {
-        int tempScore;
-        for (int i = 1; i<3; i++)
-        {
-            if (i==1) tempScore = m_score1;
-            else { score +="-"; tempScore = m_score2;}
-            switch(tempScore)
+            for (int i=1; i<3; i++)
             {
-                case 0:
-                    score +="Love";
-                    break;
-                case 1:
-                    score +="Fifteen";
-                    break;
-                case 2:
-                    score +="Thirty";
-                    break;
-                case 3:
-                    score +="Forty";
-                    break;
+                if (i==1) tempScore = m_score1;
+                else { score+="-"; tempScore = m_score2;}
+                switch(tempScore)
+                {
+                    case 0:
+                        score+="Love";
+                        break;
+                    case 1:
+                        score+="Fifteen";
+                        break;
+                    case 2:
+                        score+="Thirty";
+                        break;
+                    case 3:
+                        score+="Forty";
+                        break;
+                }
             }
         }
         return score;
