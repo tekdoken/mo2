@@ -1,4 +1,4 @@
-package bai12;
+package bai12.product;
 
 public class Product {
     private String name;

@@ -1,8 +1,6 @@
-package bai12;
+package bai12.product;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 
 public class ManagerProduct implements Manager<Product> {
     private ArrayList<Product> listproduct;
@@ -28,8 +26,8 @@ public class ManagerProduct implements Manager<Product> {
 
     @Override
     public void delete(int id) {
-int index=find(id);
-listproduct.remove(index);
+        int index = find(id);
+        listproduct.remove(index);
     }
 
     @Override
@@ -43,9 +41,14 @@ listproduct.remove(index);
     }
 
     @Override
+    public void printId(int id) {
+        System.out.println(listproduct.get(id));
+    }
+
+    @Override
     public void print() {
-        for (Product x:listproduct
-             ) {
+        for (Product x : listproduct
+        ) {
             System.out.println(x);
         }
         System.out.println("---------");
@@ -53,9 +56,11 @@ listproduct.remove(index);
 
     @Override
     public void sorta() {
-        listproduct.sort((a,b)->a.getPrice()- b.getPrice());
-    }  @Override
+        listproduct.sort((a, b) -> a.getPrice() - b.getPrice());
+    }
+
+    @Override
     public void sortg() {
-        listproduct.sort((a,b)->b.getPrice()- a.getPrice());
+        listproduct.sort((a, b) -> b.getPrice() - a.getPrice());
     }
 }

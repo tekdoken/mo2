@@ -1,6 +1,6 @@
-package bai12;
+package bai12.product;
 
-public class Main {
+public class MainTest {
     public static void main(String[] args) {
         ManagerProduct ma=new ManagerProduct();
         Product p1=new Product("aaa",1,111);
