@@ -2,11 +2,13 @@ package bai10.bt2MyLinkedList;
 
 public class MyLinkedList {
     private  Node head;
+    private  Node tail;
     private  int numNodes;
 
     public MyLinkedList(Object data) {
         head = new Node(data);
     }
+
 
     private class Node {
         private Node next;
@@ -37,6 +39,19 @@ public class MyLinkedList {
         head = new Node(data);
         head.next = temp;
         numNodes++;
+    }
+    public void addLast(Object data) {
+        Node newNode = new Node(data); // Create a new node for e
+
+        if (tail == null) {
+            head = tail = newNode; // The only node in list
+        }
+        else {
+            tail.next = newNode; // Link the new node with the last node
+            tail = tail.next; // tail now points to the last node
+        }
+
+        numNodes++; // Increase size
     }
     public Node get(int index){
         Node temp=head;
