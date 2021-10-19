@@ -54,7 +54,6 @@ public class Main2 {
                         } else {
                             System.out.println("This item is not available");
                         }
-
                         break;
                     case 3:
                         id = sa.nextInt();
