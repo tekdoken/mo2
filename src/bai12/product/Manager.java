@@ -10,10 +10,12 @@ public interface Manager<W> {
     int find(int id);
 
     void print();
+
     void printId(int id);
 
     void sortg();
 
     void sorta();
 
+    boolean che(int id);
 }

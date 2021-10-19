@@ -60,6 +60,15 @@ public class ManagerProduct implements Manager<Product> {
     }
 
     @Override
+    public boolean che(int id) {
+        for (int i = 0; i < listproduct.size(); i++) {
+            if (id == listproduct.get(i).getId()) {
+                return true;
+            }
+        }return false;
+    }
+
+    @Override
     public void sortg() {
         listproduct.sort((a, b) -> b.getPrice() - a.getPrice());
     }

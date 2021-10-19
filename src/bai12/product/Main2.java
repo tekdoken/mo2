@@ -39,46 +39,52 @@ public class Main2 {
                     case 2:
                         System.out.println("Enter the product ID to edit: ");
                         int iid = sa.nextInt();
-                        sa.nextLine();
-                        System.out.println("Enter information New Product: ");
-                        System.out.print("Name: ");
-                        name = sa.nextLine();
-                        System.out.print("ID: ");
-                        id = sa.nextInt();
-                        System.out.print("Price: ");
-                        price = sa.nextInt();
-                        p = new Product(name, id, price);
-                        ma.edit(iid, p);
-                        ma.print();
-                        break;
+                        if (ma.che(iid)) {
+                            sa.nextLine();
+                            System.out.println("Enter information New Product: ");
+                            System.out.print("Name: ");
+                            name = sa.nextLine();
+                            System.out.print("ID: ");
+                            id = sa.nextInt();
+                            System.out.print("Price: ");
+                            price = sa.nextInt();
+                            p = new Product(name, id, price);
+                            ma.edit(iid, p);
+                            ma.print();
+                        }
+                        else  {
+                            System.out.println("This item is not available");
+                    }
 
-                    case 3:
-                        System.out.println("Enter the product ID to delete: ");
-                        id = sa.nextInt();
-                        ma.delete(id);
-                        ma.print();
-                        break;
-                    case 4:
-                        System.out.println("Enter the product ID to Find: ");
-                        id = sa.nextInt();
-                        ma.printId(ma.find(id));
-                        break;
-                    case 5:
-                        System.out.println("List Product:");
-                        ma.print();
-                        break;
-                    case 6:
-                        System.out.println("Sort in descending order");
-                        ma.sortg();
-                        break;
-                    case 7:
-                        System.out.println("Sort in ascending order");
-                        ma.sorta();
-                        break;
-                    default:
-                        System.out.println("This item is not available");
-                }
+                break;
+                case 3:
+                    id=sa.nextInt();
+                    System.out.println("Enter the product ID to delete: ");
+                    id = sa.nextInt();
+                    ma.delete(id);
+                    ma.print();
+                    break;
+                case 4:
+                    System.out.println("Enter the product ID to Find: ");
+                    id = sa.nextInt();
+                    ma.printId(ma.find(id));
+                    break;
+                case 5:
+                    System.out.println("List Product: ");
+                    ma.print();
+                    break;
+                case 6:
+                    System.out.println("Sort in descending order");
+                    ma.sortg();
+                    break;
+                case 7:
+                    System.out.println("Sort in ascending order");
+                    ma.sorta();
+                    break;
+                default:
+                    System.out.println("This item is not available");
             }
-        }while (se!=0);
-    }
+        }
+    }while(se!=0);
+}
 }
