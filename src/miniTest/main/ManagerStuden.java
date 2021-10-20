@@ -1,6 +1,6 @@
-package miniTest;
+package miniTest.main;
 
-import bai12.product.Product;
+import miniTest.model.Studen;
 
 import java.util.ArrayList;
 
@@ -56,13 +56,13 @@ public class ManagerStuden implements Manager<Studen> {
 
     }
 
-    @Override
+//    @Override
     public void sortg() {
         listStuden.sort((a, b) -> (int) (a.getScore() - b.getScore()));
 
     }
 
-    @Override
+//    @Override
     public void sorta() {
         listStuden.sort((a, b) -> (int) (b.getScore() - a.getScore()));
     }

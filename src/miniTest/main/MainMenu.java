@@ -1,9 +1,7 @@
-package miniTest;
+package miniTest.main;
 
-import bai12.product.ManagerProduct;
-import bai12.product.Product;
+import miniTest.model.Studen;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class MainMenu {

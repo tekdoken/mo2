@@ -1,6 +1,8 @@
-package miniTest;
+package miniTest.model;
 
-public class Studen extends Person{
+import miniTest.model.Person;
+
+public class Studen extends Person {
     private double score;
 
     public Studen(String name, int age,double score,int id) {

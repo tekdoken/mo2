@@ -1,4 +1,4 @@
-package miniTest;
+package miniTest.main;
 
 public interface Manager<W> {
     void add(W w);
@@ -13,9 +13,9 @@ public interface Manager<W> {
 
     void printId(int id);
 
-    void sortg();
+//    void sortg();
 
-    void sorta();
+//    void sorta();
 
     boolean che(int id);
 }

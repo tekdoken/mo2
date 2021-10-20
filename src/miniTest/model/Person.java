@@ -1,4 +1,4 @@
-package miniTest;
+package miniTest.model;
 
 public class Person {
 //    private static int idd=1;
