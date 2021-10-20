@@ -70,7 +70,7 @@ public class MainMenuPerson {
                         System.out.println("2.edit to teacher");
                         ss = sa.nextInt();
                         if (ss != 0) {
-                            switch (ss){
+                            switch (ss) {
                                 case 1:
                                     System.out.println("Enter the person ID to edit: ");
                                     int iid = sa.nextInt();
@@ -83,7 +83,7 @@ public class MainMenuPerson {
                                         int age = sa.nextInt();
                                         System.out.println("Score:");
                                         double score = sa.nextDouble();
-                                        Studen s = new Studen(name, age,score, iid);
+                                        Studen s = new Studen(name, age, score, iid);
                                         ma.edit(iid, s);
                                         ma.print();
                                     } else {
@@ -103,7 +103,7 @@ public class MainMenuPerson {
                                         System.out.print("subjects: ");
                                         sa.nextLine();
                                         String subjects = sa.nextLine();
-                                        Teacher s = new Teacher(name, age,iid,subjects);
+                                        Teacher s = new Teacher(name, age, iid, subjects);
                                         ma.edit(iid, s);
                                         ma.print();
                                     } else {
@@ -112,7 +112,7 @@ public class MainMenuPerson {
                                     break;
                             }
                         }
-                       break;
+                        break;
                     case 3:
                         System.out.println("Enter the person ID to delete: ");
                         int idf = sa.nextInt();
