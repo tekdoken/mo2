@@ -34,34 +34,19 @@ public class MainMenuPerson {
                         if (ss != 0) {
                             switch (ss) {
                                 case 1:
-                                    sa.nextLine();
-                                    System.out.println("Enter information New studen: ");
-                                    System.out.print("Name: ");
-                                    String name = sa.nextLine();
-                                    System.out.print("Age: ");
-                                    int age = sa.nextInt();
-                                    int id = idd++;
-                                    System.out.print("Score: ");
-                                    double score = sa.nextDouble();
-                                    Studen p = new Studen(name, age, score, id);
+                                    Studen p = getStuden(sa);
                                     ma.add(p);
                                     ma.print();
                                     break;
                                 case 2:
-                                    sa.nextLine();
-                                    System.out.println("Enter information New studen: ");
-                                    System.out.print("Name: ");
-                                    name = sa.nextLine();
-                                    System.out.print("Age: ");
-                                    age = sa.nextInt();
-                                    System.out.print("subjects: ");
-                                    sa.nextLine();
-                                    String subjects = sa.nextLine();
-                                    id = idd++;
-                                    Teacher p1 = new Teacher(name, age, id, subjects);
+                                    Teacher p1 = getTeacher(sa);
                                     ma.add(p1);
                                     ma.print();
                                     break;
+                                case 3:
+                                    Person pe=getPerson(sa);
+                                    ma.add(pe);
+                                    ma.print();
                                 default:
                                     System.out.println("This item is not available");
                             }
@@ -77,16 +62,8 @@ public class MainMenuPerson {
                                     System.out.println("Enter the person ID to edit: ");
                                     int iid = sa.nextInt();
                                     if (ma.che(iid)) {
-                                        sa.nextLine();
-                                        System.out.println("Enter information New person: ");
-                                        System.out.print("Name: ");
-                                        String name = sa.nextLine();
-                                        System.out.print("Age: ");
-                                        int age = sa.nextInt();
-                                        System.out.println("Score:");
-                                        double score = sa.nextDouble();
-                                        Studen s = new Studen(name, age, score, iid);
-                                        ma.edit(iid, s);
+                                        Studen sas = getStudene(sa, iid);
+                                        ma.edit(iid, sas);
                                         ma.print();
                                     } else {
                                         System.out.println("This item is not available");
@@ -96,16 +73,18 @@ public class MainMenuPerson {
                                     System.out.println("Enter the person ID to edit: ");
                                     iid = sa.nextInt();
                                     if (ma.che(iid)) {
-                                        sa.nextLine();
-                                        System.out.println("Enter information New person: ");
-                                        System.out.print("Name: ");
-                                        String name = sa.nextLine();
-                                        System.out.print("Age: ");
-                                        int age = sa.nextInt();
-                                        System.out.print("subjects: ");
-                                        sa.nextLine();
-                                        String subjects = sa.nextLine();
-                                        Teacher s = new Teacher(name, age, iid, subjects);
+                                        Teacher s = getTeachere(sa, iid);
+                                        ma.edit(iid, s);
+                                        ma.print();
+                                    } else {
+                                        System.out.println("This item is not available");
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.println("Enter the person ID to edit: ");
+                                    iid = sa.nextInt();
+                                    if (ma.che(iid)) {
+                                        Person s = getPersone(sa, iid);
                                         ma.edit(iid, s);
                                         ma.print();
                                     } else {
@@ -147,5 +126,86 @@ public class MainMenuPerson {
             }
         }
         while (se != 0);
+    }
+
+    private static Studen getStuden(Scanner sa) {
+        sa.nextLine();
+        System.out.println("Enter information New studen: ");
+        System.out.print("Name: ");
+        String name = sa.nextLine();
+        System.out.print("Age: ");
+        int age = sa.nextInt();
+        int id = idd++;
+        System.out.print("Score: ");
+        double score = sa.nextDouble();
+        Studen p = new Studen(name, age, score, id);
+        return p;
+    }
+    private static Person getPerson(Scanner sa) {
+        sa.nextLine();
+        System.out.println("Enter information New studen: ");
+        System.out.print("Name: ");
+        String name = sa.nextLine();
+        System.out.print("Age: ");
+        int age = sa.nextInt();
+        int id = idd++;
+        Person pe = new Person(name, age, id);
+        return pe;
+    }
+
+    private static Teacher getTeacher(Scanner sa) {
+        int id;
+        String name;
+        int age;
+        sa.nextLine();
+        System.out.println("Enter information New studen: ");
+        System.out.print("Name: ");
+        name = sa.nextLine();
+        System.out.print("Age: ");
+        age = sa.nextInt();
+        System.out.print("subjects: ");
+        sa.nextLine();
+        String subjects = sa.nextLine();
+        id = idd++;
+        Teacher p1 = new Teacher(name, age, id, subjects);
+        return p1;
+    }
+
+    private static Studen getStudene(Scanner sa, int iid) {
+        sa.nextLine();
+        System.out.println("Enter information New person: ");
+        System.out.print("Name: ");
+        String name = sa.nextLine();
+        System.out.print("Age: ");
+        int age = sa.nextInt();
+        System.out.println("Score:");
+        double score = sa.nextDouble();
+        Studen sas = new Studen(name, age, score, iid);
+        return sas;
+    }
+
+    private static Teacher getTeachere(Scanner sa, int iid) {
+        sa.nextLine();
+        System.out.println("Enter information New person: ");
+        System.out.print("Name: ");
+        String name = sa.nextLine();
+        System.out.print("Age: ");
+        int age = sa.nextInt();
+        System.out.print("subjects: ");
+        sa.nextLine();
+        String subjects = sa.nextLine();
+        Teacher s = new Teacher(name, age, iid, subjects);
+        return s;
+    }
+    private static Person getPersone(Scanner sa, int iid) {
+        sa.nextLine();
+        System.out.println("Enter information New person: ");
+        System.out.print("Name: ");
+        String name = sa.nextLine();
+        System.out.print("Age: ");
+        int age = sa.nextInt();
+        String subjects = sa.nextLine();
+        Person sss = new Person(name, age, iid);
+        return sss;
     }
 }
