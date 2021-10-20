@@ -21,7 +21,7 @@ public class Studen extends Person{
     public String toString() {
         return "Studen{" +"name='" + super.getName() + '\'' +
                 ", age=" + super.getAge() +
-                ", id=" + super.getId() +
+                ", id=" + super.getId() +","+
                 "score=" + score +
                 '}';
     }

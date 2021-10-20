@@ -92,10 +92,12 @@ public class MainMenu {
                     case 6:
                         System.out.println("Sort in descending order");
                         ma.sortg();
+                        ma.print();
                         break;
                     case 7:
                         System.out.println("Sort in ascending order");
                         ma.sorta();
+                        ma.print();
                         break;
                     case 8:
                         ma.getTotalScore();
