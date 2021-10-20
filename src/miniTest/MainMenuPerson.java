@@ -62,6 +62,8 @@ public class MainMenuPerson {
                                     ma.add(p1);
                                     ma.print();
                                     break;
+                                default:
+                                    System.out.println("This item is not available");
                             }
                         }
                         break;
@@ -110,6 +112,8 @@ public class MainMenuPerson {
                                         System.out.println("This item is not available");
                                     }
                                     break;
+                                default:
+                                    System.out.println("This item is not available");
                             }
                         }
                         break;
