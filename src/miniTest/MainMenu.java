@@ -9,11 +9,7 @@ import java.util.Scanner;
 public class MainMenu {
     public static int idd=1;
     public static void main(String[] args) {
-
-
         ManagerStuden ma = new ManagerStuden();
-//        Studen p1 = new Studen("aaa", 2, 111, 111111);
-//        ma.add(p1);
         int se = -1;
         do {
             Scanner sa = new Scanner(System.in);

@@ -14,7 +14,6 @@ public class ManagerStuden implements Manager<Studen> {
     public ManagerStuden() {
         listStuden = new ArrayList<>();
     }
-
     @Override
     public void add(Studen studen) {
         listStuden.add(studen);
