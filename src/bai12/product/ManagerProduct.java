@@ -39,6 +39,15 @@ public class ManagerProduct implements Manager<Product> {
         }
         return -1;
     }
+    @Override
+    public int findn(String name) {
+        for (int i = 0; i < listproduct.size(); i++) {
+            if (listproduct.get(i).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     @Override
     public void printId(int id) {

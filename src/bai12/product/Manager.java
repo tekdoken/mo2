@@ -8,6 +8,7 @@ public interface Manager<W> {
     void delete(int id);
 
     int find(int id);
+    int findn(String name);
 
     void print();
 
