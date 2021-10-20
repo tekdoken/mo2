@@ -12,11 +12,6 @@ public class Studen extends Person{
         return score;
     }
 
-
-    public void setScore(double score) {
-        this.score = score;
-    }
-
     @Override
     public String toString() {
         return "Studen{" +"name='" + super.getName() + '\'' +
