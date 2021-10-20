@@ -49,7 +49,6 @@ public class MainMenuPerson {
                     case 2:
                         System.out.println("1.edit to student");
                         System.out.println("2.edit to teacher");
-                        System.out.println("3.edit to person");
                         ss = sa.nextInt();
                         if (ss != 0) {
                             switch (ss) {
