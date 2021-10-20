@@ -43,18 +43,13 @@ public class MainMenuPerson {
                                     ma.add(p1);
                                     ma.print();
                                     break;
-                                case 3:
-                                    Person pe=getPerson(sa);
-                                    ma.add(pe);
-                                    ma.print();
-                                default:
-                                    System.out.println("This item is not available");
                             }
                         }
                         break;
                     case 2:
                         System.out.println("1.edit to student");
                         System.out.println("2.edit to teacher");
+                        System.out.println("3.edit to person");
                         ss = sa.nextInt();
                         if (ss != 0) {
                             switch (ss) {
@@ -74,17 +69,6 @@ public class MainMenuPerson {
                                     iid = sa.nextInt();
                                     if (ma.che(iid)) {
                                         Teacher s = getTeachere(sa, iid);
-                                        ma.edit(iid, s);
-                                        ma.print();
-                                    } else {
-                                        System.out.println("This item is not available");
-                                    }
-                                    break;
-                                case 3:
-                                    System.out.println("Enter the person ID to edit: ");
-                                    iid = sa.nextInt();
-                                    if (ma.che(iid)) {
-                                        Person s = getPersone(sa, iid);
                                         ma.edit(iid, s);
                                         ma.print();
                                     } else {
@@ -141,17 +125,6 @@ public class MainMenuPerson {
         Studen p = new Studen(name, age, score, id);
         return p;
     }
-    private static Person getPerson(Scanner sa) {
-        sa.nextLine();
-        System.out.println("Enter information New studen: ");
-        System.out.print("Name: ");
-        String name = sa.nextLine();
-        System.out.print("Age: ");
-        int age = sa.nextInt();
-        int id = idd++;
-        Person pe = new Person(name, age, id);
-        return pe;
-    }
 
     private static Teacher getTeacher(Scanner sa) {
         int id;
@@ -196,16 +169,5 @@ public class MainMenuPerson {
         String subjects = sa.nextLine();
         Teacher s = new Teacher(name, age, iid, subjects);
         return s;
-    }
-    private static Person getPersone(Scanner sa, int iid) {
-        sa.nextLine();
-        System.out.println("Enter information New person: ");
-        System.out.print("Name: ");
-        String name = sa.nextLine();
-        System.out.print("Age: ");
-        int age = sa.nextInt();
-        String subjects = sa.nextLine();
-        Person sss = new Person(name, age, iid);
-        return sss;
     }
 }
