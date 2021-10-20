@@ -150,7 +150,7 @@ public class MainMenuPerson {
         String name = sa.nextLine();
         System.out.print("Age: ");
         int age = sa.nextInt();
-        System.out.println("Score:");
+        System.out.print("Score:");
         double score = sa.nextDouble();
         Studen sas = new Studen(name, age, score, iid);
         return sas;
