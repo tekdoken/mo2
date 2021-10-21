@@ -5,7 +5,7 @@ import miniTest.service.implement.ManagerStudent;
 
 import java.util.Scanner;
 
-public class MainMenuStudent {
+public class ShowMenuStudent {
     public static int idd = 1;
 
     public static void main(String[] args) {

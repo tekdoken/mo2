@@ -6,7 +6,7 @@ import miniTest.model.Teacher;
 
 import java.util.Scanner;
 
-public class MainMenuPerson {
+public class ShowMenuPerson {
     public static int idd = 1;
 
     public static void main(String[] args) {
