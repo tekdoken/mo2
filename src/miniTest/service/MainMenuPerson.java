@@ -14,7 +14,7 @@ public class MainMenuPerson {
         int numcheck1 = -1;
         int numcheck2 = -1;
         do {
-            Scanner sa = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             System.out.println("Menu");
             System.out.println("1. Add person");
             System.out.println("2. Edit person");
@@ -23,23 +23,23 @@ public class MainMenuPerson {
             System.out.println("5. Print person");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            numcheck1 = sa.nextInt();
+            numcheck1 = scanner.nextInt();
             if (numcheck1 != 0) {
                 switch (numcheck1) {
                     case 1:
                         System.out.println("1.student");
                         System.out.println("2.teacher");
-                        numcheck2 = sa.nextInt();
+                        numcheck2 = scanner.nextInt();
                         if (numcheck2 != 0) {
                             switch (numcheck2) {
                                 case 1:
-                                    Studen p = getStuden(sa);
-                                    managerPerson.add(p);
+                                    Studen newStudent = getStuden(scanner);
+                                    managerPerson.add(newStudent);
                                     managerPerson.print();
                                     break;
                                 case 2:
-                                    Teacher p1 = getTeacher(sa);
-                                    managerPerson.add(p1);
+                                    Teacher newTeacher = getTeacher(scanner);
+                                    managerPerson.add(newTeacher);
                                     managerPerson.print();
                                     break;
                             }
@@ -48,15 +48,15 @@ public class MainMenuPerson {
                     case 2:
                         System.out.println("1.edit to student");
                         System.out.println("2.edit to teacher");
-                        numcheck2 = sa.nextInt();
+                        numcheck2 = scanner.nextInt();
                         if (numcheck2 != 0) {
                             switch (numcheck2) {
                                 case 1:
                                     System.out.println("Enter the person ID to edit: ");
-                                    int iid = sa.nextInt();
+                                    int iid = scanner.nextInt();
                                     if (managerPerson.check(iid)) {
-                                        Studen sas = getStudene(sa, iid);
-                                        managerPerson.edit(iid, sas);
+                                        Studen editStudent = getStudene(scanner, iid);
+                                        managerPerson.edit(iid, editStudent);
                                         managerPerson.print();
                                     } else {
                                         System.out.println("This item is not available");
@@ -64,10 +64,10 @@ public class MainMenuPerson {
                                     break;
                                 case 2:
                                     System.out.println("Enter the person ID to edit: ");
-                                    iid = sa.nextInt();
+                                    iid = scanner.nextInt();
                                     if (managerPerson.check(iid)) {
-                                        Teacher s = getTeachere(sa, iid);
-                                        managerPerson.edit(iid, s);
+                                        Teacher editTeacher = getTeachere(scanner, iid);
+                                        managerPerson.edit(iid, editTeacher);
                                         managerPerson.print();
                                     } else {
                                         System.out.println("This item is not available");
@@ -80,7 +80,7 @@ public class MainMenuPerson {
                         break;
                     case 3:
                         System.out.println("Enter the person ID to delete: ");
-                        int idf = sa.nextInt();
+                        int idf = scanner.nextInt();
                         if (managerPerson.check(idf)) {
                             managerPerson.delete(idf);
                             managerPerson.print();
@@ -90,7 +90,7 @@ public class MainMenuPerson {
                         break;
                     case 4:
                         System.out.println("Enter the person ID to Find: ");
-                        int id = sa.nextInt();
+                        int id = scanner.nextInt();
                         if (managerPerson.check(id)) {
                             managerPerson.printId(managerPerson.find(id));
                         } else {
