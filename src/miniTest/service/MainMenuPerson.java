@@ -1,6 +1,6 @@
-package miniTest;
+package miniTest.service;
 
-import miniTest.main.ManagerPerson;
+import miniTest.service.implement.ManagerPerson;
 import miniTest.model.Studen;
 import miniTest.model.Teacher;
 

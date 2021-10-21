@@ -1,6 +1,7 @@
-package miniTest.main;
+package miniTest.service;
 
 import miniTest.model.Studen;
+import miniTest.service.implement.ManagerStuden;
 
 import java.util.Scanner;
 

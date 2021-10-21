@@ -1,4 +1,4 @@
-package miniTest.main;
+package miniTest.service;
 
 public interface Manager<W> {
     void add(W w);

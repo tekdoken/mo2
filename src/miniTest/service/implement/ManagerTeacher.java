@@ -1,6 +1,7 @@
-package miniTest.main;
+package miniTest.service.implement;
 
 import miniTest.model.Teacher;
+import miniTest.service.Manager;
 
 import java.util.ArrayList;
 
