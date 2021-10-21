@@ -1,12 +1,12 @@
 package miniTest.model;
 
+
 public class Person {
-//    private static int idd=1;
     private String name;
     private int age;
-    private  int id;
+    private int id;
 
-    public Person(String name, int age,int id) {
+    public Person(String name, int age, int id) {
         this.name = name;
         this.age = age;
         this.id = id;

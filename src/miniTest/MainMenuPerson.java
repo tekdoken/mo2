@@ -1,7 +1,6 @@
 package miniTest;
 
 import miniTest.main.ManagerPerson;
-import miniTest.model.Person;
 import miniTest.model.Studen;
 import miniTest.model.Teacher;
 
@@ -11,9 +10,9 @@ public class MainMenuPerson {
     public static int idd = 1;
 
     public static void main(String[] args) {
-        ManagerPerson ma = new ManagerPerson();
-        int se = -1;
-        int ss = -1;
+        ManagerPerson managerPerson = new ManagerPerson();
+        int numcheck1 = -1;
+        int numcheck2 = -1;
         do {
             Scanner sa = new Scanner(System.in);
             System.out.println("Menu");
@@ -24,24 +23,24 @@ public class MainMenuPerson {
             System.out.println("5. Print person");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            se = sa.nextInt();
-            if (se != 0) {
-                switch (se) {
+            numcheck1 = sa.nextInt();
+            if (numcheck1 != 0) {
+                switch (numcheck1) {
                     case 1:
                         System.out.println("1.student");
                         System.out.println("2.teacher");
-                        ss = sa.nextInt();
-                        if (ss != 0) {
-                            switch (ss) {
+                        numcheck2 = sa.nextInt();
+                        if (numcheck2 != 0) {
+                            switch (numcheck2) {
                                 case 1:
                                     Studen p = getStuden(sa);
-                                    ma.add(p);
-                                    ma.print();
+                                    managerPerson.add(p);
+                                    managerPerson.print();
                                     break;
                                 case 2:
                                     Teacher p1 = getTeacher(sa);
-                                    ma.add(p1);
-                                    ma.print();
+                                    managerPerson.add(p1);
+                                    managerPerson.print();
                                     break;
                             }
                         }
@@ -49,16 +48,16 @@ public class MainMenuPerson {
                     case 2:
                         System.out.println("1.edit to student");
                         System.out.println("2.edit to teacher");
-                        ss = sa.nextInt();
-                        if (ss != 0) {
-                            switch (ss) {
+                        numcheck2 = sa.nextInt();
+                        if (numcheck2 != 0) {
+                            switch (numcheck2) {
                                 case 1:
                                     System.out.println("Enter the person ID to edit: ");
                                     int iid = sa.nextInt();
-                                    if (ma.che(iid)) {
+                                    if (managerPerson.check(iid)) {
                                         Studen sas = getStudene(sa, iid);
-                                        ma.edit(iid, sas);
-                                        ma.print();
+                                        managerPerson.edit(iid, sas);
+                                        managerPerson.print();
                                     } else {
                                         System.out.println("This item is not available");
                                     }
@@ -66,10 +65,10 @@ public class MainMenuPerson {
                                 case 2:
                                     System.out.println("Enter the person ID to edit: ");
                                     iid = sa.nextInt();
-                                    if (ma.che(iid)) {
+                                    if (managerPerson.check(iid)) {
                                         Teacher s = getTeachere(sa, iid);
-                                        ma.edit(iid, s);
-                                        ma.print();
+                                        managerPerson.edit(iid, s);
+                                        managerPerson.print();
                                     } else {
                                         System.out.println("This item is not available");
                                     }
@@ -82,9 +81,9 @@ public class MainMenuPerson {
                     case 3:
                         System.out.println("Enter the person ID to delete: ");
                         int idf = sa.nextInt();
-                        if (ma.che(idf)) {
-                            ma.delete(idf);
-                            ma.print();
+                        if (managerPerson.check(idf)) {
+                            managerPerson.delete(idf);
+                            managerPerson.print();
                         } else {
                             System.out.println("This item is not available");
                         }
@@ -92,15 +91,15 @@ public class MainMenuPerson {
                     case 4:
                         System.out.println("Enter the person ID to Find: ");
                         int id = sa.nextInt();
-                        if (ma.che(id)) {
-                            ma.printId(ma.find(id));
+                        if (managerPerson.check(id)) {
+                            managerPerson.printId(managerPerson.find(id));
                         } else {
                             System.out.println("This item is not available");
                         }
                         break;
                     case 5:
                         System.out.println("List person: ");
-                        ma.print();
+                        managerPerson.print();
                         break;
 
                     default:
@@ -108,7 +107,7 @@ public class MainMenuPerson {
                 }
             }
         }
-        while (se != 0);
+        while (numcheck1 != 0);
     }
 
     private static Studen getStuden(Scanner sa) {

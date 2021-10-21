@@ -13,9 +13,5 @@ public interface Manager<W> {
 
     void printId(int id);
 
-//    void sortg();
-
-//    void sorta();
-
-    boolean che(int id);
+    boolean check(int id);
 }

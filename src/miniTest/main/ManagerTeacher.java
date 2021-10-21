@@ -4,7 +4,7 @@ import miniTest.model.Teacher;
 
 import java.util.ArrayList;
 
-public class ManagerTeacher implements Manager<Teacher>{
+public class ManagerTeacher implements Manager<Teacher> {
     private ArrayList<Teacher> listTeacher;
 
     public ManagerTeacher(ArrayList<Teacher> listTeacher) {
@@ -14,6 +14,7 @@ public class ManagerTeacher implements Manager<Teacher>{
     public ManagerTeacher() {
         listTeacher = new ArrayList<>();
     }
+
     @Override
     public void add(Teacher teacher) {
         listTeacher.add(teacher);
@@ -56,7 +57,7 @@ public class ManagerTeacher implements Manager<Teacher>{
     }
 
     @Override
-    public boolean che(int id) {
+    public boolean check(int id) {
         for (int i = 0; i < listTeacher.size(); i++) {
             if (id == listTeacher.get(i).getId()) {
                 return true;

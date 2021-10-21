@@ -58,7 +58,7 @@ public class ManagerPerson implements Manager<Person> {
     }
 
     @Override
-    public boolean che(int id) {
+    public boolean check(int id) {
         for (int i = 0; i < listPerson.size(); i++) {
             if (id == listPerson.get(i).getId()) {
                 return true;
