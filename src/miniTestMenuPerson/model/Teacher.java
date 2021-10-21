@@ -1,4 +1,4 @@
-package miniTest.model;
+package miniTestMenuPerson.model;
 
 public class Teacher extends Person {
     private String subjects;

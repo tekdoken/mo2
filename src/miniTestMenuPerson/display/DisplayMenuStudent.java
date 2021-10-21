@@ -1,7 +1,7 @@
-package miniTest.display;
+package miniTestMenuPerson.display;
 
-import miniTest.model.Student;
-import miniTest.service.implement.ManagerStudent;
+import miniTestMenuPerson.model.Student;
+import miniTestMenuPerson.service.implement.ManagerStudent;
 
 import java.util.Scanner;
 

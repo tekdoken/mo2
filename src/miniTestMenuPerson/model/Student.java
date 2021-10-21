@@ -1,6 +1,4 @@
-package miniTest.model;
-
-import miniTest.model.Person;
+package miniTestMenuPerson.model;
 
 public class Student extends Person {
     private double score;
