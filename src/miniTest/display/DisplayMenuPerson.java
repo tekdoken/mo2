@@ -1,4 +1,4 @@
-package miniTest.Display;
+package miniTest.display;
 
 import miniTest.service.implement.ManagerPerson;
 import miniTest.model.Student;
