@@ -53,10 +53,10 @@ public class MainMenuPerson {
                             switch (numcheck2) {
                                 case 1:
                                     System.out.println("Enter the person ID to edit: ");
-                                    int iid = scanner.nextInt();
-                                    if (managerPerson.check(iid)) {
-                                        Studen editStudent = getStudene(scanner, iid);
-                                        managerPerson.edit(iid, editStudent);
+                                    int idEdit = scanner.nextInt();
+                                    if (managerPerson.check(idEdit)) {
+                                        Studen editStudent = getStudene(scanner, idEdit);
+                                        managerPerson.edit(idEdit, editStudent);
                                         managerPerson.print();
                                     } else {
                                         System.out.println("This item is not available");
@@ -64,10 +64,10 @@ public class MainMenuPerson {
                                     break;
                                 case 2:
                                     System.out.println("Enter the person ID to edit: ");
-                                    iid = scanner.nextInt();
-                                    if (managerPerson.check(iid)) {
-                                        Teacher editTeacher = getTeachere(scanner, iid);
-                                        managerPerson.edit(iid, editTeacher);
+                                    idEdit = scanner.nextInt();
+                                    if (managerPerson.check(idEdit)) {
+                                        Teacher editTeacher = getTeachere(scanner, idEdit);
+                                        managerPerson.edit(idEdit, editTeacher);
                                         managerPerson.print();
                                     } else {
                                         System.out.println("This item is not available");
@@ -80,9 +80,9 @@ public class MainMenuPerson {
                         break;
                     case 3:
                         System.out.println("Enter the person ID to delete: ");
-                        int idf = scanner.nextInt();
-                        if (managerPerson.check(idf)) {
-                            managerPerson.delete(idf);
+                        int idDelete = scanner.nextInt();
+                        if (managerPerson.check(idDelete)) {
+                            managerPerson.delete(idDelete);
                             managerPerson.print();
                         } else {
                             System.out.println("This item is not available");
@@ -110,62 +110,62 @@ public class MainMenuPerson {
         while (numcheck1 != 0);
     }
 
-    private static Studen getStuden(Scanner sa) {
-        sa.nextLine();
+    private static Studen getStuden(Scanner scanner) {
+        scanner.nextLine();
         System.out.println("Enter information New studen: ");
         System.out.print("Name: ");
-        String name = sa.nextLine();
+        String name = scanner.nextLine();
         System.out.print("Age: ");
-        int age = sa.nextInt();
+        int age = scanner.nextInt();
         int id = idd++;
         System.out.print("Score: ");
-        double score = sa.nextDouble();
-        Studen p = new Studen(name, age, score, id);
-        return p;
+        double score = scanner.nextDouble();
+        Studen newStudent = new Studen(name, age, score, id);
+        return newStudent;
     }
 
-    private static Teacher getTeacher(Scanner sa) {
+    private static Teacher getTeacher(Scanner scanner) {
         int id;
         String name;
         int age;
-        sa.nextLine();
+        scanner.nextLine();
         System.out.println("Enter information New studen: ");
         System.out.print("Name: ");
-        name = sa.nextLine();
+        name = scanner.nextLine();
         System.out.print("Age: ");
-        age = sa.nextInt();
+        age = scanner.nextInt();
         System.out.print("subjects: ");
-        sa.nextLine();
-        String subjects = sa.nextLine();
+        scanner.nextLine();
+        String subjects = scanner.nextLine();
         id = idd++;
-        Teacher p1 = new Teacher(name, age, id, subjects);
-        return p1;
+        Teacher newTeacher = new Teacher(name, age, id, subjects);
+        return newTeacher;
     }
 
-    private static Studen getStudene(Scanner sa, int iid) {
-        sa.nextLine();
+    private static Studen getStudene(Scanner scanner, int iid) {
+        scanner.nextLine();
         System.out.println("Enter information New person: ");
         System.out.print("Name: ");
-        String name = sa.nextLine();
+        String name = scanner.nextLine();
         System.out.print("Age: ");
-        int age = sa.nextInt();
+        int age = scanner.nextInt();
         System.out.print("Score:");
-        double score = sa.nextDouble();
-        Studen sas = new Studen(name, age, score, iid);
-        return sas;
+        double score = scanner.nextDouble();
+        Studen editStudent = new Studen(name, age, score, iid);
+        return editStudent;
     }
 
-    private static Teacher getTeachere(Scanner sa, int iid) {
-        sa.nextLine();
+    private static Teacher getTeachere(Scanner scanner, int iid) {
+        scanner.nextLine();
         System.out.println("Enter information New person: ");
         System.out.print("Name: ");
-        String name = sa.nextLine();
+        String name = scanner.nextLine();
         System.out.print("Age: ");
-        int age = sa.nextInt();
+        int age = scanner.nextInt();
         System.out.print("subjects: ");
-        sa.nextLine();
-        String subjects = sa.nextLine();
-        Teacher s = new Teacher(name, age, iid, subjects);
-        return s;
+        scanner.nextLine();
+        String subjects = scanner.nextLine();
+        Teacher editTeacher = new Teacher(name, age, iid, subjects);
+        return editTeacher;
     }
 }

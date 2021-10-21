@@ -90,33 +90,33 @@ public class MainMenuStuden {
         } while (numcheck != 0);
     }
 
-    private static Studen getStudenEdit(Scanner sa, int iid) {
+    private static Studen getStudenEdit(Scanner scanner, int iid) {
         int age;
         double score;
         String name;
-        sa.nextLine();
+        scanner.nextLine();
         System.out.println("Enter information New studen: ");
         System.out.print("Name: ");
-        name = sa.nextLine();
+        name = scanner.nextLine();
         System.out.print("Age: ");
-        age = sa.nextInt();
+        age = scanner.nextInt();
         System.out.print("Score: ");
-        score = sa.nextDouble();
+        score = scanner.nextDouble();
         Studen newStudent = new Studen(name, age, score, iid);
         return newStudent;
     }
 
-    private static Studen getStuden(Scanner sa) {
-        sa.nextLine();
+    private static Studen getStuden(Scanner scanner) {
+        scanner.nextLine();
         System.out.println("Enter information New studen: ");
 
         System.out.print("Name: ");
-        String name = sa.nextLine();
+        String name = scanner.nextLine();
         System.out.print("Age: ");
-        int age = sa.nextInt();
+        int age = scanner.nextInt();
         int id = idd++;
         System.out.print("Score: ");
-        double score = sa.nextDouble();
+        double score = scanner.nextDouble();
         Studen updateStudent = new Studen(name, age, score, id);
         return updateStudent;
     }
