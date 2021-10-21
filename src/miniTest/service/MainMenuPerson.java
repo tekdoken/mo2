@@ -54,8 +54,8 @@ public class MainMenuPerson {
                                 case 1:
                                     System.out.println("Enter the person ID to edit: ");
                                     int idEdit = scanner.nextInt();
-                                    if (managerPerson.check(idEdit)) {
-                                        Student editStudent = getStudente(scanner, idEdit);
+                                    if (managerPerson.checkId(idEdit)) {
+                                        Student editStudent = getStudentEdit(scanner, idEdit);
                                         managerPerson.edit(idEdit, editStudent);
                                         managerPerson.print();
                                     } else {
@@ -65,8 +65,8 @@ public class MainMenuPerson {
                                 case 2:
                                     System.out.println("Enter the person ID to edit: ");
                                     idEdit = scanner.nextInt();
-                                    if (managerPerson.check(idEdit)) {
-                                        Teacher editTeacher = getTeachere(scanner, idEdit);
+                                    if (managerPerson.checkId(idEdit)) {
+                                        Teacher editTeacher = getTeacherEdit(scanner, idEdit);
                                         managerPerson.edit(idEdit, editTeacher);
                                         managerPerson.print();
                                     } else {
@@ -81,7 +81,7 @@ public class MainMenuPerson {
                     case 3:
                         System.out.println("Enter the person ID to delete: ");
                         int idDelete = scanner.nextInt();
-                        if (managerPerson.check(idDelete)) {
+                        if (managerPerson.checkId(idDelete)) {
                             managerPerson.delete(idDelete);
                             managerPerson.print();
                         } else {
@@ -91,7 +91,7 @@ public class MainMenuPerson {
                     case 4:
                         System.out.println("Enter the person ID to Find: ");
                         int id = scanner.nextInt();
-                        if (managerPerson.check(id)) {
+                        if (managerPerson.checkId(id)) {
                             managerPerson.printId(managerPerson.find(id));
                         } else {
                             System.out.println("This item is not available");
@@ -142,7 +142,7 @@ public class MainMenuPerson {
         return newTeacher;
     }
 
-    private static Student getStudente(Scanner scanner, int iid) {
+    private static Student getStudentEdit(Scanner scanner, int iid) {
         scanner.nextLine();
         System.out.println("Enter information New person: ");
         System.out.print("Name: ");
@@ -155,7 +155,7 @@ public class MainMenuPerson {
         return editStudent;
     }
 
-    private static Teacher getTeachere(Scanner scanner, int iid) {
+    private static Teacher getTeacherEdit(Scanner scanner, int iid) {
         scanner.nextLine();
         System.out.println("Enter information New person: ");
         System.out.print("Name: ");

@@ -59,12 +59,13 @@ public class ManagerStudent implements Manager<Student> {
 
     }
 
-    public void sortZa() {
+    public void sortDescending() {
         listStudent.sort((a, b) -> (int) (a.getScore() - b.getScore()));
 
     }
 
-    public void sortAz() {
+
+    public void sortAscending() {
         listStudent.sort((a, b) -> (int) (b.getScore() - a.getScore()));
     }
 
@@ -77,7 +78,7 @@ public class ManagerStudent implements Manager<Student> {
     }
 
     @Override
-    public boolean check(int id) {
+    public boolean checkId(int id) {
         for (int i = 0; i < listStudent.size(); i++) {
             if (id == listStudent.get(i).getId()) {
                 return true;

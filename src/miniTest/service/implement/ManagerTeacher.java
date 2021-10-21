@@ -58,7 +58,7 @@ public class ManagerTeacher implements Manager<Teacher> {
     }
 
     @Override
-    public boolean check(int id) {
+    public boolean checkId(int id) {
         for (int i = 0; i < listTeacher.size(); i++) {
             if (id == listTeacher.get(i).getId()) {
                 return true;

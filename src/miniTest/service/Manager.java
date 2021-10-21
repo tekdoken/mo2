@@ -13,5 +13,5 @@ public interface Manager<W> {
 
     void printId(int id);
 
-    boolean check(int id);
+    boolean checkId(int id);
 }

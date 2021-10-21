@@ -39,7 +39,7 @@ public class MainMenuStudent {
                     case 2:
                         System.out.println("Enter the student ID to edit: ");
                         int idEdit = scanner.nextInt();
-                        if (managerStudent.check(idEdit)) {
+                        if (managerStudent.checkId(idEdit)) {
                             Student editStudent = getStudentEdit(scanner, idEdit);
                             managerStudent.edit(idEdit, editStudent);
                             managerStudent.print();
@@ -50,7 +50,7 @@ public class MainMenuStudent {
                     case 3:
                         System.out.println("Enter the student ID to delete: ");
                         int idDelete = scanner.nextInt();
-                        if (managerStudent.check(idDelete)) {
+                        if (managerStudent.checkId(idDelete)) {
                             managerStudent.delete(idDelete);
                             managerStudent.print();
                         } else {
@@ -60,7 +60,7 @@ public class MainMenuStudent {
                     case 4:
                         System.out.println("Enter the student ID to Find: ");
                         id = scanner.nextInt();
-                        if (managerStudent.check(id)) {
+                        if (managerStudent.checkId(id)) {
                             managerStudent.printId(managerStudent.find(id));
                         } else {
                             System.out.println("This item is not available");
@@ -72,12 +72,12 @@ public class MainMenuStudent {
                         break;
                     case 6:
                         System.out.println("Sort in descending order");
-                        managerStudent.sortZa();
+                        managerStudent.sortDescending();
                         managerStudent.print();
                         break;
                     case 7:
                         System.out.println("Sort in ascending order");
-                        managerStudent.sortAz();
+                        managerStudent.sortAscending();
                         managerStudent.print();
                         break;
                     case 8:
@@ -109,7 +109,6 @@ public class MainMenuStudent {
     private static Student getStudent(Scanner scanner) {
         scanner.nextLine();
         System.out.println("Enter information New student: ");
-
         System.out.print("Name: ");
         String name = scanner.nextLine();
         System.out.print("Age: ");
