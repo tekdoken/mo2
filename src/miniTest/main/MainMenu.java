@@ -27,21 +27,20 @@ public class MainMenu {
             if (numcheck != 0) {
                 switch (numcheck) {
                     case 1:
-                        Studen p = getStuden(scanner);
+                        Studen addStudent = getStuden(scanner);
                         int id;
                         String name;
                         int age;
-
                         double score;
-                        managerStuden.add(p);
+                        managerStuden.add(addStudent);
                         managerStuden.print();
                         break;
                     case 2:
                         System.out.println("Enter the studen ID to edit: ");
                         int idEdit = scanner.nextInt();
                         if (managerStuden.check(idEdit)) {
-                            Studen s = getStudenEdit(scanner, idEdit);
-                            managerStuden.edit(idEdit, s);
+                            Studen editStudent = getStudenEdit(scanner, idEdit);
+                            managerStuden.edit(idEdit, editStudent);
                             managerStuden.print();
                         } else {
                             System.out.println("This item is not available");
@@ -102,13 +101,14 @@ public class MainMenu {
         age = sa.nextInt();
         System.out.print("Score: ");
         score = sa.nextDouble();
-        Studen s = new Studen(name, age, score, iid);
-        return s;
+        Studen newStudent = new Studen(name, age, score, iid);
+        return newStudent;
     }
 
     private static Studen getStuden(Scanner sa) {
         sa.nextLine();
         System.out.println("Enter information New studen: ");
+
         System.out.print("Name: ");
         String name = sa.nextLine();
         System.out.print("Age: ");
@@ -116,7 +116,7 @@ public class MainMenu {
         int id = idd++;
         System.out.print("Score: ");
         double score = sa.nextDouble();
-        Studen p = new Studen(name, age, score, id);
-        return p;
+        Studen updateStudent = new Studen(name, age, score, id);
+        return updateStudent;
     }
 }
