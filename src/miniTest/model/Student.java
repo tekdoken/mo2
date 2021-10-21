@@ -2,10 +2,10 @@ package miniTest.model;
 
 import miniTest.model.Person;
 
-public class Studen extends Person {
+public class Student extends Person {
     private double score;
 
-    public Studen(String name, int age, double score, int id) {
+    public Student(String name, int age, double score, int id) {
         super(name, age, id);
         this.score = score;
     }
@@ -17,7 +17,7 @@ public class Studen extends Person {
 
     @Override
     public String toString() {
-        return "Studen{" + "name='" + super.getName() + '\'' +
+        return "Student{" + "name='" + super.getName() + '\'' +
                 ", age=" + super.getAge() +
                 ", id=" + super.getId() + "," +
                 "score=" + score +

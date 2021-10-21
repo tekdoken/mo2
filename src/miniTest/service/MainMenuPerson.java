@@ -1,7 +1,7 @@
 package miniTest.service;
 
 import miniTest.service.implement.ManagerPerson;
-import miniTest.model.Studen;
+import miniTest.model.Student;
 import miniTest.model.Teacher;
 
 import java.util.Scanner;
@@ -33,7 +33,7 @@ public class MainMenuPerson {
                         if (numcheck2 != 0) {
                             switch (numcheck2) {
                                 case 1:
-                                    Studen newStudent = getStuden(scanner);
+                                    Student newStudent = getStudent(scanner);
                                     managerPerson.add(newStudent);
                                     managerPerson.print();
                                     break;
@@ -55,7 +55,7 @@ public class MainMenuPerson {
                                     System.out.println("Enter the person ID to edit: ");
                                     int idEdit = scanner.nextInt();
                                     if (managerPerson.check(idEdit)) {
-                                        Studen editStudent = getStudene(scanner, idEdit);
+                                        Student editStudent = getStudente(scanner, idEdit);
                                         managerPerson.edit(idEdit, editStudent);
                                         managerPerson.print();
                                     } else {
@@ -110,9 +110,9 @@ public class MainMenuPerson {
         while (numcheck1 != 0);
     }
 
-    private static Studen getStuden(Scanner scanner) {
+    private static Student getStudent(Scanner scanner) {
         scanner.nextLine();
-        System.out.println("Enter information New studen: ");
+        System.out.println("Enter information New student: ");
         System.out.print("Name: ");
         String name = scanner.nextLine();
         System.out.print("Age: ");
@@ -120,7 +120,7 @@ public class MainMenuPerson {
         int id = idd++;
         System.out.print("Score: ");
         double score = scanner.nextDouble();
-        Studen newStudent = new Studen(name, age, score, id);
+        Student newStudent = new Student(name, age, score, id);
         return newStudent;
     }
 
@@ -129,7 +129,7 @@ public class MainMenuPerson {
         String name;
         int age;
         scanner.nextLine();
-        System.out.println("Enter information New studen: ");
+        System.out.println("Enter information New student: ");
         System.out.print("Name: ");
         name = scanner.nextLine();
         System.out.print("Age: ");
@@ -142,7 +142,7 @@ public class MainMenuPerson {
         return newTeacher;
     }
 
-    private static Studen getStudene(Scanner scanner, int iid) {
+    private static Student getStudente(Scanner scanner, int iid) {
         scanner.nextLine();
         System.out.println("Enter information New person: ");
         System.out.print("Name: ");
@@ -151,7 +151,7 @@ public class MainMenuPerson {
         int age = scanner.nextInt();
         System.out.print("Score:");
         double score = scanner.nextDouble();
-        Studen editStudent = new Studen(name, age, score, iid);
+        Student editStudent = new Student(name, age, score, iid);
         return editStudent;
     }
 

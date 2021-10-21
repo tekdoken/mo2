@@ -1,24 +1,24 @@
 package miniTest.service;
 
-import miniTest.model.Studen;
-import miniTest.service.implement.ManagerStuden;
+import miniTest.model.Student;
+import miniTest.service.implement.ManagerStudent;
 
 import java.util.Scanner;
 
-public class MainMenuStuden {
+public class MainMenuStudent {
     public static int idd = 1;
 
     public static void main(String[] args) {
-        ManagerStuden managerStuden = new ManagerStuden();
+        ManagerStudent managerStudent = new ManagerStudent();
         int numcheck = -1;
         do {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Menu");
-            System.out.println("1. Add Studen");
-            System.out.println("2. Edit Studen");
-            System.out.println("3. Delete Studen");
-            System.out.println("4. Find Studen");
-            System.out.println("5. Print Studen");
+            System.out.println("1. Add Student");
+            System.out.println("2. Edit Student");
+            System.out.println("3. Delete Student");
+            System.out.println("4. Find Student");
+            System.out.println("5. Print Student");
             System.out.println("6. Sort in descending order ");
             System.out.println("7. Sort in ascending order ");
             System.out.println("8. Total Score ");
@@ -28,60 +28,60 @@ public class MainMenuStuden {
             if (numcheck != 0) {
                 switch (numcheck) {
                     case 1:
-                        Studen addStudent = getStuden(scanner);
+                        Student addStudent = getStudent(scanner);
                         int id;
                         String name;
                         int age;
                         double score;
-                        managerStuden.add(addStudent);
-                        managerStuden.print();
+                        managerStudent.add(addStudent);
+                        managerStudent.print();
                         break;
                     case 2:
-                        System.out.println("Enter the studen ID to edit: ");
+                        System.out.println("Enter the student ID to edit: ");
                         int idEdit = scanner.nextInt();
-                        if (managerStuden.check(idEdit)) {
-                            Studen editStudent = getStudenEdit(scanner, idEdit);
-                            managerStuden.edit(idEdit, editStudent);
-                            managerStuden.print();
+                        if (managerStudent.check(idEdit)) {
+                            Student editStudent = getStudentEdit(scanner, idEdit);
+                            managerStudent.edit(idEdit, editStudent);
+                            managerStudent.print();
                         } else {
                             System.out.println("This item is not available");
                         }
                         break;
                     case 3:
-                        System.out.println("Enter the studen ID to delete: ");
+                        System.out.println("Enter the student ID to delete: ");
                         int idDelete = scanner.nextInt();
-                        if (managerStuden.check(idDelete)) {
-                            managerStuden.delete(idDelete);
-                            managerStuden.print();
+                        if (managerStudent.check(idDelete)) {
+                            managerStudent.delete(idDelete);
+                            managerStudent.print();
                         } else {
                             System.out.println("This item is not available");
                         }
                         break;
                     case 4:
-                        System.out.println("Enter the studen ID to Find: ");
+                        System.out.println("Enter the student ID to Find: ");
                         id = scanner.nextInt();
-                        if (managerStuden.check(id)) {
-                            managerStuden.printId(managerStuden.find(id));
+                        if (managerStudent.check(id)) {
+                            managerStudent.printId(managerStudent.find(id));
                         } else {
                             System.out.println("This item is not available");
                         }
                         break;
                     case 5:
-                        System.out.println("List Studen: ");
-                        managerStuden.print();
+                        System.out.println("List Student: ");
+                        managerStudent.print();
                         break;
                     case 6:
                         System.out.println("Sort in descending order");
-                        managerStuden.sortZa();
-                        managerStuden.print();
+                        managerStudent.sortZa();
+                        managerStudent.print();
                         break;
                     case 7:
                         System.out.println("Sort in ascending order");
-                        managerStuden.sortAz();
-                        managerStuden.print();
+                        managerStudent.sortAz();
+                        managerStudent.print();
                         break;
                     case 8:
-                        managerStuden.getTotalScore();
+                        managerStudent.getTotalScore();
                         break;
                     default:
                         System.out.println("This item is not available");
@@ -90,25 +90,25 @@ public class MainMenuStuden {
         } while (numcheck != 0);
     }
 
-    private static Studen getStudenEdit(Scanner scanner, int iid) {
+    private static Student getStudentEdit(Scanner scanner, int iid) {
         int age;
         double score;
         String name;
         scanner.nextLine();
-        System.out.println("Enter information New studen: ");
+        System.out.println("Enter information New student: ");
         System.out.print("Name: ");
         name = scanner.nextLine();
         System.out.print("Age: ");
         age = scanner.nextInt();
         System.out.print("Score: ");
         score = scanner.nextDouble();
-        Studen newStudent = new Studen(name, age, score, iid);
+        Student newStudent = new Student(name, age, score, iid);
         return newStudent;
     }
 
-    private static Studen getStuden(Scanner scanner) {
+    private static Student getStudent(Scanner scanner) {
         scanner.nextLine();
-        System.out.println("Enter information New studen: ");
+        System.out.println("Enter information New student: ");
 
         System.out.print("Name: ");
         String name = scanner.nextLine();
@@ -117,7 +117,7 @@ public class MainMenuStuden {
         int id = idd++;
         System.out.print("Score: ");
         double score = scanner.nextDouble();
-        Studen updateStudent = new Studen(name, age, score, id);
+        Student updateStudent = new Student(name, age, score, id);
         return updateStudent;
     }
 }
