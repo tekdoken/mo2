@@ -1,11 +1,11 @@
-package miniTest.service;
+package miniTest.Display;
 
 import miniTest.model.Student;
 import miniTest.service.implement.ManagerStudent;
 
 import java.util.Scanner;
 
-public class ShowMenuStudent {
+public class DisplayMenuStudent {
     public static int idd = 1;
 
     public static void main(String[] args) {

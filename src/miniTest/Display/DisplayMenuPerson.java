@@ -1,4 +1,4 @@
-package miniTest.service;
+package miniTest.Display;
 
 import miniTest.service.implement.ManagerPerson;
 import miniTest.model.Student;
@@ -6,7 +6,7 @@ import miniTest.model.Teacher;
 
 import java.util.Scanner;
 
-public class ShowMenuPerson {
+public class DisplayMenuPerson {
     public static int idd = 1;
 
     public static void main(String[] args) {
