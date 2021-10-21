@@ -11,7 +11,7 @@ public class MainMenu {
         ManagerStuden managerStuden = new ManagerStuden();
         int numcheck = -1;
         do {
-            Scanner sa = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             System.out.println("Menu");
             System.out.println("1. Add Studen");
             System.out.println("2. Edit Studen");
@@ -23,24 +23,25 @@ public class MainMenu {
             System.out.println("8. Total Score ");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            numcheck = sa.nextInt();
+            numcheck = scanner.nextInt();
             if (numcheck != 0) {
                 switch (numcheck) {
                     case 1:
-                        Studen p = getStuden(sa);
+                        Studen p = getStuden(scanner);
                         int id;
                         String name;
                         int age;
+
                         double score;
                         managerStuden.add(p);
                         managerStuden.print();
                         break;
                     case 2:
                         System.out.println("Enter the studen ID to edit: ");
-                        int iid = sa.nextInt();
-                        if (managerStuden.check(iid)) {
-                            Studen s = getStudenre(sa, iid);
-                            managerStuden.edit(iid, s);
+                        int idEdit = scanner.nextInt();
+                        if (managerStuden.check(idEdit)) {
+                            Studen s = getStudenEdit(scanner, idEdit);
+                            managerStuden.edit(idEdit, s);
                             managerStuden.print();
                         } else {
                             System.out.println("This item is not available");
@@ -48,9 +49,9 @@ public class MainMenu {
                         break;
                     case 3:
                         System.out.println("Enter the studen ID to delete: ");
-                        int idf = sa.nextInt();
-                        if (managerStuden.check(idf)) {
-                            managerStuden.delete(idf);
+                        int idDelete = scanner.nextInt();
+                        if (managerStuden.check(idDelete)) {
+                            managerStuden.delete(idDelete);
                             managerStuden.print();
                         } else {
                             System.out.println("This item is not available");
@@ -58,7 +59,7 @@ public class MainMenu {
                         break;
                     case 4:
                         System.out.println("Enter the studen ID to Find: ");
-                        id = sa.nextInt();
+                        id = scanner.nextInt();
                         if (managerStuden.check(id)) {
                             managerStuden.printId(managerStuden.find(id));
                         } else {
@@ -71,12 +72,12 @@ public class MainMenu {
                         break;
                     case 6:
                         System.out.println("Sort in descending order");
-                        managerStuden.sortg();
+                        managerStuden.sortZa();
                         managerStuden.print();
                         break;
                     case 7:
                         System.out.println("Sort in ascending order");
-                        managerStuden.sorta();
+                        managerStuden.sortAz();
                         managerStuden.print();
                         break;
                     case 8:
@@ -89,7 +90,7 @@ public class MainMenu {
         } while (numcheck != 0);
     }
 
-    private static Studen getStudenre(Scanner sa, int iid) {
+    private static Studen getStudenEdit(Scanner sa, int iid) {
         int age;
         double score;
         String name;

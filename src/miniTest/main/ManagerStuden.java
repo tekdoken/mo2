@@ -58,12 +58,12 @@ public class ManagerStuden implements Manager<Studen> {
 
     }
 
-    public void sortg() {
+    public void sortZa() {
         listStuden.sort((a, b) -> (int) (a.getScore() - b.getScore()));
 
     }
 
-    public void sorta() {
+    public void sortAz() {
         listStuden.sort((a, b) -> (int) (b.getScore() - a.getScore()));
     }
 
