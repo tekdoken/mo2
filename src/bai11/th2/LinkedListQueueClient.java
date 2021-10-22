@@ -10,6 +10,8 @@ public class LinkedListQueueClient {
         queue.enqueue(30);
         queue.enqueue(40);
         queue.enqueue(50);
-        System.out.println("Dequeued item is " + queue.dequeue().key);
+        for (int i = 0; i <3 ; i++) {
+            System.out.println("Dequeued item is " + queue.dequeue().key);
+        }
     }
 }
