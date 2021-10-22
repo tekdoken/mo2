@@ -1,6 +1,7 @@
 package dictionary;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -14,31 +15,35 @@ public class DictionaryMain {
         Dictionary dictionary6 = new Dictionary("six", "sau");
         Dictionary dictionary7 = new Dictionary("seven", "bay");
         Dictionary dictionary8 = new Dictionary("eight", "tam");
+        Dictionary dictionary9 = new Dictionary("      NINE", "CHIN");
+
         Map<String, Dictionary> dictionaryHashMap = new HashMap<String, Dictionary>();
-        dictionaryHashMap.put("one",dictionary1);
-        dictionaryHashMap.put("two",dictionary2);
-        dictionaryHashMap.put("three",dictionary3);
-        dictionaryHashMap.put("four",dictionary4);
-        dictionaryHashMap.put("five",dictionary5);
-        dictionaryHashMap.put("six",dictionary6);
-        dictionaryHashMap.put("seven",dictionary7);
-        dictionaryHashMap.put("eight",dictionary8);
+        dictionaryHashMap.put("one", dictionary1);
+        dictionaryHashMap.put("two", dictionary2);
+        dictionaryHashMap.put("three", dictionary3);
+        dictionaryHashMap.put("four", dictionary4);
+        dictionaryHashMap.put("five", dictionary5);
+        dictionaryHashMap.put("six", dictionary6);
+        dictionaryHashMap.put("seven", dictionary7);
+        dictionaryHashMap.put("eight", dictionary8);
+        dictionaryHashMap.put("nine", dictionary9);
         String enterEnhlish = getEnterEnglish();
         checkKey(dictionaryHashMap, enterEnhlish);
     }
 
     private static String getEnterEnglish() {
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("enter English world");
-        String enterEnhlish=scanner.nextLine();
-        return enterEnhlish;
+        String enterEnhlish = scanner.nextLine();
+//        String enterEnhlishToLower = enterEnhlish.toLowerCase();
+        return  Dictionary.check(enterEnhlish);
     }
 
     private static void checkKey(Map<String, Dictionary> dictionaryHashMap, String enterEnhlish) {
-        if(dictionaryHashMap.containsKey(enterEnhlish)){
+        if (dictionaryHashMap.containsKey(enterEnhlish)) {
             System.out.println(dictionaryHashMap.get(enterEnhlish));
 
-        }else{
+        } else {
             System.out.println("This item is not available ");
         }
     }
