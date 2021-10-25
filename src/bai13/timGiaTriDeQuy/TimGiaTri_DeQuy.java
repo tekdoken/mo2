@@ -19,8 +19,12 @@ public class TimGiaTri_DeQuy {
         int value = input.nextInt();
         Arrays.sort(ar);
         System.out.println(Arrays.toString(ar));
-        int r = binarySearch(ar, 0, num, value);
-        System.out.println("số " + value + " có vị trí là " + r);
+        int r = binarySearch(ar, 0, num-1, value);
+        if(r!=-1){
+            System.out.println("số " + value + " có vị trí là " + r);
+        }else{
+            System.out.println("ko co");
+        }
     }
 
     public static int binarySearch(int[] ar, int left, int right, int value) {
@@ -36,7 +40,5 @@ public class TimGiaTri_DeQuy {
         } else {
             return binarySearch(ar, left, mid - 1, value);
         }
-
     }
-
 }
