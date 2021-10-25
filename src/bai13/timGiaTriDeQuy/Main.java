@@ -20,7 +20,7 @@ public class Main {
         Arrays.sort(ar);
         System.out.println(Arrays.toString(ar));
         int r = binarySearch(ar, 0, num, value);
-        System.out.println("số "+value+" có vị trí là "+r);
+        System.out.println("số " + value + " có vị trí là " + r);
     }
 
     public static int binarySearch(int[] ar, int left, int right, int value) {
