@@ -3,7 +3,7 @@ package bai13.timGiaTriDeQuy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class TimGiaTri_DeQuy {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
