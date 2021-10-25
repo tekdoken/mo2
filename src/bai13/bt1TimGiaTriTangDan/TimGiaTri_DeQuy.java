@@ -3,7 +3,7 @@ package bai13.bt1TimGiaTriTangDan;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Main {
+public class TimGiaTri_DeQuy {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
