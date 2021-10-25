@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/BT_Ngay_22_10" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/apj-cylinder" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/apj-fizzbuzz" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/apj-using-map" vcs="Git" />

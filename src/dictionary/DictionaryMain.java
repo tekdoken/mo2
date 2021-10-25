@@ -1,7 +1,8 @@
 package dictionary;
 
+import javafx.fxml.FXMLLoader;
+
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -29,14 +30,14 @@ public class DictionaryMain {
         dictionaryHashMap.put("nine", dictionary9);
         String enterEnhlish = getEnterEnglish();
         checkKey(dictionaryHashMap, enterEnhlish);
+
     }
 
     private static String getEnterEnglish() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter English world");
         String enterEnhlish = scanner.nextLine();
-//        String enterEnhlishToLower = enterEnhlish.toLowerCase();
-        return  Dictionary.check(enterEnhlish);
+        return Dictionary.check(enterEnhlish);
     }
 
     private static void checkKey(Map<String, Dictionary> dictionaryHashMap, String enterEnhlish) {

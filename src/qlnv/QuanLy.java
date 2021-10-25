@@ -1,4 +1,4 @@
-package QLNV;
+package qlnv;
 
 public interface QuanLy<Q> {
     void them(Q q);

@@ -1,4 +1,4 @@
-package QLNV;
+package qlnv;
 
 public class NhanVien extends Nguoi{
  private int luong;

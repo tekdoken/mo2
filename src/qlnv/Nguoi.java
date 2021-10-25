@@ -1,4 +1,4 @@
-package QLNV;
+package qlnv;
 
 public abstract class Nguoi {
     private String ten;

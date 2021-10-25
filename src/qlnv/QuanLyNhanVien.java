@@ -1,4 +1,4 @@
-package QLNV;
+package qlnv;
 
 public class QuanLyNhanVien implements QuanLy<NhanVien> {
     private int size = 0;
