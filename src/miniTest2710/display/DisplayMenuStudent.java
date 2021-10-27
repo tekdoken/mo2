@@ -19,8 +19,11 @@ public class DisplayMenuStudent {
         ManageStudent.find(2);
         ManageStudent.edit(3, editStudent);
         ManageStudent.delete(4);
-        System.out.println(ManageStudent.ScoreTallest());;
+        System.out.println();
         ManageStudent.print();
+        System.out.println();
+        ManageStudent.ScoreTallest();
+
 
 //        ManageStudent ManageStudent = new ManageStudent();
 //        int numcheck = -1;
