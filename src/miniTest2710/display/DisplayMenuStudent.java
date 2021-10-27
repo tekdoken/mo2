@@ -16,13 +16,13 @@ public class DisplayMenuStudent {
         ManageStudent.add(addStudent2);
         ManageStudent.add(addStudent3);
         ManageStudent.gradePointAverageSort();
-        ManageStudent.find(2);
         ManageStudent.edit(3, editStudent);
         ManageStudent.delete(4);
         System.out.println();
         ManageStudent.print();
         System.out.println();
         ManageStudent.ScoreTallest();
+        ManageStudent.printId(ManageStudent.find(2));
 
 
 //        ManageStudent ManageStudent = new ManageStudent();
