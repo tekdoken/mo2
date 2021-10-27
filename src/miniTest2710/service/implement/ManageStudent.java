@@ -48,7 +48,7 @@ public class ManageStudent implements Manage<Student> {
         listStudent.sort((a, b) -> (int) (b.getGradePointAverage() - a.getGradePointAverage()));
     }
 
-    public void ScoreTallest() {
+    public void ScoreHighest() {
         double max = listStudent.get(0).getGradePointAverage();
         for (int i = 0; i < listStudent.size(); i++) {
             if (max < listStudent.get(i).getGradePointAverage()) {

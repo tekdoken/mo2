@@ -21,7 +21,7 @@ public class DisplayMenuStudent {
         System.out.println();
         ManageStudent.print();
         System.out.println();
-        ManageStudent.ScoreTallest();
+        ManageStudent.ScoreHighest();
         ManageStudent.printId(ManageStudent.find(2));
 
 
