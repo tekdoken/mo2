@@ -19,7 +19,7 @@ public class DisplayMenuStudent {
         ManageStudent.find(2);
         ManageStudent.edit(3, editStudent);
         ManageStudent.delete(4);
-
+        System.out.println(ManageStudent.ScoreTallest());;
         ManageStudent.print();
 
 //        ManageStudent ManageStudent = new ManageStudent();

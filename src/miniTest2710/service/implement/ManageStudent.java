@@ -15,6 +15,7 @@ public class ManageStudent implements Manage<Student> {
     public ManageStudent() {
         listStudent = new ArrayList<>();
     }
+
     @Override
     public void add(Student student) {
         listStudent.add(student);
@@ -24,6 +25,7 @@ public class ManageStudent implements Manage<Student> {
     public void edit(int id, Student student) {
         int index = find(id);
         listStudent.set(index, student);
+        student.getGradePointAverage();
     }
 
     @Override
@@ -41,8 +43,19 @@ public class ManageStudent implements Manage<Student> {
         }
         return -1;
     }
-    public void gradePointAverageSort(){
+
+    public void gradePointAverageSort() {
         listStudent.sort((a, b) -> (int) (b.getGradePointAverage() - a.getGradePointAverage()));
+    }
+
+    public double ScoreTallest() {
+        double max = listStudent.get(0).getGradePointAverage();
+        for (int i = 0; i < listStudent.size(); i++) {
+            if (max < listStudent.get(i).getGradePointAverage()) {
+                max = listStudent.get(i).getGradePointAverage();
+            }
+        }
+        return max;
     }
 
     @Override
