@@ -44,7 +44,8 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return String.format("|name: %-8s|id: %-10d|age: %-7d|mathScores: %-11.2f|physicsScores: %-11.2f|chemistryScores: %-11.2f|gradePointAverage: %-11.2f|",
+        return String.format("------------------------------------------------------------------------------------------------------------------------------------------------------------" + "\n" +
+                        "|name: %-8s|id: %-10d|age: %-7d|mathScores: %-11.2f|physicsScores: %-11.2f|chemistryScores: %-11.2f|gradePointAverage: %-11.2f|",
                 super.getName(),
                 super.getId(),
                 super.getAge(),
