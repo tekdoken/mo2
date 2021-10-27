@@ -1,7 +1,5 @@
 package dictionary;
 
-import javafx.fxml.FXMLLoader;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -37,7 +35,7 @@ public class DictionaryMain {
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter English world");
         String enterEnhlish = scanner.nextLine();
-        return Dictionary.check(enterEnhlish);
+        return Dictionary.spellcheck(enterEnhlish);
     }
 
     private static void checkKey(Map<String, Dictionary> dictionaryHashMap, String enterEnhlish) {
