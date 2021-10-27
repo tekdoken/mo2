@@ -44,14 +44,13 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + super.getName() + '\'' +
-                ", age=" + super.getAge() +
-                ", id=" + super.getId() +
-                ", mathScores=" + mathScores +
-                ", physicsScores=" + physicsScores +
-                ", chemistryScores=" + chemistryScores +
-                ", gradePointAverage=" + gradePointAverage +
-                '}';
+        return String.format("|name: %-8s|id: %-10d|age: %-7d|mathScores: %-13f|physicsScores: %-13f|chemistryScores: %-13f|gradePointAverage: %-13f|",
+                super.getName(),
+                super.getId(),
+                super.getAge(),
+                mathScores,
+                physicsScores,
+                chemistryScores,
+                gradePointAverage);
     }
 }

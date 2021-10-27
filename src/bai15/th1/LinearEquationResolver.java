@@ -10,7 +10,7 @@ public class LinearEquationResolver {
 
         System.out.print("a: ");
         double a = scanner.nextDouble();
-        System.out.println();
+
         System.out.print("b: ");
         double b = scanner.nextDouble();
 
