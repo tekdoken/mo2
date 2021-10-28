@@ -7,7 +7,7 @@ import java.io.*;
 public class ReaderWriter {
     public static void main(String[] args) {
         try{
-            BufferedWriter wr = new BufferedWriter(new FileWriter("src\\bai16\\th2\\result1.txt"));
+            BufferedWriter wr = new BufferedWriter(new FileWriter("src\\bai16\\th1\\countries.csv"));
             BufferedReader br = new BufferedReader(new FileReader("D:\\num.txt"));
             File file = new File("D:\\num.txt");
 

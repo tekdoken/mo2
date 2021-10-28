@@ -1,5 +1,1 @@
-
-1
-2
-3
-4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4
+Giá trị lớn nhất là: 4Giá trị lớn nhất là: 4

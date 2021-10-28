@@ -62,13 +62,17 @@ public class ManageStudent implements Manage<Student> {
 
     }
 
+    public ArrayList<Student> getListStudent() {
+        return listStudent;
+    }
+
     @Override
     public void print() {
         for (Student x : listStudent
         ) {
             System.out.println(x);
         }
-        System.out.println("------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
