@@ -1,4 +1,4 @@
-package miniTestMenuPerson.model;
+package minitestmenuperson.model;
 
 public class Student extends Person {
     private double score;

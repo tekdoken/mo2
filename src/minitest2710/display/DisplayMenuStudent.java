@@ -1,7 +1,7 @@
-package miniTest2710.display;
+package minitest2710.display;
 
-import miniTest2710.model.Student;
-import miniTest2710.service.implement.ManageStudent;
+import minitest2710.model.Student;
+import minitest2710.service.implement.ManageStudent;
 
 import java.io.*;
 import java.util.Scanner;

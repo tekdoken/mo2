@@ -1,4 +1,4 @@
-package miniTest2710.model;
+package minitest2710.model;
 
 public class Student extends Person {
     private double mathScores;

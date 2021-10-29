@@ -1,4 +1,4 @@
-package miniTestMenuPerson.service;
+package minitestmenuperson.service;
 
 public interface Manager<W> {
     void add(W w);

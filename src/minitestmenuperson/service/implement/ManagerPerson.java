@@ -1,7 +1,7 @@
-package miniTestMenuPerson.service.implement;
+package minitestmenuperson.service.implement;
 
-import miniTestMenuPerson.model.Person;
-import miniTestMenuPerson.service.Manager;
+import minitestmenuperson.model.Person;
+import minitestmenuperson.service.Manager;
 
 import java.util.ArrayList;
 

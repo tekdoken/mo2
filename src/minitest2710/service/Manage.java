@@ -1,4 +1,4 @@
-package miniTest2710.service;
+package minitest2710.service;
 
 public interface Manage<W> {
     void add(W w);

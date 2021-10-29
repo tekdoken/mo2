@@ -1,7 +1,7 @@
-package miniTest2710.service.implement;
+package minitest2710.service.implement;
 
-import miniTest2710.model.Student;
-import miniTest2710.service.Manage;
+import minitest2710.model.Student;
+import minitest2710.service.Manage;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package miniTest2710.model;
+package minitestmenuperson.model;
 
 
 public class Person {
