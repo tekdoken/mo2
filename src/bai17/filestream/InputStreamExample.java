@@ -1,4 +1,4 @@
-package bai17.baidoc;
+package bai17.filestream;
 
 import java.io.FileInputStream;
 import java.io.IOException;
