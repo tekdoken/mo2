@@ -8,7 +8,7 @@ public class InputStreamExample2 {
     public static void main(String[] args) throws IOException {
 
         // Tạo một luồng đầu vào bằng cách đọc một file
-        InputStream in = new FileInputStream("src\\CodeGym.txt");
+        InputStream in = new FileInputStream("CodeGym.txt");
 
         // Mảng để mỗi lần đọc các byte từ luồng thì tạm thời để lên đó
         // Ta dùng mảng 10 byte

@@ -8,7 +8,7 @@ public class InputStreamExample {
     public static void main(String[] args) throws IOException {
 
         // Tạo một đối tượng InputStream: Luồng đọc một file.
-        InputStream is = new FileInputStream("src\\CodeGym.txt");
+        InputStream is = new FileInputStream("CodeGym.txt");
 
         int i = -1;
 
