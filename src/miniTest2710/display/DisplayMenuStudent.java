@@ -26,7 +26,7 @@ public class DisplayMenuStudent {
             try {
 
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Menu");
+                System.out.println(ANSI_GREEN+"Menu");
                 System.out.println("1. Add Student");
                 System.out.println("2. Edit Student");
                 System.out.println("3. Delete Student");
@@ -36,8 +36,8 @@ public class DisplayMenuStudent {
                 System.out.println("7. Highest Score ");
                 System.out.println("8. Write data to file ");
                 System.out.println("9. Read data file ");
-                System.out.println("0. Exit");
-                System.out.println("Enter your choice: ");
+                System.out.println("0. Exit"+ ANSI_RESET);
+                System.out.println(ANSI_BLUE+"Enter your choice: "+ ANSI_RESET);
                 numcheck = scanner.nextInt();
                 if (numcheck != 0) {
                     switch (numcheck) {
