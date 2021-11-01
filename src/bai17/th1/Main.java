@@ -1,4 +1,4 @@
-package bai17;
+package bai17.th1;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -15,7 +15,7 @@ public class Main {
         try {
             is = new FileInputStream(source);
             os = new FileOutputStream(dest);
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[102];
             int length;
             while ((length = is.read(buffer)) > 0) {
                 os.write(buffer, 0, length);

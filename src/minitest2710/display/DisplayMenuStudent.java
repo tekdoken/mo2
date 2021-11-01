@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class DisplayMenuStudent {
-    public static int idd = 1;
+    public static int idNew = 1;
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -155,6 +155,23 @@ public class DisplayMenuStudent {
         } while (numcheck != 0);
     }
 
+    private static Student getStudent(Scanner scanner) {
+        scanner.nextLine();
+        System.out.println("Enter information New student: ");
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Age: ");
+        int age = scanner.nextInt();
+        int id = idNew++;
+        System.out.print("Score Math: ");
+        double mathScores = scanner.nextDouble();
+        System.out.print("Score Physics: ");
+        double physicsScores = scanner.nextDouble();
+        System.out.print("Score Chemistry: ");
+        double chemistryScores = scanner.nextDouble();
+        Student newStudent = new Student(name, age, id, mathScores, physicsScores, chemistryScores);
+        return newStudent;
+    }
 
     private static Student getStudentEdit(Scanner scanner, int id) {
         int age;
@@ -178,21 +195,4 @@ public class DisplayMenuStudent {
         return updateStudent;
     }
 
-    private static Student getStudent(Scanner scanner) {
-        scanner.nextLine();
-        System.out.println("Enter information New student: ");
-        System.out.print("Name: ");
-        String name = scanner.nextLine();
-        System.out.print("Age: ");
-        int age = scanner.nextInt();
-        int id = idd++;
-        System.out.print("Score Math: ");
-        double mathScores = scanner.nextDouble();
-        System.out.print("Score Physics: ");
-        double physicsScores = scanner.nextDouble();
-        System.out.print("Score Chemistry: ");
-        double chemistryScores = scanner.nextDouble();
-        Student newStudent = new Student(name, age, id, mathScores, physicsScores, chemistryScores);
-        return newStudent;
-    }
 }
