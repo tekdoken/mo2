@@ -97,8 +97,8 @@ public class DisplayMenuStudent {
                             scanner.nextLine();
                             String nameFile = scanner.nextLine();
                             try {
-                                BufferedWriter bw = new BufferedWriter(new FileWriter(nameFile));
-//                        BufferedWriter bw = new BufferedWriter(new FileWriter("src\\miniTest2710\\student.csv"));
+//                                BufferedWriter bw = new BufferedWriter(new FileWriter(nameFile));
+                        BufferedWriter bw = new BufferedWriter(new FileWriter("src\\miniTest2710\\student.csv"));
                                 String str = "Name,ID,Age,Math Score,Physics Scores,Chemistry Scores,Grade Point Average";
                                 for (int i = 0; i < manageStudent.getListStudent().size(); i++) {
                                     Student student = (Student) manageStudent.getListStudent().get(i);
