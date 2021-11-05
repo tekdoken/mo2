@@ -25,12 +25,11 @@ public class Main {
         songManage.add(song2);
         songManage.add(song3);
 //        System.out.println(listSong);
-//        Album album=new Album("a",listSong);
-//        albumManage.add(album);
+        Album album=new Album("a",listSong);
+        albumManage.add(album);
 //        albumManage.print();
         Account account = new Account("day la acc", "123", listAlbum);
         accountManage.add(account);
-accountManage.print();
 
 //        songManage.print();
     }
