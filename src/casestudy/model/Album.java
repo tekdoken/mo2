@@ -3,12 +3,12 @@ package casestudy.model;
 public class Album {
     private String nameAlbum;
     private int id;
-    private Song song;
+    private String song;
 
     public Album() {
     }
 
-    public Album(String nameAlbum, int id, Song song) {
+    public Album(String nameAlbum, int id, String song) {
         this.nameAlbum = nameAlbum;
         this.id = id;
         this.song = song;
@@ -30,11 +30,11 @@ public class Album {
         this.id = id;
     }
 
-    public Song getSong() {
+    public String getString() {
         return song;
     }
 
-    public void setSong(Song song) {
+    public void setString(String song) {
         this.song = song;
     }
 

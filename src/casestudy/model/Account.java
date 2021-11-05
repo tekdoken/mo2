@@ -1,15 +1,16 @@
 package casestudy.model;
 
 public class Account {
-    private String userName;
+    private String nameAccount;
     private int password;
     private int id;
-private Album album;
+    private Album album;
+
     public Account() {
     }
 
-    public Account(String userName, int password, int id, Album album) {
-        this.userName = userName;
+    public Account(String nameAccount, int password, int id, Album album) {
+        this.nameAccount = nameAccount;
         this.password = password;
         this.id = id;
         this.album = album;
@@ -23,12 +24,12 @@ private Album album;
         this.album = album;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getNameAccount() {
+        return nameAccount;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setNameAccount(String nameAccount) {
+        this.nameAccount = nameAccount;
     }
 
     public int getPassword() {
@@ -50,7 +51,7 @@ private Album album;
     @Override
     public String toString() {
         return "Account{" +
-                "userName='" + userName + '\'' +
+                "nameAccount='" + nameAccount + '\'' +
                 ", password=" + password +
                 ", id=" + id +
                 ", album=" + album +
