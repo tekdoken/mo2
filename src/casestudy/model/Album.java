@@ -1,14 +1,16 @@
 package casestudy.model;
 
+import casestudy.service.SongManage;
+
 public class Album {
     private String nameAlbum;
     private int id;
-    private String song;
+    private SongManage song;
 
     public Album() {
     }
 
-    public Album(String nameAlbum, int id, String song) {
+    public Album(String nameAlbum, int id, SongManage song) {
         this.nameAlbum = nameAlbum;
         this.id = id;
         this.song = song;
@@ -30,11 +32,11 @@ public class Album {
         this.id = id;
     }
 
-    public String getString() {
+    public SongManage getString() {
         return song;
     }
 
-    public void setString(String song) {
+    public void setString(SongManage song) {
         this.song = song;
     }
 
@@ -43,7 +45,7 @@ public class Album {
         return "Album{" +
                 "nameAlbum='" + nameAlbum + '\'' +
                 ", id=" + id +
-                ", song=" + song +
+               "," +song +
                 '}';
     }
 }

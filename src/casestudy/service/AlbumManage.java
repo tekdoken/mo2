@@ -51,6 +51,12 @@ public class AlbumManage implements ManageAlbum<Album> {
         }
     }
 
+    @Override
+    public String toString() {
+        return "AlbumManage{" +
+                "listAlbum=" + listAlbum +
+                '}';
+    }
 
     @Override
     public void print() {

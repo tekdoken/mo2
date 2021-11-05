@@ -1,26 +1,28 @@
 package casestudy.model;
 
+import casestudy.service.AlbumManage;
+
 public class Account {
     private String nameAccount;
     private int password;
     private int id;
-    private Album album;
+    private AlbumManage album;
 
     public Account() {
     }
 
-    public Account(String nameAccount, int password, int id, Album album) {
+    public Account(String nameAccount, int password, int id, AlbumManage album) {
         this.nameAccount = nameAccount;
         this.password = password;
         this.id = id;
         this.album = album;
     }
 
-    public Album getAlbum() {
+    public AlbumManage getAlbum() {
         return album;
     }
 
-    public void setAlbum(Album album) {
+    public void setAlbum(AlbumManage album) {
         this.album = album;
     }
 

@@ -30,9 +30,9 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song{" +
+        return String.format(
+                        "\n"+"%30s %s","",
                 "nameSong='" + nameSong + '\'' +
-                ", id=" + id +
-                '}';
+                ", id="+id );
     }
 }

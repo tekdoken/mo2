@@ -15,17 +15,19 @@ public class Main {
         SongManage songManage= new SongManage();
         AlbumManage albumManage=new AlbumManage();
         Song song = new Song("DUY", 1);
-        Song song1 = new Song("DUY Lu*n", 1);
+        Song song1 = new Song(" Ldfdfu*n", 1);
+        Song song2 = new Song(" Lu*n", 1);
+        Song song3 = new Song(" Lu*n", 1);
         songManage.add(song);
+        songManage.add(song2);
+        songManage.add(song3);
         songManage.add(song1);
-//        songManage.print();
-        String s="";
-        s+=songManage;
-        Album album = new Album("dfsdsd", 2, s);
+
+        Album album = new Album("dfsdsd", 2, songManage);
         albumManage.addAlbum(album);
         albumManage.print();
-//
-//        Account acc = new Account("Long", 1232443434, 3, album);
+
+//        Account acc = new Account("Long", 1232443434, 3, albumManage);
 //        accountManage.addAcc(acc);
 //        accountManage.print();
     }

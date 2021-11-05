@@ -59,4 +59,11 @@ public class SongManage implements ManageSong<Song> {
         }
         System.out.println( "------------------------------------------------------------------------------------------------------------------------------------------------------------" );
     }
+
+    @Override
+    public String toString() {
+        return "SongManage{" +
+                "listSong=" + listSong +
+                '}';
+    }
 }
