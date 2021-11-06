@@ -20,6 +20,15 @@ public class Song implements General<Song>, Serializable {
     public Song() {
     }
 
+    public Song(List<Song> listSong) {
+        this.listSong = listSong;
+    }
+
+    public Song(String name, List<Song> listSong) {
+        this.name = name;
+        this.listSong = listSong;
+    }
+
     public Song(String name) {
         this.name = name;
     }

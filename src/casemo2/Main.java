@@ -2,6 +2,7 @@ package casemo2;
 
 import casemo2.model.Album;
 import casemo2.model.Song;
+import casemo2.service.AlbumManage;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -13,19 +14,30 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    public static void main(String[] args) {
-        ArrayList<Song> songs = new ArrayList<>();
-        songs.add(ReadSong().get(2));
-        songs.add(ReadSong().get(3));
-        Album album = new Album("hfh", songs);
+    public static void main(String[] args) throws IOException {
+        ArrayList<Song> listSong = new ArrayList<>();//nhập xuất
+        //        WedSong(listSong);
+        //        WriterSong(listSong);
 
 
-        System.out.println(album);
+        ArrayList<Song> songInAlbum = new ArrayList<>();
+        ArrayList<Album> albums = new ArrayList<>();
+        AlbumManage albumManage = new AlbumManage(albums);
+
+        songInAlbum.add(ReadSong().get(2));
+        songInAlbum.add(ReadSong().get(3));
+        Album album = new Album("anh DUY", songInAlbum);
+//        albums.add(album);
+
+        albumManage.add(album);
+        albumManage.print();
+//        albumManage.printName("hfh");
+//albumManage.findAbsolute("hfh");
 
     }
 
 
-    private static List<Song> ReadSong() {
+    private static List<Song> ReadSong() throws IOException {
         ObjectInputStream read = null;
         ArrayList<Song> song = new ArrayList<>();
         try {
@@ -33,6 +45,8 @@ public class Main {
             song = (ArrayList<Song>) read.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
+        } finally {
+            read.close();
         }
         return song;
     }

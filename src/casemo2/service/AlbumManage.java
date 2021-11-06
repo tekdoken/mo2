@@ -5,9 +5,25 @@ import casemo2.model.Song;
 
 import java.util.List;
 
-public class AlbumManage implements General<Album> {
+public class  AlbumManage implements General<Album> {
     List<Album> listAlbum;
     List<Song> listSong;
+
+    public List<Album> getListAlbum() {
+        return listAlbum;
+    }
+
+    public void setListAlbum(List<Album> listAlbum) {
+        this.listAlbum = listAlbum;
+    }
+
+    public List<Song> getListSong() {
+        return listSong;
+    }
+
+    public void setListSong(List<Song> listSong) {
+        this.listSong = listSong;
+    }
 
     public AlbumManage() {
     }
@@ -20,7 +36,7 @@ public class AlbumManage implements General<Album> {
     }
     @Override
     public void add(Album album) {
-        listAlbum.add(album);
+        this.listAlbum.add(album);
     }
 
     @Override
@@ -37,7 +53,7 @@ public class AlbumManage implements General<Album> {
     public void findRelative(String name) {
         for (int i = 0; i < listAlbum.size(); i++) {
             if (listAlbum.get(i).getName().contains(name)) {
-                System.out.println(listAlbum.get(i));
+                System.out.println("listAlbum.get(i)");
             }
         }
     }

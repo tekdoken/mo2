@@ -55,10 +55,7 @@ public class Album implements General<Album> {
 
     @Override
     public String toString() {
-        return "Album{" +
-                "name='" + name + '\'' +
-                ", songs=" + songs +
-                ", account=" + account +
+        return "Album name='" + name + '\''  + songs +
                 '}';
     }
     public void addSong(Song name){
@@ -87,7 +84,7 @@ public class Album implements General<Album> {
     public void findRelative(String name) {
         for (int i = 0; i < listAlbum.size(); i++) {
             if (listAlbum.get(i).getName().contains(name)) {
-                System.out.println(listAlbum.get(i));
+                System.out.println(listAlbum.get(i).getName());
             }
         }
     }
