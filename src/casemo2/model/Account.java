@@ -1,6 +1,4 @@
-package caseMo2.model;
-
-import caseMo2.model.Album;
+package casemo2.model;
 
 import java.util.List;
 

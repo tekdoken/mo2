@@ -1,8 +1,7 @@
-package caseMo2.service;
+package casemo2.service;
 
-import caseMo2.model.Song;
+import casemo2.model.Song;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SongManage implements General<Song> {

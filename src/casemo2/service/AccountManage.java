@@ -1,7 +1,7 @@
-package caseMo2.service;
+package casemo2.service;
 
-import caseMo2.model.Account;
-import caseMo2.model.Album;
+import casemo2.model.Account;
+import casemo2.model.Album;
 
 import java.util.List;
 

@@ -1,20 +1,71 @@
-package caseMo2.service;
+package casemo2.model;
 
-import caseMo2.model.Album;
-import caseMo2.model.Album;
-import caseMo2.model.Song;
+import casemo2.service.General;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumManage implements General<Album> {
-    List<Album> listAlbum;
-    List<Song> listSong;
+public class Album implements General<Album> {
+    private String name;
+    private List<Song> songs;
+    private List<Album> listAlbum;
+    private Account account;
 
-    public AlbumManage() {
+    public Album() {
     }
 
-    public AlbumManage(List<Album> listAlbum) {
-        this.listAlbum = listAlbum;
+    public Album(String name) {
+        this.name = name;
+    }
+
+    public Album(String name, List<Song> songs) {
+        this.name = name;
+        this.songs = songs;
+    }
+
+    public Album(String name, List<Song> songs, Account account) {
+        this.name = name;
+        this.songs = songs;
+        this.account = account;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(ArrayList<Song> songs) {
+        this.songs = songs;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "name='" + name + '\'' +
+                ", songs=" + songs +
+                ", account=" + account +
+                '}';
+    }
+    public void addSong(Song name){
+        songs.add(name);
+    }
+    public void deleteSong(String name){
+
     }
 
     @Override

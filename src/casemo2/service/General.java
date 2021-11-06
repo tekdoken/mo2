@@ -1,4 +1,4 @@
-package caseMo2.service;
+package casemo2.service;
 
 public interface General<W> {
     void add(W w);
