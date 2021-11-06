@@ -7,27 +7,30 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+public class Main  {
     public static void main(String[] args) {
-        ArrayList<Song> listSong = new ArrayList<>();
-        ArrayList<Album> listAlbum = new ArrayList<>();
+        List<Song> listSong = new ArrayList<>();
+        Song song=new Song();
         WedSong(listSong);
         WriterSong(listSong);
-        ArrayList<Song> song = ReadSong();
-
-
-        System.out.println(song.get(1));
+        song.setSongs(ReadSong());
+        ArrayList<Song> songAlbum=new ArrayList<>();
+//        songAlbum=listSong.get(1);
+        Album album=new Album("al1");
+        album.add(album);
+        System.out.println(album);
 
 
 
     }
 
 
-    private static ArrayList<Song> ReadSong() {
+    private static List<Song> ReadSong() {
         ObjectInputStream read = null;
         ArrayList<Song>  song=new ArrayList<>();
         try {
@@ -39,7 +42,7 @@ public class Main {
         return song;
     }
 
-    private static void WriterSong(ArrayList<Song> listSong) {
+    private static void WriterSong(List<Song> listSong) {
         ObjectOutputStream writer = null;
 
         try {
@@ -54,7 +57,7 @@ public class Main {
         }
     }
 
-    private static void WedSong(ArrayList<Song> listSong) {
+    private static void WedSong(List<Song> listSong) {
         try {
             URL url = new URL("https://www.nhaccuatui.com/");
             // open the stream and put it into BufferedReader
