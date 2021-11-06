@@ -13,8 +13,8 @@ public class Song implements General<Song>, Serializable {
         return listSong;
     }
 
-    public void setSongs(List<Song> songs) {
-        this.listSong = songs;
+    public void setSongs(Song songs) {
+        this.listSong.add(songs);
     }
 
     public Song() {
@@ -34,13 +34,13 @@ public class Song implements General<Song>, Serializable {
 
     @Override
     public String toString() {
-        return "Songname: " + name  +
+        return "Songname: " + name +
                 '}';
     }
 
     @Override
     public void add(Song song) {
-       song.add(song);
+        song.add(song);
 
     }
 
@@ -74,9 +74,9 @@ public class Song implements General<Song>, Serializable {
 
     @Override
     public void delete(String name) {
-        if ( findAbsolute(name)!=-1){
+        if (findAbsolute(name) != -1) {
             listSong.remove(findAbsolute(name));
-        }else{
+        } else {
             System.out.println("This item is not available");
         }
     }
@@ -84,7 +84,7 @@ public class Song implements General<Song>, Serializable {
 
     @Override
     public void print() {
-        for (Song x:listSong
+        for (Song x : listSong
         ) {
             System.out.println(x);
         }
