@@ -2,8 +2,6 @@ package casemo2;
 
 import casemo2.model.Album;
 import casemo2.model.Song;
-import casemo2.service.AlbumManage;
-import casemo2.service.SongManage;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -16,11 +14,10 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        AlbumManage albumManage = new AlbumManage();
-        SongManage songManage=new SongManage();
-
-        songManage.add(ReadSong().get(0));
-        Album album = new Album("al",songManage);
+        ArrayList<Song> songs = new ArrayList<>();
+        songs.add(ReadSong().get(2));
+        songs.add(ReadSong().get(3));
+        Album album = new Album("hfh", songs);
 
 
         System.out.println(album);
@@ -28,7 +25,7 @@ public class Main {
     }
 
 
-    private static ArrayList<Song> ReadSong() {
+    private static List<Song> ReadSong() {
         ObjectInputStream read = null;
         ArrayList<Song> song = new ArrayList<>();
         try {
@@ -40,48 +37,48 @@ public class Main {
         return song;
     }
 
-//    private static void WriterSong(List<Song> listSong) {
-//        ObjectOutputStream writer = null;
-//
-//        try {
-//            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\song.txt"));
-//            writer.writeObject(listSong);
-//        } catch (
-//                FileNotFoundException e) {
-//            System.out.println("The system cannot find the file specified");
-//        } catch (
-//                IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private static void WedSong(List<Song> listSong) {
-//        try {
-//            URL url = new URL("https://www.nhaccuatui.com/");
-//            // open the stream and put it into BufferedReader
-//            Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
-//            scanner.useDelimiter("\\Z");
-//            String content = scanner.next();
-//            // close scanner
-//            scanner.close();
-//            // remove all new line
-//            content = content.replaceAll("\\n+", "");
-//            // regex
-//            Pattern p = Pattern.compile("name_song\">(.*?)</a>");
-//            Matcher m = p.matcher(content);
-//            while (m.find()) {
-//                Song listSong1 = new Song(m.group(1));
-//
-//                listSong.add(listSong1);
-//            }
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private static void WriterSong(List<Song> listSong) {
+        ObjectOutputStream writer = null;
+
+        try {
+            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\song.txt"));
+            writer.writeObject(listSong);
+        } catch (
+                FileNotFoundException e) {
+            System.out.println("The system cannot find the file specified");
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void WedSong(List<Song> listSong) {
+        try {
+            URL url = new URL("https://www.nhaccuatui.com/");
+            // open the stream and put it into BufferedReader
+            Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
+            scanner.useDelimiter("\\Z");
+            String content = scanner.next();
+            // close scanner
+            scanner.close();
+            // remove all new line
+            content = content.replaceAll("\\n+", "");
+            // regex
+            Pattern p = Pattern.compile("name_song\">(.*?)</a>");
+            Matcher m = p.matcher(content);
+            while (m.find()) {
+                Song listSong1 = new Song(m.group(1));
+
+                listSong.add(listSong1);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
