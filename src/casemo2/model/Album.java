@@ -1,9 +1,12 @@
 package casemo2.model;
 
+import casemo2.service.General;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Album {
+public class Album implements Serializable {
     private String name;
     private List<Song> songs;
     private List<Album> listAlbum;
@@ -117,6 +120,10 @@ public class Album {
         ) {
             System.out.println(x);
         }
+    }
+
+    public void add(Song song) {
+        songs.add(song);
     }
 
     public void printName(String name) {

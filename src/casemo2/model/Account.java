@@ -1,23 +1,46 @@
 package casemo2.model;
 
+import casemo2.service.General;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Account {
-    private String userName;
+public class Account implements General<Album> , Serializable {
+    private String name;
     private String password;
     private List<Album> listAlbum;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Account() {
     }
 
-    public Account(String userName, String password, List<Album> listAlbum) {
-        this.userName = userName;
+    public Account(List<Album> listAlbum) {
+        this.listAlbum = listAlbum;
+    }
+
+    public Account(String name, String password, List<Album> listAlbum) {
+        this.name = name;
         this.password = password;
         this.listAlbum = listAlbum;
     }
 
-    public Account(String userName, String password) {
-        this.userName = userName;
+    public Account(String name, String password) {
+        this.name = name;
         this.password = password;
     }
 
@@ -25,24 +48,81 @@ public class Account {
     public String
     toString() {
         return "Account{" +
-                "userName='" + userName + '\'' +
+                "name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", listAlbum=" + listAlbum +
                 '}';
     }
-    public void addAlbum(String name){
 
+    public List<Album> getListAlbum() {
+        return listAlbum;
     }
-//    public Album findByName(String name){
-//
-//    }
-    public void deleteAlbum(String name){
 
+    public void setListAlbum(List<Album> listAlbum) {
+        this.listAlbum = listAlbum;
     }
-    public void editAlbum(String name,String newName){
 
+
+
+
+    @Override
+    public void add(Album album) {
+        this.listAlbum.add(album);
     }
-    public void printAlbum(){
 
+    @Override
+    public int findAbsolute(String name) {
+        for (int i = 0; i < listAlbum.size(); i++) {
+            if (listAlbum.get(i).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public void findRelative(String name) {
+        for (int i = 0; i < listAlbum.size(); i++) {
+            if (listAlbum.get(i).getName().contains(name)) {
+                System.out.println(listAlbum.get(i));
+            }
+        }
+    }
+
+
+    @Override
+    public void edit(String name, String newName) {
+        if (findAbsolute(name) != -1) {
+            listAlbum.get(findAbsolute(name)).setName(newName);
+        } else {
+            System.out.println("This item is not available");
+        }
+    }
+
+    @Override
+    public void delete(String name) {
+        if ( findAbsolute(name)!=-1){
+            listAlbum.remove(findAbsolute(name));
+        }else{
+            System.out.println("This item is not available");
+        }
+    }
+
+
+    @Override
+    public void print() {
+        for (Album x:listAlbum
+        ) {
+            System.out.println(x);
+        }
+    }
+
+    @Override
+    public void printName(String name) {
+        for (int i = 0; i < listAlbum.size(); i++) {
+            if (listAlbum.get(i).getName().equals(name)) {
+                System.out.println(listAlbum.get(i));
+            }
+        }
     }
 }

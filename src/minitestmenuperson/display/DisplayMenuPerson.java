@@ -30,7 +30,7 @@ public class DisplayMenuPerson {
                         System.out.println("1.student");
                         System.out.println("2.teacher");
                         numcheck2 = scanner.nextInt();
-                        if (numcheck2 != 0) {
+                        if (numcheck2 != 0&&numcheck2<3) {
                             switch (numcheck2) {
                                 case 1:
                                     Student newStudent = getStudent(scanner);
