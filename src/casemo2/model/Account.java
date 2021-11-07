@@ -63,8 +63,6 @@ public class Account implements General<Album> , Serializable {
     }
 
 
-
-
     @Override
     public void add(Album album) {
         this.listAlbum.add(album);
@@ -82,10 +80,14 @@ public class Account implements General<Album> , Serializable {
 
     @Override
     public void findRelative(String name) {
+        boolean cc=true;
         for (int i = 0; i < listAlbum.size(); i++) {
             if (listAlbum.get(i).getName().contains(name)) {
                 System.out.println(listAlbum.get(i));
+                cc=false;
             }
+        }if (cc==true){
+                System.out.println("This item is not available");
         }
     }
 
@@ -119,10 +121,21 @@ public class Account implements General<Album> , Serializable {
 
     @Override
     public void printName(String name) {
+        boolean c=true;
         for (int i = 0; i < listAlbum.size(); i++) {
             if (listAlbum.get(i).getName().equals(name)) {
                 System.out.println(listAlbum.get(i));
+                c=false;
+                break;
             }
+        }if (c==true){
+            System.out.println("This item is not available");
+        }
+    }
+    public void printListAlbum() {
+        for (Album x:listAlbum
+        ) {
+            System.out.println("Name Album: "+x.getName());
         }
     }
 }

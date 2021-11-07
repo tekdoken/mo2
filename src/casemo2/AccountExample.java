@@ -10,12 +10,12 @@ public class AccountExample {
     public AccountExample() {
     }
 
-    public boolean validate(String regex) {
+    public boolean Acc(String regex) {
         Pattern pattern = Pattern.compile(ACCOUNT_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
-    public boolean va(String regex) {
+    public boolean Pass(String regex) {
         Pattern pattern = Pattern.compile(PASS_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();

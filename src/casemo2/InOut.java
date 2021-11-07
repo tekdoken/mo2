@@ -16,39 +16,50 @@ public class InOut {
     public String NewAlbumName() {
         System.out.println("Enter the name of the album you want to create:");
         String newAlbumName = sa.nextLine();
-        return newAlbumName;
+        if (accountExample.Pass(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String EditNameAlbum() {
         System.out.println("Enter the album name you want to edit:");
-        String editNameAlbum = sa.nextLine();
-        ;
-        return editNameAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Pass(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String NewEditNameAlbum() {
         System.out.println("Enter new album name:");
-        String newEditNameAlbum = sa.nextLine();
-        return newEditNameAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Pass(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String DeleteAlbum() {
         System.out.println("Enter the album name you want to Delete:");
-        String deleteAlbum = sa.nextLine();
-        return deleteAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Pass(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
 
     public String FindRelativeAbum() {
         System.out.println("Enter the name of the album you want to find relative: ");
-        String findRelativeAbum = sa.nextLine();
-        return findRelativeAbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Pass(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String FindAbsoluteAlbum() {
         System.out.println("Enter the name of the album you want to find absolute: ");
-        String findAbsoluteAlbum = sa.nextLine();
-        return findAbsoluteAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Pass(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     //------------------------------------------------------------------------------------------------
@@ -97,7 +108,7 @@ public class InOut {
         System.out.println("Enter new username Account:");
         System.out.println("Note: name is letter or number");
         String newSongInAlbum = sa.nextLine();
-        if (accountExample.validate(newSongInAlbum) == true) {
+        if (accountExample.Acc(newSongInAlbum) == true) {
             return newSongInAlbum;
         }
         return " ";
@@ -107,7 +118,7 @@ public class InOut {
         System.out.println("Enter new Password:");
         System.out.println("Note: Password must not contain spaces");
         String newAlbumName = sa.nextLine();
-        if (accountExample.va(newAlbumName) == true) {
+        if (accountExample.Pass(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
@@ -115,7 +126,7 @@ public class InOut {
         System.out.println("Enter username Account:");
         System.out.println("Note: name is letter or number");
         String SongInAlbum = sa.nextLine();
-        if (accountExample.validate(SongInAlbum) == true) {
+        if (accountExample.Acc(SongInAlbum) == true) {
             return SongInAlbum;
         }
         return " ";
@@ -125,17 +136,10 @@ public class InOut {
         System.out.println("Enter Password:");
         System.out.println("Note: Password must not contain spaces");
         String aAlbumName = sa.nextLine();
-        if (accountExample.va(aAlbumName) == true) {
+        if (accountExample.Pass(aAlbumName) == true) {
             return aAlbumName;
         }return " ";
     }
-    public String EditPass() {
-        System.out.println("Enter old Password:");
-        System.out.println("Note: Password must not contain spaces");
-        String aAlbumName = sa.nextLine();
-        if (accountExample.va(aAlbumName) == true) {
-            return aAlbumName;
-        }return " ";
-    }
+
 
 }
