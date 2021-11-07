@@ -13,8 +13,8 @@ public class AccountManage implements General<Account>, Serializable {
         this.listAccount = listAccount;
     }
 
-    public List<Account> getListAccount() {
-        return listAccount;
+    public int getListAccount() {
+        return this.listAccount.size();
     }
 
     public void setListAccount(List<Account> listAccount) {

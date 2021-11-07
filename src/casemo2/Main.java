@@ -99,7 +99,6 @@ public class Main extends InOut {
                                                 switch (numcheck) {
                                                     case 1:
 
-
                                                     default:
                                                         System.out.println("This item is not available");
                                                 }
@@ -123,8 +122,8 @@ public class Main extends InOut {
                 System.err.println("please enter number");
             }
         } while (numcheck != 0);
-//        accountManage.print();
-        ReadSong().print();
+        accountManage.print();
+//        ReadSong().print();
     }
 
 
