@@ -13,7 +13,10 @@ public class AccountManage implements General<Account>, Serializable {
         this.listAccount = listAccount;
     }
 
-    public int getListAccount() {
+    public List<Account> getListAccount() {
+        return this.listAccount;
+    }
+    public int getListAccount1() {
         return this.listAccount.size();
     }
 
@@ -51,9 +54,9 @@ public class AccountManage implements General<Account>, Serializable {
 
 
     @Override
-    public void edit(String name, String newName) {
+    public void edit(String name, String newPass) {
         if (findAbsolute(name) != -1) {
-            listAccount.get(findAbsolute(name)).setName(newName);
+            listAccount.get(findAbsolute(name)).setPassword(newPass);
         } else {
             System.out.println("This item is not available");
         }

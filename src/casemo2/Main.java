@@ -60,31 +60,35 @@ public class Main extends InOut {
                 System.out.println(ANSI_CYAN + "Menu");
                 System.out.println("1. Register an account");
                 System.out.println("2. Account login");
-                System.out.println("3. Account login");
+                System.out.println("3. change Password");
                 System.out.println("0. Exit" + ANSI_RESET);
                 System.out.println(ANSI_YELLOW + "Enter your choice: " + ANSI_RESET);
                 numcheck = scanner.nextInt();
                 if (numcheck != 0) {
                     switch (numcheck) {
                         case 1:
+                            Account s = new Account(" ", " ");
+                            accountManage.add(s);
                             Account account = new Account(inOut.NewUserName(), inOut.NewPass(), albumInAccount);
-                            if (!account.getName().equals("a") && !account.getPassword().equals("a")) {
-                                for (int i = 0; i < accountManage.getListAccount().size(); i++) {
-                                    if (!accountManage.getListAccount().get(i).getName().equals(inOut.NewUserName())) {
+                            for (int i = 0; i < accountManage.getListAccount().size(); i++) {
+                                if (!accountManage.getListAccount().get(i).getName().equals(account.getName())) {
+                                    if (!account.getName().equals(" ") && !account.getPassword().equals(" ")) {
                                         accountManage.add(account);
                                         WriterAcc(accountManage);
+                                        break;
                                     } else {
-                                        System.out.println(ANSI_YELLOW + "name already exists!!!!" + ANSI_RESET);
+                                        System.out.println(ANSI_RED + "Invalid username or password!!!!!!" + ANSI_RESET);
                                     }
+                                } else {
+                                    System.out.println(ANSI_YELLOW + "name already exists!!!!" + ANSI_RESET);
                                 }
-
-                            } else {
-                                System.out.println(ANSI_RED + "Invalid username or password!!!!!!" + ANSI_RESET);
                             }
                             break;
                         case 2:
+                            String nameAcc=inOut.UserNameLogin();
+                            String pass =inOut.PassLogin();
                             for (int i = 0; i < accountManage.getListAccount().size(); i++) {
-                                if (accountManage.getListAccount().get(i).getName().equals(inOut.UserNameLogin()) && accountManage.getListAccount().get(i).getPassword().equals(inOut.PassLogin())) {
+                                if (accountManage.getListAccount().get(i).getName().equals(nameAcc) && accountManage.getListAccount().get(i).getPassword().equals(pass)) {
                                     System.out.println("Logged in successfully");
                                     do {
                                         try {
@@ -109,8 +113,17 @@ public class Main extends InOut {
                                     } while (numcheck != 0);
 
 
-                                } else {
-                                    System.out.println("Invalid username or password!!!");
+                                }
+                            }
+                            break;
+                        case 3:
+                           nameAcc=inOut.UserNameLogin();
+                            pass =inOut.PassLogin();
+                            for (int i = 0; i < accountManage.getListAccount().size(); i++) {
+                                if (accountManage.getListAccount().get(i).getName().equals(nameAcc) && accountManage.getListAccount().get(i).getPassword().equals(pass)) {
+
+                                    System.out.println("Logged in successfully");
+
                                 }
                             }
                             break;

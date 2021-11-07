@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AccountExample {
-    private static final String ACCOUNT_REGEX = "^[A-Za-z0-9]$";
-    private static final String PASS_REGEX = "^\\S$";
+    private static final String ACCOUNT_REGEX = "^[A-Za-z0-9]+$";
+    private static final String PASS_REGEX = "^\\S+$";
 
     public AccountExample() {
     }

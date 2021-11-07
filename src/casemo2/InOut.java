@@ -100,7 +100,7 @@ public class InOut {
         if (accountExample.validate(newSongInAlbum) == true) {
             return newSongInAlbum;
         }
-        return "a";
+        return " ";
     }
 
     public String NewPass() {
@@ -109,14 +109,14 @@ public class InOut {
         String newAlbumName = sa.nextLine();
         if (accountExample.va(newAlbumName) == true) {
             return newAlbumName;
-        }return "a";
+        }return " ";
     }
     public String UserNameLogin() {
         System.out.println("Enter username Account:");
         System.out.println("Note: name is letter or number");
-        String newSongInAlbum = sa.nextLine();
-        if (accountExample.validate(newSongInAlbum) == true) {
-            return newSongInAlbum;
+        String SongInAlbum = sa.nextLine();
+        if (accountExample.validate(SongInAlbum) == true) {
+            return SongInAlbum;
         }
         return " ";
     }
@@ -124,16 +124,18 @@ public class InOut {
     public String PassLogin() {
         System.out.println("Enter Password:");
         System.out.println("Note: Password must not contain spaces");
-        String newAlbumName = sa.nextLine();
-        if (accountExample.va(newAlbumName) == true) {
-            return newAlbumName;
+        String aAlbumName = sa.nextLine();
+        if (accountExample.va(aAlbumName) == true) {
+            return aAlbumName;
         }return " ";
     }
     public String EditPass() {
         System.out.println("Enter old Password:");
-        String editNameAlbum = sa.nextLine();
-        ;
-        return editNameAlbum;
+        System.out.println("Note: Password must not contain spaces");
+        String aAlbumName = sa.nextLine();
+        if (accountExample.va(aAlbumName) == true) {
+            return aAlbumName;
+        }return " ";
     }
 
 }
