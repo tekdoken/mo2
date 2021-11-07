@@ -13,26 +13,45 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+public class Main extends InOut {
     public static void main(String[] args) throws IOException {
-        ArrayList<Song> listSong = new ArrayList<>();//nhập xuất
+        ArrayList<Song> listSong = new ArrayList<>();//nhập xuất file
         //        WedSong(listSong);
         //        WriterSong(listSong);
-
 
         ArrayList<Song> songInAlbum = new ArrayList<>();
         ArrayList<Album> albums = new ArrayList<>();
         AlbumManage albumManage = new AlbumManage(albums);
 
-        songInAlbum.add(ReadSong().get(2));
-        songInAlbum.add(ReadSong().get(3));
-        Album album = new Album("anh DUY", songInAlbum);
-//        albums.add(album);
+        InOut inOut = new InOut();
 
+        Album album = new Album(inOut.NewAlbumName(), songInAlbum);
         albumManage.add(album);
+
+        Song newSongAlbum = new Song(inOut.NewSongInAlbum());
+        songInAlbum.add(newSongAlbum);
+        newSongAlbum = new Song(inOut.NewSongInAlbum());
+        songInAlbum.add(newSongAlbum);
+        newSongAlbum = new Song(inOut.NewSongInAlbum());
+        songInAlbum.add(newSongAlbum);
+
+
         albumManage.print();
-//        albumManage.printName("hfh");
-//albumManage.findAbsolute("hfh");
+
+
+//        albumManage.edit(inOut.EditNameAlbum(), inOut.NewEditNameAlbum());
+//        albumManage.delete(inOut.DeleteAlbum());
+//        albumManage.findRelative(inOut.FindRelativeAbum());
+//        albumManage.printName(inOut.FindAbsoluteAlbum());
+
+//        album.editSong(inOut.EditNameSong(), inOut.NewEditNameSong());
+//        album.deleteSong(inOut.DeleteSong());
+
+        album.getSongs(inOut.FindRelativeSong());
+//        album.printName(inOut.FindAbsoluteAlbum());
+
+        albumManage.print();
+
 
     }
 

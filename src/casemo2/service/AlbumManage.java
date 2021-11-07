@@ -7,7 +7,6 @@ import java.util.List;
 
 public class  AlbumManage implements General<Album> {
     List<Album> listAlbum;
-    List<Song> listSong;
 
     public List<Album> getListAlbum() {
         return listAlbum;
@@ -17,13 +16,8 @@ public class  AlbumManage implements General<Album> {
         this.listAlbum = listAlbum;
     }
 
-    public List<Song> getListSong() {
-        return listSong;
-    }
 
-    public void setListSong(List<Song> listSong) {
-        this.listSong = listSong;
-    }
+
 
     public AlbumManage() {
     }
@@ -31,9 +25,7 @@ public class  AlbumManage implements General<Album> {
     public AlbumManage(List<Album> listAlbum) {
         this.listAlbum = listAlbum;
     }
-    public void addSong(Song song){
 
-    }
     @Override
     public void add(Album album) {
         this.listAlbum.add(album);
@@ -53,7 +45,7 @@ public class  AlbumManage implements General<Album> {
     public void findRelative(String name) {
         for (int i = 0; i < listAlbum.size(); i++) {
             if (listAlbum.get(i).getName().contains(name)) {
-                System.out.println("listAlbum.get(i)");
+                System.out.println(listAlbum.get(i));
             }
         }
     }
