@@ -30,7 +30,7 @@ public class Account implements General<Album> , Serializable {
     }
 
     public Account(List<Album> listAlbum) {
-        this.listAlbum = listAlbum;
+        listAlbum = listAlbum;
     }
 
     public Account(String name, String password, List<Album> listAlbum) {
@@ -118,6 +118,7 @@ public class Account implements General<Album> , Serializable {
             System.out.println(x);
         }
     }
+
 
     @Override
     public void printName(String name) {

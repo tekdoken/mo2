@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class AccountManage implements General<Account>, Serializable {
+
     List<Account> listAccount;
 
     public AccountManage(List<Account> listAccount) {
