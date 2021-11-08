@@ -15,6 +15,22 @@ public class Album implements Serializable {
     public Album() {
     }
 
+    public List<Song> getListSong() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+    public List<Album> getListAlbum() {
+        return listAlbum;
+    }
+
+    public void setListAlbum(List<Album> listAlbum) {
+        this.listAlbum = listAlbum;
+    }
+
     public Album(String name) {
         this.name = name;
     }

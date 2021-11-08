@@ -19,6 +19,9 @@ public class AccountManage implements General<Account>, Serializable {
     public int getListAccount1() {
         return this.listAccount.size();
     }
+    public int getListAccountNa() {
+        return this.listAccount.size();
+    }
 
     public void setListAccount(List<Account> listAccount) {
         this.listAccount = listAccount;

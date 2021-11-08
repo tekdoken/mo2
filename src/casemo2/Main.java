@@ -15,7 +15,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main extends InOut {
-    private static Integer file = 1;
     public static final String RS = "\u001B[0m";
     public static final String RE = "\u001B[31m";
     public static final String GR = "\u001B[32m";
@@ -36,7 +35,6 @@ public class Main extends InOut {
 
         AccountManage accountManage = new AccountManage(accountInManage);
 
-//        Song newSongAlbum = new Song(inOut.NewSongInAlbum());
 //        album.add(newSongAlbum);
 
 
@@ -57,6 +55,7 @@ public class Main extends InOut {
         do {
             try {
                 Scanner scanner = new Scanner(System.in);
+                System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
                 System.out.println(CYAN + "Menu");
                 System.out.println("1. Register an account");
                 System.out.println("2. Account login");
@@ -70,7 +69,7 @@ public class Main extends InOut {
                         case 1:
                             account = new Account(inOut.NewUserName(), inOut.NewPass(), albumInAccount);
                             if (accountManage.getListAccount().size() == 0) {
-                                if (!account.getName().equals(" ") && !account.getPassword().equals(" ")) {
+                                if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
 
                                     accountManage.add(account);
 //                                        WriterAcc(accountManage);
@@ -81,7 +80,7 @@ public class Main extends InOut {
                             } else {
                                 for (int i = 0; i < accountManage.getListAccount().size(); i++) {
                                     if (!accountManage.getListAccount().get(i).getName().equals(account.getName())) {
-                                        if (!account.getName().equals(" ") && !account.getPassword().equals(" ")) {
+                                        if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
                                             accountManage.add(account);
 //                                        WriterAcc(accountManage);
                                             System.out.println(GR + "Register an account successfully!");
@@ -102,6 +101,7 @@ public class Main extends InOut {
                                     System.out.println(GR + "Logged in successfully");
                                     do {
                                         try {
+                                            System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
                                             System.out.println(BL + "Menu Album");
                                             System.out.println("1. create new album");
                                             System.out.println(GR + "2. Edit album(Add song)" + RS);
@@ -118,18 +118,19 @@ public class Main extends InOut {
 //                 Album
                                                     case 1:
                                                         Album album = new Album(inOut.NewAlbumName(), songInAlbum);
-                                                        if (account.getListAlbum().size() == 0) {
-                                                            if (!album.getName().equals(" ")) {
+                                                        if (checkAlbumNull(account)) {
+                                                            if (checkRegex(album.getName())) {
                                                                 account.add(album);
                                                                 System.out.println(GR + "create successful album" + RS);
-//                                        WriterAcc(accountManage);
+//                                        WriterAcc(accountManage);}
                                                             } else {
                                                                 System.out.println(RE + "Invalid name album!!!!!!" + RS);
                                                             }
                                                         } else {
                                                             for (i = 0; i < account.getListAlbum().size(); i++) {
                                                                 if (!account.getListAlbum().get(i).getName().equals(album.getName())) {
-                                                                    if (!album.getName().equals(" ")) {
+                                                                    if (checkRegex(album.getName())) {
+
                                                                         account.add(album);
                                                                         System.out.println(GR + "create successful album" + RS);
 //                                        WriterAcc(accountManage);
@@ -147,6 +148,7 @@ public class Main extends InOut {
                                                         do {
                                                             try {
                                                                 scanner = new Scanner(System.in);
+                                                                System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
                                                                 System.out.println(CYAN + "Menu Edit Album");
                                                                 System.out.println("1. Edit name album");
                                                                 System.out.println("2. Add songs to Album");
@@ -157,15 +159,23 @@ public class Main extends InOut {
                                                                 if (numcheck3 != 0) {
                                                                     switch (numcheck3) {
                                                                         case 1:
-                                                                            if (account.getListAlbum().size() == 0) {
+                                                                            if (checkAlbumNull(account)) {
                                                                                 System.out.println(RE + "This item is not available" + RS);
                                                                                 break;
                                                                             }
-                                                                            account.edit(inOut.EditNameAlbum(), inOut.NewEditNameAlbum());
-                                                                            System.out.println("Edit name album successful");
+                                                                            String oldName = inOut.EditNameAlbum(), newName = inOut.NewEditNameAlbum();
+                                                                            if (checkRegex(oldName) && checkRegex(newName)) {
+                                                                                account.edit(oldName, newName);
+                                                                                System.out.println("Edit name album successful");
+                                                                            }
                                                                             break;
                                                                         case 2:
-                                                                            break;
+
+
+
+
+                                                                            Song newSongAlbum = new Song(inOut.NewSongInAlbum());
+                                                                                break;
                                                                         default:
                                                                             System.out.println(RE + "This item is not available" + RS);
                                                                     }
@@ -189,12 +199,12 @@ public class Main extends InOut {
                                                                 if (numcheck4 == 1) {
                                                                     switch (numcheck4) {
                                                                         case 1:
-                                                                            if (account.getListAlbum().size() == 0) {
+                                                                            if (checkAlbumNull(account)) {
                                                                                 System.out.println(RE + "This item is not available" + RS);
                                                                                 break;
                                                                             }
                                                                             account.delete(inOut.DeleteAlbum());
-                                                                            if (account.getListAlbum().size() == 0) {
+                                                                            if (checkAlbumNull(account)) {
                                                                                 System.out.println(RE + "This item is not available" + RS);
                                                                                 break;
                                                                             }
@@ -211,28 +221,28 @@ public class Main extends InOut {
                                                         } while (numcheck4 != 0 && numcheck4 > 2);
                                                         break;
                                                     case 4:
-                                                        if (account.getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(account)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
                                                         account.findRelative(inOut.FindRelativeAbum());
                                                         break;
                                                     case 5:
-                                                        if (account.getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(account)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
                                                         account.printName(inOut.FindAbsoluteAlbum());
                                                         break;
                                                     case 6:
-                                                        if (account.getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(account)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
                                                         account.printListAlbum();
                                                         break;
                                                     case 7:
-                                                        if (account.getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(account)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
@@ -283,6 +293,16 @@ public class Main extends InOut {
 
     }
 
+    private static boolean checkAlbumNull(Account account) {
+        return account.getListAlbum().size() == 0;
+    }
+    private static boolean checkSongNull(Album album) {
+        return album.getListSong().size() == 0;
+    }
+
+    private static boolean checkRegex(String oldName) {
+        return !oldName.equals(" ");
+    }
 
     private static AccountManage ReadSong() throws IOException {
         ObjectInputStream read = null;
