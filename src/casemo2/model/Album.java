@@ -9,7 +9,6 @@ import java.util.List;
 public class Album implements Serializable {
     private String name;
     private List<Song> songs;
-    private List<Album> listAlbum;
     private Account account;
 
     public Album() {
@@ -23,13 +22,7 @@ public class Album implements Serializable {
         this.songs = songs;
     }
 
-    public List<Album> getListAlbum() {
-        return listAlbum;
-    }
 
-    public void setListAlbum(List<Album> listAlbum) {
-        this.listAlbum = listAlbum;
-    }
 
     public Album(String name) {
         this.name = name;
@@ -94,24 +87,7 @@ public class Album implements Serializable {
         return -1;
     }
 
-    public void findRelativeSong(String song, String album) {
-        for (int j = 0; j < listAlbum.size(); j++) {
-            if (listAlbum.get(j).getName().equals(album)) {
-                System.out.println(listAlbum.get(j).getName() + ":");
-                for (int i = 0; i < songs.size(); i++) {
-                    if (songs.get(i).getName().contains(song)) {
-                        System.out.print(songs.get(i).getName());
-                    } else {
-                        System.out.println("This song is not available!!!!");
 
-                    }
-                }
-            } else {
-                System.out.println("This album is not available!!!!");
-            }
-        }
-
-    }
 
 
     public void editSong(String name, String newName) {
