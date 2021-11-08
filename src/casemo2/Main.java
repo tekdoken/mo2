@@ -118,33 +118,33 @@ public class Main extends InOut {
 //                 Album
                                                     case 1:
                                                         Album album = new Album(inOut.NewAlbumName(), songInAlbum);
-//                                                        if (checkAlbumNull(account)) {
-//                                                            if (checkRegex(album.getName())) {
+                                                        if (checkAlbumNull(account)) {
+                                                            if (checkRegex(album.getName())) {
                                                                 AccountManage.getInstance().getListAccount().get(0).getListAlbum().add(album);
                                                                 System.out.println(GR + "create successful album" + RS);
-//                                                                break;
-//                                                            } else {
-//                                                                System.out.println(RE + "Invalid name album!!!!!!" + RS);
-//                                                                break;
-//                                                            }
-//                                                        } else {
-//                                                            for (i = 0; i < account.getListAlbum().size(); i++) {
-//                                                                if (!account.getListAlbum().get(i).getName().equals(album.getName())) {
-//                                                                    if (checkRegex(album.getName())) {
-//
-//                                                                        account.add(album);
-//                                                                        System.out.println(GR + "create successful album" + RS);
-//                                                                        break;
-//                                                                    } else {
-//                                                                        System.out.println(RE + "Invalid name album!!!!!!" + RS);
-//                                                                        break;
-//                                                                    }
-//                                                                } else {
-//                                                                    System.out.println(RE + "name already exists!!!!" + RS);
-//                                                                    break;
-//                                                                }
-//                                                            }
-//                                                        }
+                                                                break;
+                                                            } else {
+                                                                System.out.println(RE + "Invalid name album!!!!!!" + RS);
+                                                                break;
+                                                            }
+                                                        } else {
+                                                            for (i = 0; i < account.getListAlbum().size(); i++) {
+                                                                if (!account.getListAlbum().get(i).getName().equals(album.getName())) {
+                                                                    if (checkRegex(album.getName())) {
+
+                                                                        account.add(album);
+                                                                        System.out.println(GR + "create successful album" + RS);
+                                                                        break;
+                                                                    } else {
+                                                                        System.out.println(RE + "Invalid name album!!!!!!" + RS);
+                                                                        break;
+                                                                    }
+                                                                } else {
+                                                                    System.out.println(RE + "name already exists!!!!" + RS);
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
                                                         break;
                                                     case 2:
                                                         do {
