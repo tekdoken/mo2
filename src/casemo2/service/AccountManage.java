@@ -1,25 +1,36 @@
 package casemo2.service;
 
 import casemo2.model.Account;
-import casemo2.model.Account;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManage implements General<Account>, Serializable {
 
-    List<Account> listAccount;
+    List<Account> listAccount = new ArrayList<Account>();
+    private static final AccountManage instance = new AccountManage();
+
+    public static AccountManage getInstance() {
+    return instance;
+    }
 
     public AccountManage(List<Account> listAccount) {
         this.listAccount = listAccount;
     }
 
+    public AccountManage() {
+
+    }
+
     public List<Account> getListAccount() {
         return this.listAccount;
     }
+
     public int getListAccount1() {
         return this.listAccount.size();
     }
+
     public int getListAccountNa() {
         return this.listAccount.size();
     }
@@ -29,9 +40,6 @@ public class AccountManage implements General<Account>, Serializable {
     }
 
 
-
-
-  
     @Override
     public void add(Account account) {
         this.listAccount.add(account);
@@ -68,9 +76,9 @@ public class AccountManage implements General<Account>, Serializable {
 
     @Override
     public void delete(String name) {
-        if ( findAbsolute(name)!=-1){
+        if (findAbsolute(name) != -1) {
             listAccount.remove(findAbsolute(name));
-        }else{
+        } else {
             System.out.println("This item is not available");
         }
     }
@@ -78,7 +86,7 @@ public class AccountManage implements General<Account>, Serializable {
 
     @Override
     public void print() {
-        for (Account x:listAccount
+        for (Account x : listAccount
         ) {
             System.out.println(x);
         }

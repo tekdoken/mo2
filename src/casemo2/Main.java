@@ -33,7 +33,7 @@ public class Main extends InOut {
         ArrayList<Album> albumInAccount = new ArrayList<>();
         Account account = null;
 
-        AccountManage accountManage = new AccountManage(accountInManage);
+//        AccountManage AccountManage.getInstance() = new AccountManage(accountInManage);
 
 //        album.add(newSongAlbum);
 
@@ -68,21 +68,21 @@ public class Main extends InOut {
 //         Acconut
                         case 1:
                             account = new Account(inOut.NewUserName(), inOut.NewPass(), albumInAccount);
-                            if (accountManage.getListAccount().size() == 0) {
+                            if (AccountManage.getInstance().getListAccount().size() == 0) {
                                 if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
 
-                                    accountManage.add(account);
-//                                        WriterAcc(accountManage);
+                                    AccountManage.getInstance().add(account);
+//                                        WriterAcc(AccountManage.getInstance());
                                     System.out.println(GR + "Register an account successfully!");
                                 } else {
                                     System.out.println(RE + "Invalid username or password!!!!!!" + RS);
                                 }
                             } else {
-                                for (int i = 0; i < accountManage.getListAccount().size(); i++) {
-                                    if (!accountManage.getListAccount().get(i).getName().equals(account.getName())) {
+                                for (int i = 0; i < AccountManage.getInstance().getListAccount().size(); i++) {
+                                    if (!AccountManage.getInstance().getListAccount().get(i).getName().equals(account.getName())) {
                                         if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
-                                            accountManage.add(account);
-//                                        WriterAcc(accountManage);
+                                            AccountManage.getInstance().add(account);
+//                                        WriterAcc(AccountManage.getInstance());
                                             System.out.println(GR + "Register an account successfully!");
                                             break;
                                         } else {
@@ -96,8 +96,8 @@ public class Main extends InOut {
                             break;
                         case 2:
                             String nameAcc = inOut.UserNameLogin(), pass = inOut.PassLogin();
-                            for (int i = 0; i < accountManage.getListAccount().size(); i++) {
-                                if (accountManage.getListAccount().get(i).getName().equals(nameAcc) && accountManage.getListAccount().get(i).getPassword().equals(pass)) {
+                            for (int i = 0; i < AccountManage.getInstance().getListAccount().size(); i++) {
+                                if (AccountManage.getInstance().getListAccount().get(i).getName().equals(nameAcc) && AccountManage.getInstance().getListAccount().get(i).getPassword().equals(pass)) {
                                     System.out.println(GR + "Logged in successfully");
                                     do {
                                         try {
@@ -118,31 +118,33 @@ public class Main extends InOut {
 //                 Album
                                                     case 1:
                                                         Album album = new Album(inOut.NewAlbumName(), songInAlbum);
-                                                        if (checkAlbumNull(account)) {
-                                                            if (checkRegex(album.getName())) {
-                                                                account.add(album);
+//                                                        if (checkAlbumNull(account)) {
+//                                                            if (checkRegex(album.getName())) {
+                                                                AccountManage.getInstance().getListAccount().get(0).getListAlbum().add(album);
                                                                 System.out.println(GR + "create successful album" + RS);
-//                                        WriterAcc(accountManage);}
-                                                            } else {
-                                                                System.out.println(RE + "Invalid name album!!!!!!" + RS);
-                                                            }
-                                                        } else {
-                                                            for (i = 0; i < account.getListAlbum().size(); i++) {
-                                                                if (!account.getListAlbum().get(i).getName().equals(album.getName())) {
-                                                                    if (checkRegex(album.getName())) {
-
-                                                                        account.add(album);
-                                                                        System.out.println(GR + "create successful album" + RS);
-//                                        WriterAcc(accountManage);
-                                                                        break;
-                                                                    } else {
-                                                                        System.out.println(RE + "Invalid name album!!!!!!" + RS);
-                                                                    }
-                                                                } else {
-                                                                    System.out.println(RE + "name already exists!!!!" + RS);
-                                                                }
-                                                            }
-                                                        }
+//                                                                break;
+//                                                            } else {
+//                                                                System.out.println(RE + "Invalid name album!!!!!!" + RS);
+//                                                                break;
+//                                                            }
+//                                                        } else {
+//                                                            for (i = 0; i < account.getListAlbum().size(); i++) {
+//                                                                if (!account.getListAlbum().get(i).getName().equals(album.getName())) {
+//                                                                    if (checkRegex(album.getName())) {
+//
+//                                                                        account.add(album);
+//                                                                        System.out.println(GR + "create successful album" + RS);
+//                                                                        break;
+//                                                                    } else {
+//                                                                        System.out.println(RE + "Invalid name album!!!!!!" + RS);
+//                                                                        break;
+//                                                                    }
+//                                                                } else {
+//                                                                    System.out.println(RE + "name already exists!!!!" + RS);
+//                                                                    break;
+//                                                                }
+//                                                            }
+//                                                        }
                                                         break;
                                                     case 2:
                                                         do {
@@ -172,10 +174,8 @@ public class Main extends InOut {
                                                                         case 2:
 
 
-
-
                                                                             Song newSongAlbum = new Song(inOut.NewSongInAlbum());
-                                                                                break;
+                                                                            break;
                                                                         default:
                                                                             System.out.println(RE + "This item is not available" + RS);
                                                                     }
@@ -239,7 +239,8 @@ public class Main extends InOut {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
-                                                        account.printListAlbum();
+                                                        AccountManage.getInstance().getListAccount().get(1).printListAlbum();
+
                                                         break;
                                                     case 7:
                                                         if (checkAlbumNull(account)) {
@@ -266,9 +267,9 @@ public class Main extends InOut {
                             pass = inOut.PassLogin();
                             String newPass = inOut.NewPass();
                             boolean check = true;
-                            for (int i = 0; i < accountManage.getListAccount().size(); i++) {
-                                if (accountManage.getListAccount().get(i).getName().equals(nameAcc) && accountManage.getListAccount().get(i).getPassword().equals(pass)) {
-                                    accountManage.edit(pass, newPass);
+                            for (int i = 0; i < AccountManage.getInstance().getListAccount().size(); i++) {
+                                if (AccountManage.getInstance().getListAccount().get(i).getName().equals(nameAcc) && AccountManage.getInstance().getListAccount().get(i).getPassword().equals(pass)) {
+                                    AccountManage.getInstance().edit(pass, newPass);
                                     System.out.println("change Password successfully");
                                     check = false;
                                     break;
@@ -287,7 +288,7 @@ public class Main extends InOut {
                 System.err.println("please enter number");
             }
         } while (numcheck != 0);
-        accountManage.print();
+        AccountManage.getInstance().print();
 //        ReadSong().print();
 
 
@@ -296,6 +297,7 @@ public class Main extends InOut {
     private static boolean checkAlbumNull(Account account) {
         return account.getListAlbum().size() == 0;
     }
+
     private static boolean checkSongNull(Album album) {
         return album.getListSong().size() == 0;
     }
@@ -304,19 +306,19 @@ public class Main extends InOut {
         return !oldName.equals(" ");
     }
 
-    private static AccountManage ReadSong() throws IOException {
-        ObjectInputStream read = null;
-        AccountManage accountManage = null;
-        try {
-            read = new ObjectInputStream(new FileInputStream("src\\casemo2\\accdata.txt"));
-            accountManage = (AccountManage) read.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } finally {
-            read.close();
-        }
-        return accountManage;
-    }
+//    private static AccountManage ReadSong() throws IOException {
+//        ObjectInputStream read = null;
+//        AccountManage AccountManage.getInstance() = null;
+//        try {
+//            read = new ObjectInputStream(new FileInputStream("src\\casemo2\\accdata.txt"));
+//            AccountManage.getInstance() = (AccountManage) read.readObject();
+//        } catch (IOException | ClassNotFoundException ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            read.close();
+//        }
+//        return AccountManage.getInstance();
+//    }
 
     private static void WriterAcc(AccountManage listAcc) {
         ObjectOutputStream writer = null;
