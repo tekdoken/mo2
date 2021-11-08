@@ -12,7 +12,7 @@ public class AccountManage implements General<Account>, Serializable {
     private static final AccountManage instance = new AccountManage();
 
     public static AccountManage getInstance() {
-    return instance;
+        return instance;
     }
 
     public AccountManage(List<Account> listAccount) {
@@ -68,7 +68,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void edit(String name, String newPass) {
         if (findAbsolute(name) != -1) {
-            listAccount.get(findAbsolute(name)).setPassword(newPass);
+//            listAccount.get(findAbsolute(name)).setPassword(newPass);
         } else {
             System.out.println("This item is not available");
         }

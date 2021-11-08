@@ -24,6 +24,37 @@ public class Main extends InOut {
     public static final String CYAN = "\u001B[36m";
 
     public static void main(String[] args) throws IOException {
+
+
+//        Scanner scanner=new Scanner(System.in);
+//        Album album=new Album("abc");
+//            ArrayList<Album> listAlbu= new ArrayList<Album>();
+//            listAlbu.add(album);
+//        for (int i = 0; i < 2; i++) {
+//            String name=scanner.nextLine();
+//            String pass=scanner.nextLine();
+//            Account account=new Account(name,pass);
+//            AccountManage.getInstance().add(account);
+//        }
+//
+//        AccountManage.getInstance().getListAccount().get(0).getListAlbum().add(album);
+//        AccountManage.getInstance().print();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ArrayList<Song> listSong = new ArrayList<>();//nhập xuất file
         //        WedSong(listSong);
         //        WriterSong(listSong);
@@ -67,7 +98,7 @@ public class Main extends InOut {
                     switch (numcheck) {
 //         Acconut
                         case 1:
-                            account = new Account(inOut.NewUserName(), inOut.NewPass(), albumInAccount);
+                            account = new Account(inOut.NewUserName(), inOut.NewPass());
                             if (AccountManage.getInstance().getListAccount().size() == 0) {
                                 if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
 
@@ -306,62 +337,62 @@ public class Main extends InOut {
         return !oldName.equals(" ");
     }
 
-//    private static AccountManage ReadSong() throws IOException {
-//        ObjectInputStream read = null;
-//        AccountManage AccountManage.getInstance() = null;
+////    private static AccountManage ReadSong() throws IOException {
+////        ObjectInputStream read = null;
+////        AccountManage AccountManage.getInstance() = null;
+////        try {
+////            read = new ObjectInputStream(new FileInputStream("src\\casemo2\\accdata.txt"));
+////            AccountManage.getInstance() = (AccountManage) read.readObject();
+////        } catch (IOException | ClassNotFoundException ex) {
+////            ex.printStackTrace();
+////        } finally {
+////            read.close();
+////        }
+////        return AccountManage.getInstance();
+////    }
+//
+//    private static void WriterAcc(AccountManage listAcc) {
+//        ObjectOutputStream writer = null;
+//
 //        try {
-//            read = new ObjectInputStream(new FileInputStream("src\\casemo2\\accdata.txt"));
-//            AccountManage.getInstance() = (AccountManage) read.readObject();
-//        } catch (IOException | ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//        } finally {
-//            read.close();
+//            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\accdata.txt"));
+//            writer.writeObject(listAcc);
+//        } catch (
+//                FileNotFoundException e) {
+//            System.err.println("The system cannot find the file specified");
+//        } catch (
+//                IOException e) {
+//            e.printStackTrace();
 //        }
-//        return AccountManage.getInstance();
 //    }
-
-    private static void WriterAcc(AccountManage listAcc) {
-        ObjectOutputStream writer = null;
-
-        try {
-            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\accdata.txt"));
-            writer.writeObject(listAcc);
-        } catch (
-                FileNotFoundException e) {
-            System.err.println("The system cannot find the file specified");
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void WedSong(List<Song> listSong) {
-        try {
-            URL url = new URL("https://www.nhaccuatui.com/");
-            // open the stream and put it into BufferedReader
-            Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
-            scanner.useDelimiter("\\Z");
-            String content = scanner.next();
-            // close scanner
-            scanner.close();
-            // remove all new line
-            content = content.replaceAll("\\n+", "");
-            // regex
-            Pattern p = Pattern.compile("name_song\">(.*?)</a>");
-            Matcher m = p.matcher(content);
-            while (m.find()) {
-                Song listSong1 = new Song(m.group(1));
-
-                listSong.add(listSong1);
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//
+//    private static void WedSong(List<Song> listSong) {
+//        try {
+//            URL url = new URL("https://www.nhaccuatui.com/");
+//            // open the stream and put it into BufferedReader
+//            Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
+//            scanner.useDelimiter("\\Z");
+//            String content = scanner.next();
+//            // close scanner
+//            scanner.close();
+//            // remove all new line
+//            content = content.replaceAll("\\n+", "");
+//            // regex
+//            Pattern p = Pattern.compile("name_song\">(.*?)</a>");
+//            Matcher m = p.matcher(content);
+//            while (m.find()) {
+//                Song listSong1 = new Song(m.group(1));
+//
+//                listSong.add(listSong1);
+//            }
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
 

@@ -3,12 +3,13 @@ package casemo2.model;
 import casemo2.service.General;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account implements General<Album> , Serializable {
     private String name;
     private String password;
-    private List<Album> listAlbum;
+    private List<Album> listAlbum=new ArrayList<>();
 
     public String getName() {
         return name;
@@ -87,7 +88,7 @@ public class Account implements General<Album> , Serializable {
                 cc=false;
             }
         }if (cc==true){
-                System.out.println("This item is not available");
+            System.out.println("This item is not available");
         }
     }
 
