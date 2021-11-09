@@ -68,7 +68,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void edit(String name, String newPass) {
         if (findAbsolute(name) != -1) {
-//            listAccount.get(findAbsolute(name)).setPassword(newPass);
+            listAccount.get(findAbsolute(name)).setPassword(newPass);
         } else {
             System.out.println("This item is not available");
         }
