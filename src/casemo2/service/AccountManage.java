@@ -49,7 +49,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public int findAbsolute(String name) {
         for (int i = 0; i < listAccount.size(); i++) {
-            if (listAccount.get(i).getName().equals(name)) {
+            if (listAccount.get(i).getNameAcc().equals(name)) {
                 return i;
             }
         }
@@ -59,7 +59,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void findRelative(String name) {
         for (int i = 0; i < listAccount.size(); i++) {
-            if (listAccount.get(i).getName().contains(name)) {
+            if (listAccount.get(i).getNameAcc().contains(name)) {
                 System.out.println(listAccount.get(i));
             }
         }
@@ -96,7 +96,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void printName(String name) {
         for (int i = 0; i < listAccount.size(); i++) {
-            if (listAccount.get(i).getName().equals(name)) {
+            if (listAccount.get(i).getNameAcc().equals(name)) {
                 System.out.println(listAccount.get(i));
             }
         }

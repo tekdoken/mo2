@@ -22,7 +22,7 @@ public class SongManage implements General<Song> {
     @Override
     public int findAbsolute(String name) {
         for (int i = 0; i < listSong.size(); i++) {
-            if (listSong.get(i).getName().equals(name)) {
+            if (listSong.get(i).getNameSong().equals(name)) {
                 return i;
             }
         }
@@ -32,7 +32,7 @@ public class SongManage implements General<Song> {
     @Override
     public void findRelative(String name) {
         for (int i = 0; i < listSong.size(); i++) {
-            if (listSong.get(i).getName().contains(name)) {
+            if (listSong.get(i).getNameSong().contains(name)) {
                 System.out.println(listSong.get(i));
             }
         }
@@ -68,7 +68,7 @@ public class SongManage implements General<Song> {
     @Override
     public void printName(String name) {
         for (int i = 0; i < listSong.size(); i++) {
-            if (listSong.get(i).getName().equals(name)) {
+            if (listSong.get(i).getNameSong().equals(name)) {
                 System.out.println(listSong.get(i));
             }
         }

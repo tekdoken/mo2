@@ -42,8 +42,8 @@ public class Album implements Serializable {
     public void getSongs(String song) {
         int r=0;
         for (int i = 0; i < songList.size(); i++) {
-            if (songList.get(i).getName().contains(song)) {
-                System.out.println(songList.get(i).getName());
+            if (songList.get(i).getNameSong().contains(song)) {
+                System.out.println(songList.get(i).getNameSong());
                 r++;
             }
         }if (r==0){
@@ -66,7 +66,7 @@ public class Album implements Serializable {
 
     public int findAbsoluteSong(String name) {
         for (int i = 0; i < songList.size(); i++) {
-            if (songList.get(i).getName().equals(name)) {
+            if (songList.get(i).getNameSong().equals(name)) {
                 return i;
             }
         }
@@ -106,7 +106,7 @@ public class Album implements Serializable {
 
     public void printName(String name) {
         for (int i = 0; i < songList.size(); i++) {
-            if (songList.get(i).getName().equals(name)) {
+            if (songList.get(i).getNameSong().equals(name)) {
                 System.out.println(songList.get(i));
             }
         }

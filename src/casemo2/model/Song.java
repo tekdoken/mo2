@@ -14,7 +14,7 @@ public class Song implements  Serializable {
         this.name = name;
     }
 
-    public String getName() {
+    public String getNameSong() {
         return name;
     }
 

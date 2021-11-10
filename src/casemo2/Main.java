@@ -100,6 +100,7 @@ public class Main extends InOut {
                                             System.out.println("5. Show album");
                                             System.out.println("6. Show list albums");
                                             System.out.println("7. Show list albums and songs in album");
+                                            System.out.println("8. change name album");
                                             System.out.println("0. Log out" + RS);
                                             System.out.println(YE + "Enter your choice: " + RS);
                                             numcheck2 = scanner.nextInt();
@@ -142,51 +143,36 @@ public class Main extends InOut {
                                                         } else {
                                                             String nameAlbumEdit = inOut.EditNameAlbum();
                                                             for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                         if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(nameAlbumEdit)){}
-                                                            }
-                                                            do {
-                                                                try {
-                                                                    scanner = new Scanner(System.in);
-                                                                    System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
-                                                                    System.out.println(CYAN + "Menu Edit Album");
-                                                                    System.out.println("1. Edit name album");
-                                                                    System.out.println("2. Add songs to Album");
-                                                                    System.out.println("3. change Password");
-                                                                    System.out.println("0. Exit" + RS);
-                                                                    System.out.println(YE + "Enter your choice: " + RS);
-                                                                    numcheck3 = scanner.nextInt();
-                                                                    if (numcheck3 != 0) {
-                                                                        switch (numcheck3) {
-                                                                            case 1:
-                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbumEdit) != -1) {
-                                                                                    String newName = inOut.NewEditNameAlbum();
-                                                                                    if (checkRegex(nameAlbumEdit) && checkRegex(newName)) {
-                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).edit(nameAlbumEdit, newName);
-                                                                                        System.out.println("Edit name album successful");
-                                                                                        break;
-                                                                                    }
-                                                                                } else {
-                                                                                    System.out.println("This item is not available");
-                                                                                    break;
-                                                                                }
-                                                                                break;
-                                                                            case 2:
-                                                                                Song song = new Song(inOut.NewAlbumName());
-                                                                                for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                                                    if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(song)) {
-                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
-                                                                                    }
-                                                                                }
+                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(nameAlbumEdit)) {
 
-                                                                                break;
-                                                                            default:
-                                                                                System.out.println(RE + "This item is not available" + RS);
+                                                                    do {
+                                                                        try {
+                                                                            scanner = new Scanner(System.in);
+                                                                            System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
+                                                                            System.out.println(CYAN + "Menu Edit Album");
+                                                                            System.out.println("1. Add song to Album");
+                                                                            System.out.println("");
+                                                                            System.out.println("0. Exit" + RS);
+                                                                            System.out.println(YE + "Enter your choice: " + RS);
+                                                                            numcheck3 = scanner.nextInt();
+                                                                            if (numcheck3 != 0) {
+                                                                                switch (numcheck3) {
+                                                                                    case 1:
+                                                                                        Song song = new Song(inOut.NewAlbumName());
+                                                                                        if (checkRegex(song.getNameSong()))
+                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
+
+                                                                                        break;
+                                                                                    default:
+                                                                                        System.out.println(RE + "This item is not available" + RS);
+                                                                                }
+                                                                            }
+                                                                        } catch (InputMismatchException e) {
+                                                                            System.err.println(YE + "please enter number" + RS);
                                                                         }
-                                                                    }
-                                                                } catch (InputMismatchException e) {
-                                                                    System.err.println(YE + "please enter number" + RS);
+                                                                    } while (numcheck3 != 0);
                                                                 }
-                                                            } while (numcheck3 != 0);
+                                                            }
                                                         }
                                                         break;
                                                     case 3:
@@ -255,6 +241,25 @@ public class Main extends InOut {
                                                         }
                                                         AccountManage.getInstance().getListAccount().get(indexAccLog).print();
                                                         break;
+                                                    case 8:
+                                                        if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
+                                                            System.out.println(RE + "This item is not available" + RS);
+                                                            break;
+                                                        } else {
+                                                            String nameAlbumEdit = inOut.EditNameAlbum();
+                                                            if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbumEdit) != -1) {
+                                                                String newName = inOut.NewEditNameAlbum();
+                                                                if (checkRegex(nameAlbumEdit) && checkRegex(newName)) {
+                                                                    AccountManage.getInstance().getListAccount().get(indexAccLog).edit(nameAlbumEdit, newName);
+                                                                    System.out.println("Edit name album successful");
+                                                                    break;
+                                                                }
+                                                            } else {
+                                                                System.out.println("This item is not available");
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
                                                     default:
                                                         System.out.println(RE + "This item is not available" + RS);
                                                 }
