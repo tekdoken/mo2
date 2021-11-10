@@ -144,7 +144,16 @@ public class Main extends InOut {
                                                             String nameAlbumEdit = inOut.EditNameAlbum();
                                                             for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
                                                                 if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(nameAlbumEdit)) {
-
+                                                                    if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().size() == 0) {
+                                                                        Song song = new Song(inOut.NewSongInAlbum());
+                                                                        if (checkRegex(song.getNameSong())) {
+                                                                            AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
+                                                                            System.out.println(GR + "create successful song" + RS);
+                                                                        } else {
+                                                                            System.out.println(RE + "Invalid name song!!!!!!" + RS);
+                                                                            break;
+                                                                        }
+                                                                    }
                                                                     do {
                                                                         try {
                                                                             scanner = new Scanner(System.in);
@@ -158,10 +167,14 @@ public class Main extends InOut {
                                                                             if (numcheck3 != 0) {
                                                                                 switch (numcheck3) {
                                                                                     case 1:
-                                                                                        Song song = new Song(inOut.NewAlbumName());
-                                                                                        if (checkRegex(song.getNameSong()))
-                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
-
+                                                                                        Song song = new Song(inOut.NewSongInAlbum());
+                                                                                        if (checkRegex(song.getNameSong())) {
+                                                                                            AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
+                                                                                            System.out.println(GR + "create successful song" + RS);
+                                                                                            break;
+                                                                                        } else {
+                                                                                            System.out.println(RE + "Invalid name song!!!!!!" + RS);
+                                                                                        }
                                                                                         break;
                                                                                     default:
                                                                                         System.out.println(RE + "This item is not available" + RS);
