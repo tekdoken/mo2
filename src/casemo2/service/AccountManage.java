@@ -43,7 +43,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void add(Account account) {
         this.listAccount.add(account);
-        WriteReadFile.write(FILE, this.listAccount);
+        WriteReadFile.writeFile();
     }
 
     @Override

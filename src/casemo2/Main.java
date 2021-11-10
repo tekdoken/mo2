@@ -39,7 +39,7 @@ public class Main extends InOut {
             try {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
-                System.out.println(CYAN + "Menu");
+                System.out.println(CYAN + "      Menu");
                 System.out.println("1. Register an account");
                 System.out.println("2. Account login");
                 System.out.println("3. change Password");
@@ -55,7 +55,6 @@ public class Main extends InOut {
                             if (AccountManage.getInstance().getListAccount().size() == 0) {
                                 if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
                                     AccountManage.getInstance().add(account);
-                                    WriteReadFile.writeFile();
                                     System.out.println(GR + "Register an account successfully!");
                                 } else {
                                     System.out.println(RE + "Invalid username or password!!!!!!" + RS);
@@ -73,7 +72,6 @@ public class Main extends InOut {
                                 if (checkNameAcc == true) {
                                     if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
                                         AccountManage.getInstance().add(account);
-                                        WriteReadFile.writeFile();
                                         System.out.println(GR + "Register an account successfully!");
                                         break;
                                     } else {
@@ -92,7 +90,7 @@ public class Main extends InOut {
                                     do {
                                         try {
                                             System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
-                                            System.out.println(BL + "Menu Album");
+                                            System.out.println(BL + "      Menu Album");
                                             System.out.println("1. create new album");
                                             System.out.println(GR + "2. Edit album(Add song)" + RS);
                                             System.out.println(BL + "3. Delete album");
@@ -162,7 +160,7 @@ public class Main extends InOut {
                                                                         try {
                                                                             scanner = new Scanner(System.in);
                                                                             System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
-                                                                            System.out.println(CYAN + "Menu Edit Album");
+                                                                            System.out.println(CYAN + "      Menu Edit Album");
                                                                             System.out.println("1. Add song to Album");
                                                                             System.out.println("2. Delete song");
                                                                             System.out.println("3. Find Relative song");
@@ -402,62 +400,7 @@ public class Main extends InOut {
         return !oldName.equals(" ");
     }
 
-//    private static Account ReadSong() throws IOException {
-//        ObjectInputStream read = null;
-//       Account account=null;
-//        try {
-//            read = new ObjectInputStream(new FileInputStream("src\\casemo2\\accdata.txt"));
-//            account = (Account) read.readObject();
-//        } catch (IOException | ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//        } finally {
-//            read.close();
-//        }
-//        return account;
-//    }
 
-//    private static void WriterAcc(AccountManage listAcc) {
-//        ObjectOutputStream writer = null;
-//
-//        try {
-//            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\accdata.txt"));
-//            writer.writeObject(listAcc);
-//        } catch (
-//                FileNotFoundException e) {
-//            System.err.println("The system cannot find the file specified");
-//        } catch (
-//                IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private static void WedSong(List<Song> listSong) {
-//        try {
-//            URL url = new URL("https://www.nhaccuatui.com/");
-//            // open the stream and put it into BufferedReader
-//            Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
-//            scanner.useDelimiter("\\Z");
-//            String content = scanner.next();
-//            // close scanner
-//            scanner.close();
-//            // remove all new line
-//            content = content.replaceAll("\\n+", "");
-//            // regex
-//            Pattern p = Pattern.compile("name_song\">(.*?)</a>");
-//            Matcher m = p.matcher(content);
-//            while (m.find()) {
-//                Song listSong1 = new Song(m.group(1));
-//
-//                listSong.add(listSong1);
-//            }
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }
 
 
