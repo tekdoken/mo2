@@ -26,21 +26,15 @@ public class Main extends InOut {
         //        WedSong(listSong);
         //        WriterSong(listSong);
         InOut inOut = new InOut();
-        ArrayList<Account> accountInManage = new ArrayList<>();
-        ArrayList<Song> songInAlbum = new ArrayList<>();
-        ArrayList<Album> albumInAccount = new ArrayList<>();
+
         Account account = null;
 
 
-//        album.editSong(inOut.EditNameSong(), inOut.NewEditNameSong());
-//        album.deleteSong(inOut.DeleteSong());
-//        album.getSongs(inOut.FindRelativeSong());
-//        album.printName(inOut.FindAbsoluteAlbum());
         int numcheck = -1;
         int numcheck2 = -1;
         int numcheck3 = -1;
         int numcheck4 = -1;
-
+        WriteReadFile.readFile();
         do {
             try {
                 Scanner scanner = new Scanner(System.in);
@@ -50,6 +44,7 @@ public class Main extends InOut {
                 System.out.println("2. Account login");
                 System.out.println("3. change Password");
                 System.out.println("0. Exit" + RS);
+                AccountManage.getInstance().print();
                 System.out.println(YE + "Enter your choice: " + RS);
                 numcheck = scanner.nextInt();
                 if (numcheck != 0) {
@@ -60,24 +55,29 @@ public class Main extends InOut {
                             if (AccountManage.getInstance().getListAccount().size() == 0) {
                                 if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
                                     AccountManage.getInstance().add(account);
+                                    WriteReadFile.writeFile();
                                     System.out.println(GR + "Register an account successfully!");
                                 } else {
                                     System.out.println(RE + "Invalid username or password!!!!!!" + RS);
                                     break;
                                 }
                             } else {
+                                boolean checkNameAcc = true;
                                 for (int indexAccRe = 0; indexAccRe < AccountManage.getInstance().getListAccount().size(); indexAccRe++) {
-                                    if (!AccountManage.getInstance().getListAccount().get(indexAccRe).getNameAcc().equals(account.getNameAcc())) {
-                                        if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
-                                            AccountManage.getInstance().add(account);
-                                            System.out.println(GR + "Register an account successfully!");
-                                            break;
-                                        } else {
-                                            System.out.println(RE + "Invalid username or password!!!!!!" + RS);
-                                            break;
-                                        }
-                                    } else {
+                                    if (AccountManage.getInstance().getListAccount().get(indexAccRe).getNameAcc().equals(account.getNameAcc())) {
                                         System.out.println(RE + "name already exists!!!!" + RS);
+                                        checkNameAcc = false;
+                                        break;
+                                    }
+                                }
+                                if (checkNameAcc == true) {
+                                    if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
+                                        AccountManage.getInstance().add(account);
+                                        WriteReadFile.writeFile();
+                                        System.out.println(GR + "Register an account successfully!");
+                                        break;
+                                    } else {
+                                        System.out.println(RE + "Invalid username or password!!!!!!" + RS);
                                         break;
                                     }
                                 }
@@ -119,18 +119,21 @@ public class Main extends InOut {
                                                                 break;
                                                             }
                                                         } else {
+                                                            boolean checkNameAlbum = true;
                                                             for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                                if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(album.getNameAlbum())) {
-                                                                    if (checkRegex(album.getNameAlbum())) {
-                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
-                                                                        System.out.println(GR + "create successful album" + RS);
-                                                                        break;
-                                                                    } else {
-                                                                        System.out.println(RE + "Invalid name album!!!!!!" + RS);
-                                                                        break;
-                                                                    }
-                                                                } else {
+                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(album.getNameAlbum())) {
                                                                     System.out.println(RE + "name already exists!!!!" + RS);
+                                                                    checkNameAlbum = false;
+                                                                    break;
+                                                                }
+                                                            }
+                                                            if (checkNameAlbum == true) {
+                                                                if (checkRegex(album.getNameAlbum())) {
+                                                                    AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
+                                                                    System.out.println(GR + "create successful album" + RS);
+                                                                    break;
+                                                                } else {
+                                                                    System.out.println(RE + "Invalid name album!!!!!!" + RS);
                                                                     break;
                                                                 }
                                                             }
@@ -172,16 +175,19 @@ public class Main extends InOut {
                                                                                 switch (numcheck3) {
                                                                                     case 1:
                                                                                         Song song = new Song(inOut.NewSongInAlbum());
+                                                                                        boolean checkNameSong = true;
                                                                                         if (checkRegex(song.getNameSong())) {
                                                                                             for (int indexSong = 0; indexSong < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().size(); indexSong++) {
-                                                                                                if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().get(indexSong).getNameSong().equals(song.getNameSong())) {
-                                                                                                    AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
-                                                                                                    System.out.println(GR + "create successful song" + RS);
-                                                                                                    break;
-                                                                                                } else {
+                                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().get(indexSong).getNameSong().equals(song.getNameSong())) {
                                                                                                     System.out.println(RE + "name already exists!!!!" + RS);
+                                                                                                    checkNameSong = false;
                                                                                                     break;
                                                                                                 }
+                                                                                            }
+                                                                                            if (checkNameSong == true) {
+                                                                                                AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
+                                                                                                System.out.println(GR + "create successful song" + RS);
+                                                                                                break;
                                                                                             }
                                                                                             break;
                                                                                         } else {
@@ -248,7 +254,7 @@ public class Main extends InOut {
                                                                             System.err.println(YE + "please enter number" + RS);
                                                                         }
                                                                     } while (numcheck3 != 0);
-                                                                }else {
+                                                                } else {
                                                                     System.out.println(RE + "This item is not available" + RS);
                                                                 }
                                                             }
@@ -379,7 +385,6 @@ public class Main extends InOut {
                 System.err.println("please enter number");
             }
         } while (numcheck != 0);
-
         //        ReadSong().print();
 
 

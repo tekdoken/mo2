@@ -11,7 +11,7 @@ import java.util.List;
 public class AccountManage implements General<Account>, Serializable {
     private List<Account> listAccount=new ArrayList<>();
     private static AccountManage instance;
-    public static final String FILE = "src\\casemo2\\accdata.csv";
+    public static final String FILE = "src\\casemo2\\accdata.txt";
 
     public static AccountManage getInstance() throws IOException {
         if (instance == null) instance = new AccountManage();
