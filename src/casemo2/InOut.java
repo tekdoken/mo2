@@ -8,7 +8,6 @@ public class InOut {
     private static AccountExample accountExample = new AccountExample();
 
 
-
     public String NewAlbumName() {
         System.out.println("Enter the name of the album you want to create:");
         String newAlbumName = sa.nextLine();
@@ -63,45 +62,65 @@ public class InOut {
 
     public String NewSongInAlbum() {
         System.out.println("Enter the name of the song you want to add to the album:");
-        String newSongInAlbum = sa.nextLine();
-        return newSongInAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
+    }
+    public String AlbumAddSong() {
+        System.out.println("Enter the name of the album you want to add song :");
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
     public String DeleteSong() {
         System.out.println("Enter the song name you want to Delete:");
-        String deleteAlbum = sa.nextLine();
-        return deleteAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
 
     public String FindRelativeSong() {
         System.out.println("Enter the name of the song you want to find relative: ");
-        String findRelativeAbum = sa.nextLine();
-        return findRelativeAbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String FindRelativeSong1() {
         System.out.println("Enter the name of the album you want to find song: ");
-        String findRelativeAbum = sa.nextLine();
-        return findRelativeAbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String FindAbsoluteSong() {
         System.out.println("Enter the name of the song you want to find absolute: ");
-        String findAbsoluteAlbum = sa.nextLine();
-        return findAbsoluteAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String EditNameSong() {
         System.out.println("Enter the song name you want to edit:");
-        String editNameAlbum = sa.nextLine();
-        ;
-        return editNameAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
     public String NewEditNameSong() {
         System.out.println("Enter new song name:");
-        String newEditNameAlbum = sa.nextLine();
-        return newEditNameAlbum;
+        String newAlbumName = sa.nextLine();
+        if (accountExample.Name(newAlbumName) == true) {
+            return newAlbumName;
+        }return " ";
     }
 
 //------------------------------------------------------------------------------------------------

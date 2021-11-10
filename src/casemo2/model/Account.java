@@ -11,7 +11,7 @@ public class Account implements General<Album> , Serializable {
     private String password;
     private List<Album> listAlbum=new ArrayList<>();
 
-    public String getName() {
+    public String getNameAcc() {
         return name;
     }
 
@@ -72,7 +72,7 @@ public class Account implements General<Album> , Serializable {
     @Override
     public int findAbsolute(String name) {
         for (int i = 0; i < listAlbum.size(); i++) {
-            if (listAlbum.get(i).getName().equals(name)) {
+            if (listAlbum.get(i).getNameAlbum().equals(name)) {
                 return i;
             }
         }
@@ -83,7 +83,7 @@ public class Account implements General<Album> , Serializable {
     public void findRelative(String name) {
         boolean cc=true;
         for (int i = 0; i < listAlbum.size(); i++) {
-            if (listAlbum.get(i).getName().contains(name)) {
+            if (listAlbum.get(i).getNameAlbum().contains(name)) {
                 System.out.println(listAlbum.get(i));
                 cc=false;
             }
@@ -126,7 +126,7 @@ public class Account implements General<Album> , Serializable {
     public void printName(String name) {
         boolean c=true;
         for (int i = 0; i < listAlbum.size(); i++) {
-            if (listAlbum.get(i).getName().equals(name)) {
+            if (listAlbum.get(i).getNameAlbum().equals(name)) {
                 System.out.println(listAlbum.get(i));
                 c=false;
                 break;
@@ -138,7 +138,7 @@ public class Account implements General<Album> , Serializable {
     public void printListAlbum() {
         for (Album x:listAlbum
         ) {
-            System.out.println("Name Album: "+x.getName());
+            System.out.println("Name Album: "+x.getNameAlbum());
         }
     }
 }

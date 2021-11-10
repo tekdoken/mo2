@@ -7,6 +7,7 @@ import casemo2.service.AccountManage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main extends InOut {
@@ -57,7 +58,7 @@ public class Main extends InOut {
                         case 1:
                             account = new Account(inOut.NewUserName(), inOut.NewPass());
                             if (AccountManage.getInstance().getListAccount().size() == 0) {
-                                if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
+                                if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
                                     AccountManage.getInstance().add(account);
                                     System.out.println(GR + "Register an account successfully!");
                                 } else {
@@ -66,8 +67,8 @@ public class Main extends InOut {
                                 }
                             } else {
                                 for (int indexAccRe = 0; indexAccRe < AccountManage.getInstance().getListAccount().size(); indexAccRe++) {
-                                    if (!AccountManage.getInstance().getListAccount().get(indexAccRe).getName().equals(account.getName())) {
-                                        if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
+                                    if (!AccountManage.getInstance().getListAccount().get(indexAccRe).getNameAcc().equals(account.getNameAcc())) {
+                                        if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
                                             AccountManage.getInstance().add(account);
                                             System.out.println(GR + "Register an account successfully!");
                                             break;
@@ -85,7 +86,7 @@ public class Main extends InOut {
                         case 2:
                             String nameAcc = inOut.UserNameLogin(), pass = inOut.PassLogin();
                             for (int indexAccLog = 0; indexAccLog < AccountManage.getInstance().getListAccount().size(); indexAccLog++) {
-                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getName().equals(nameAcc)
+                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getNameAcc().equals(nameAcc)
                                         && AccountManage.getInstance().getListAccount().get(indexAccLog).getPassword().equals(pass)) {
                                     System.out.println(GR + "Logged in successfully");
                                     do {
@@ -108,7 +109,7 @@ public class Main extends InOut {
                                                     case 1:
                                                         Album album = new Album(inOut.NewAlbumName());
                                                         if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
-                                                            if (checkRegex(album.getName())) {
+                                                            if (checkRegex(album.getNameAlbum())) {
                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
                                                                 System.out.println(GR + "create successful album" + RS);
                                                                 break;
@@ -118,8 +119,8 @@ public class Main extends InOut {
                                                             }
                                                         } else {
                                                             for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                                if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getName().equals(album.getName())) {
-                                                                    if (checkRegex(album.getName())) {
+                                                                if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(album.getNameAlbum())) {
+                                                                    if (checkRegex(album.getNameAlbum())) {
                                                                         AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
                                                                         System.out.println(GR + "create successful album" + RS);
                                                                         break;
@@ -135,29 +136,32 @@ public class Main extends InOut {
                                                         }
                                                         break;
                                                     case 2:
-                                                        do {
-                                                            try {
-                                                                scanner = new Scanner(System.in);
-                                                                System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
-                                                                System.out.println(CYAN + "Menu Edit Album");
-                                                                System.out.println("1. Edit name album");
-                                                                System.out.println("2. Add songs to Album");
-                                                                System.out.println("3. change Password");
-                                                                System.out.println("0. Exit" + RS);
-                                                                System.out.println(YE + "Enter your choice: " + RS);
-                                                                numcheck3 = scanner.nextInt();
-                                                                if (numcheck3 != 0) {
-                                                                    switch (numcheck3) {
-                                                                        case 1:
-                                                                            if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
-                                                                                System.out.println(RE + "This item is not available" + RS);
-                                                                                break;
-                                                                            } else {
-                                                                                String oldName = inOut.EditNameAlbum();
-                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(oldName) != -1) {
+                                                        if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
+                                                            System.out.println(RE + "This item is not available" + RS);
+                                                            break;
+                                                        } else {
+                                                            String nameAlbumEdit = inOut.EditNameAlbum();
+                                                            for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
+                                                         if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(nameAlbumEdit)){}
+                                                            }
+                                                            do {
+                                                                try {
+                                                                    scanner = new Scanner(System.in);
+                                                                    System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
+                                                                    System.out.println(CYAN + "Menu Edit Album");
+                                                                    System.out.println("1. Edit name album");
+                                                                    System.out.println("2. Add songs to Album");
+                                                                    System.out.println("3. change Password");
+                                                                    System.out.println("0. Exit" + RS);
+                                                                    System.out.println(YE + "Enter your choice: " + RS);
+                                                                    numcheck3 = scanner.nextInt();
+                                                                    if (numcheck3 != 0) {
+                                                                        switch (numcheck3) {
+                                                                            case 1:
+                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbumEdit) != -1) {
                                                                                     String newName = inOut.NewEditNameAlbum();
-                                                                                    if (checkRegex(oldName) && checkRegex(newName)) {
-                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).edit(oldName, newName);
+                                                                                    if (checkRegex(nameAlbumEdit) && checkRegex(newName)) {
+                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).edit(nameAlbumEdit, newName);
                                                                                         System.out.println("Edit name album successful");
                                                                                         break;
                                                                                     }
@@ -165,22 +169,25 @@ public class Main extends InOut {
                                                                                     System.out.println("This item is not available");
                                                                                     break;
                                                                                 }
-                                                                            }
-                                                                            break;
-                                                                        case 2:
+                                                                                break;
+                                                                            case 2:
+                                                                                Song song = new Song(inOut.NewAlbumName());
+                                                                                for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
+                                                                                    if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(song)) {
+                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
+                                                                                    }
+                                                                                }
 
-
-                                                                            Song newSongAlbum = new Song(inOut.NewSongInAlbum());
-                                                                            break;
-                                                                        default:
-                                                                            System.out.println(RE + "This item is not available" + RS);
+                                                                                break;
+                                                                            default:
+                                                                                System.out.println(RE + "This item is not available" + RS);
+                                                                        }
                                                                     }
+                                                                } catch (InputMismatchException e) {
+                                                                    System.err.println(YE + "please enter number" + RS);
                                                                 }
-                                                            } catch (java.util.InputMismatchException e) {
-                                                                System.err.println(YE + "please enter number" + RS);
-                                                            }
-                                                        } while (numcheck3 != 0);
-
+                                                            } while (numcheck3 != 0);
+                                                        }
                                                         break;
                                                     case 3:
                                                         if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
@@ -214,7 +221,7 @@ public class Main extends InOut {
                                                                     System.out.println("This item is not available");
                                                                 }
                                                                 break;
-                                                            } catch (java.util.InputMismatchException e) {
+                                                            } catch (InputMismatchException e) {
                                                                 System.err.println("please enter number");
                                                             }
                                                         } while (numcheck4 != 0);
@@ -252,7 +259,7 @@ public class Main extends InOut {
                                                         System.out.println(RE + "This item is not available" + RS);
                                                 }
                                             }
-                                        } catch (java.util.InputMismatchException e) {
+                                        } catch (InputMismatchException e) {
                                             System.err.println(YE + "please enter number" + RS);
                                         }
                                     } while (numcheck2 != 0);
@@ -269,7 +276,7 @@ public class Main extends InOut {
                             String newPass = inOut.NewPass();
                             boolean check = true;
                             for (int indexAccPass = 0; indexAccPass < AccountManage.getInstance().getListAccount().size(); indexAccPass++) {
-                                if (AccountManage.getInstance().getListAccount().get(indexAccPass).getName().equals(nameAcc)
+                                if (AccountManage.getInstance().getListAccount().get(indexAccPass).getNameAcc().equals(nameAcc)
                                         && AccountManage.getInstance().getListAccount().get(indexAccPass).getPassword().equals(pass)) {
                                     AccountManage.getInstance().edit(pass, newPass);
                                     System.out.println("change Password successfully");
@@ -285,7 +292,7 @@ public class Main extends InOut {
                             System.out.println(RE + "This item is not available" + RS);
                     }
                 }
-            } catch (java.util.InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.err.println("please enter number");
             }
         } while (numcheck != 0);

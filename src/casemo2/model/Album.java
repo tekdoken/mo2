@@ -1,24 +1,22 @@
 package casemo2.model;
 
-import casemo2.service.General;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Album implements Serializable {
     private String name;
-    private List<Song> songs;
+    private List<Song> songList=new ArrayList<>();
 
     public Album() {
     }
 
     public List<Song> getListSong() {
-        return songs;
+        return songList;
     }
 
     public void setSongs(List<Song> songs) {
-        this.songs = songs;
+        this.songList = songs;
     }
 
 
@@ -29,11 +27,11 @@ public class Album implements Serializable {
 
     public Album(String name, List<Song> songs) {
         this.name = name;
-        this.songs = songs;
+        this.songList = songs;
     }
 
 
-    public String getName() {
+    public String getNameAlbum() {
         return name;
     }
 
@@ -43,9 +41,9 @@ public class Album implements Serializable {
 
     public void getSongs(String song) {
         int r=0;
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getName().contains(song)) {
-                System.out.println(songs.get(i).getName());
+        for (int i = 0; i < songList.size(); i++) {
+            if (songList.get(i).getName().contains(song)) {
+                System.out.println(songList.get(i).getName());
                 r++;
             }
         }if (r==0){
@@ -54,21 +52,21 @@ public class Album implements Serializable {
     }
 
     public void setSongs(ArrayList<Song> songs) {
-        this.songs = songs;
+        this.songList = songs;
     }
 
 
 
     @Override
     public String toString() {
-        return "Album name='" + name + '\'' + songs +
+        return "Album name='" + name + '\'' + songList +
                 '}';
     }
 
 
     public int findAbsoluteSong(String name) {
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getName().equals(name)) {
+        for (int i = 0; i < songList.size(); i++) {
+            if (songList.get(i).getName().equals(name)) {
                 return i;
             }
         }
@@ -80,7 +78,7 @@ public class Album implements Serializable {
 
     public void editSong(String name, String newName) {
         if (findAbsoluteSong(name) != -1) {
-            songs.get(findAbsoluteSong(name)).setName(newName);
+            songList.get(findAbsoluteSong(name)).setName(newName);
         } else {
             System.out.println("This item is not available");
         }
@@ -88,7 +86,7 @@ public class Album implements Serializable {
 
     public void deleteSong(String name) {
         if (findAbsoluteSong(name) != -1) {
-            songs.remove(findAbsoluteSong(name));
+            songList.remove(findAbsoluteSong(name));
         } else {
             System.out.println("This item is not available");
         }
@@ -96,20 +94,20 @@ public class Album implements Serializable {
 
 
     public void printSong() {
-        for (Song x : songs
+        for (Song x : songList
         ) {
             System.out.println(x);
         }
     }
 
     public void add(Song song) {
-        songs.add(song);
+        songList.add(song);
     }
 
     public void printName(String name) {
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getName().equals(name)) {
-                System.out.println(songs.get(i));
+        for (int i = 0; i < songList.size(); i++) {
+            if (songList.get(i).getName().equals(name)) {
+                System.out.println(songList.get(i));
             }
         }
     }
