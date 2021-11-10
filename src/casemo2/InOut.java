@@ -7,16 +7,12 @@ public class InOut {
     Scanner sa = new Scanner(System.in);
     private static AccountExample accountExample = new AccountExample();
 
-    public String NewSongInAlbum() {
-        System.out.println("Enter the name of the song you want to add to the album:");
-        String newSongInAlbum = sa.nextLine();
-        return newSongInAlbum;
-    }
+
 
     public String NewAlbumName() {
         System.out.println("Enter the name of the album you want to create:");
         String newAlbumName = sa.nextLine();
-        if (accountExample.Pass(newAlbumName) == true) {
+        if (accountExample.Name(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
@@ -24,7 +20,7 @@ public class InOut {
     public String EditNameAlbum() {
         System.out.println("Enter the album name you want to edit:");
         String newAlbumName = sa.nextLine();
-        if (accountExample.Pass(newAlbumName) == true) {
+        if (accountExample.Name(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
@@ -32,7 +28,7 @@ public class InOut {
     public String NewEditNameAlbum() {
         System.out.println("Enter new album name:");
         String newAlbumName = sa.nextLine();
-        if (accountExample.Pass(newAlbumName) == true) {
+        if (accountExample.Name(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
@@ -40,7 +36,7 @@ public class InOut {
     public String DeleteAlbum() {
         System.out.println("Enter the album name you want to Delete:");
         String newAlbumName = sa.nextLine();
-        if (accountExample.Pass(newAlbumName) == true) {
+        if (accountExample.Name(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
@@ -49,7 +45,7 @@ public class InOut {
     public String FindRelativeAbum() {
         System.out.println("Enter the name of the album you want to find relative: ");
         String newAlbumName = sa.nextLine();
-        if (accountExample.Pass(newAlbumName) == true) {
+        if (accountExample.Name(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
@@ -57,12 +53,19 @@ public class InOut {
     public String FindAbsoluteAlbum() {
         System.out.println("Enter the name of the album you want to find absolute: ");
         String newAlbumName = sa.nextLine();
-        if (accountExample.Pass(newAlbumName) == true) {
+        if (accountExample.Name(newAlbumName) == true) {
             return newAlbumName;
         }return " ";
     }
 
     //------------------------------------------------------------------------------------------------
+
+
+    public String NewSongInAlbum() {
+        System.out.println("Enter the name of the song you want to add to the album:");
+        String newSongInAlbum = sa.nextLine();
+        return newSongInAlbum;
+    }
     public String DeleteSong() {
         System.out.println("Enter the song name you want to Delete:");
         String deleteAlbum = sa.nextLine();
@@ -106,7 +109,7 @@ public class InOut {
 
     public String NewUserName() {
         System.out.println("Enter new username Account:");
-        System.out.println("Note: name is letter or number");
+        System.out.println("Note: name is letter or number, must not contain spaces");
         String newSongInAlbum = sa.nextLine();
         if (accountExample.Acc(newSongInAlbum) == true) {
             return newSongInAlbum;

@@ -1,27 +1,26 @@
 package casemo2.service;
 
+import casemo2.WriteReadFile;
 import casemo2.model.Account;
 
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManage implements General<Account>, Serializable {
+    private List<Account> listAccount;
+    private static AccountManage instance;
+    public static final String READ = "src\\casemo2\\accdata.txt";
 
-    List<Account> listAccount = new ArrayList<Account>();
-    private static final AccountManage instance = new AccountManage();
-
-    public static AccountManage getInstance() {
+    public static AccountManage getInstance() throws IOException {
+        if (instance == null) instance = new AccountManage();
         return instance;
     }
 
-    public AccountManage(List<Account> listAccount) {
-        this.listAccount = listAccount;
+    private AccountManage() throws IOException {
+            this.listAccount = WriteReadFile.ReadSong(READ);
     }
 
-    public AccountManage() {
-
-    }
 
     public List<Account> getListAccount() {
         return this.listAccount;

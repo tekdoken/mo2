@@ -4,8 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AccountExample {
-    private static final String ACCOUNT_REGEX = "^[A-Za-z0-9]+$";
-    private static final String PASS_REGEX = "^\\S(.*?)\\S$";
+    private static final String ACCOUNT_REGEX = "^\\S+$";
+    private static final String PASS_REGEX = "^\\S+$";
+    private static final String NAME_REGEX = "^\\S?(.+)+\\S?$";
 
     public AccountExample() {
     }
@@ -17,6 +18,11 @@ public class AccountExample {
     }
     public boolean Pass(String regex) {
         Pattern pattern = Pattern.compile(PASS_REGEX);
+        Matcher matcher = pattern.matcher(regex);
+        return matcher.matches();
+    }
+    public boolean Name(String regex) {
+        Pattern pattern = Pattern.compile(NAME_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
