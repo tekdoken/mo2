@@ -204,9 +204,8 @@ public class Main extends InOut {
                                                                                                         switch (numcheck4) {
                                                                                                             case 1:
                                                                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).deleteSong(nameSong);
+                                                                                                                System.out.println("Delete song successful!");
                                                                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).printSong();
-                                                                                                                break;
-                                                                                                            case 2:
                                                                                                                 break;
                                                                                                             default:
                                                                                                                 System.out.println(RE + "This item is not available" + RS);
@@ -221,6 +220,26 @@ public class Main extends InOut {
                                                                                             }
                                                                                         } while (numcheck4 != 0);
                                                                                         break;
+                                                                                    case 3:
+                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).findRelativeSong(inOut.FindRelativeSong());
+                                                                                        break;
+                                                                                    case 4:
+                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).printSong();
+                                                                                        break;
+                                                                                    case 5:
+                                                                                        String nameSongEdit = inOut.EditNameSong();
+                                                                                        if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).findAbsoluteSong(nameSongEdit) != -1) {
+                                                                                            String newName = inOut.NewEditNameAlbum();
+                                                                                            if (checkRegex(nameSongEdit) && checkRegex(newName)) {
+                                                                                                AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).editSong(nameSongEdit, newName);
+                                                                                                System.out.println("Edit name Song successful");
+                                                                                                break;
+                                                                                            }
+                                                                                        } else {
+                                                                                            System.out.println("This item is not available");
+                                                                                            break;
+                                                                                        }
+                                                                                        break;
                                                                                     default:
                                                                                         System.out.println(RE + "This item is not available" + RS);
                                                                                 }
@@ -229,6 +248,8 @@ public class Main extends InOut {
                                                                             System.err.println(YE + "please enter number" + RS);
                                                                         }
                                                                     } while (numcheck3 != 0);
+                                                                }else {
+                                                                    System.out.println(RE + "This item is not available" + RS);
                                                                 }
                                                             }
                                                         }
@@ -253,9 +274,8 @@ public class Main extends InOut {
                                                                         switch (numcheck4) {
                                                                             case 1:
                                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).delete(nameAlbum);
+                                                                                System.out.println("Delete song successful!");
                                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).printListAlbum();
-                                                                                break;
-                                                                            case 2:
                                                                                 break;
                                                                             default:
                                                                                 System.out.println(RE + "This item is not available" + RS);
