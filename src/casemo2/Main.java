@@ -154,13 +154,17 @@ public class Main extends InOut {
                                                                             break;
                                                                         }
                                                                     }
+
                                                                     do {
                                                                         try {
                                                                             scanner = new Scanner(System.in);
                                                                             System.out.println(PU + "-------------------------------------------------------------------------------------------------------------------------------");
                                                                             System.out.println(CYAN + "Menu Edit Album");
                                                                             System.out.println("1. Add song to Album");
-                                                                            System.out.println("");
+                                                                            System.out.println("2. Delete song");
+                                                                            System.out.println("3. Find Relative song");
+                                                                            System.out.println("4. Show list song");
+                                                                            System.out.println("5. change name song");
                                                                             System.out.println("0. Exit" + RS);
                                                                             System.out.println(YE + "Enter your choice: " + RS);
                                                                             numcheck3 = scanner.nextInt();
@@ -169,12 +173,53 @@ public class Main extends InOut {
                                                                                     case 1:
                                                                                         Song song = new Song(inOut.NewSongInAlbum());
                                                                                         if (checkRegex(song.getNameSong())) {
-                                                                                            AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
-                                                                                            System.out.println(GR + "create successful song" + RS);
+                                                                                            for (int indexSong = 0; indexSong < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().size(); indexSong++) {
+                                                                                                if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().get(indexSong).getNameSong().equals(song.getNameSong())) {
+                                                                                                    AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).add(song);
+                                                                                                    System.out.println(GR + "create successful song" + RS);
+                                                                                                    break;
+                                                                                                } else {
+                                                                                                    System.out.println(RE + "name already exists!!!!" + RS);
+                                                                                                    break;
+                                                                                                }
+                                                                                            }
                                                                                             break;
                                                                                         } else {
                                                                                             System.out.println(RE + "Invalid name song!!!!!!" + RS);
                                                                                         }
+                                                                                        break;
+                                                                                    case 2:
+                                                                                        do {
+                                                                                            try {
+                                                                                                scanner = new Scanner(System.in);
+                                                                                                String nameSong = inOut.DeleteSong();
+                                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).findAbsoluteSong(nameSong) != -1) {
+                                                                                                    System.out.println(CYAN + "You definitely want to delete this album?????");
+                                                                                                    AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).printNameSong(nameSong);
+                                                                                                    System.out.println(RE + "1. YES" + RS);
+                                                                                                    System.out.println(GR + "2. NO" + RS);
+                                                                                                    System.out.println(YE + "Enter your choice: " + RS);
+                                                                                                    numcheck4 = scanner.nextInt();
+                                                                                                    if (numcheck4 == 1) {
+                                                                                                        switch (numcheck4) {
+                                                                                                            case 1:
+                                                                                                                AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).deleteSong(nameSong);
+                                                                                                                AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).printSong();
+                                                                                                                break;
+                                                                                                            case 2:
+                                                                                                                break;
+                                                                                                            default:
+                                                                                                                System.out.println(RE + "This item is not available" + RS);
+                                                                                                        }
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    System.out.println("This item is not available");
+                                                                                                }
+                                                                                                break;
+                                                                                            } catch (InputMismatchException e) {
+                                                                                                System.err.println("please enter number");
+                                                                                            }
+                                                                                        } while (numcheck4 != 0);
                                                                                         break;
                                                                                     default:
                                                                                         System.out.println(RE + "This item is not available" + RS);

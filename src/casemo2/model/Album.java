@@ -111,4 +111,16 @@ public class Album implements Serializable {
             }
         }
     }
+    public void printNameSong(String name) {
+        boolean c=true;
+        for (int i = 0; i < songList.size(); i++) {
+            if (songList.get(i).getNameSong().equals(name)) {
+                System.out.println(songList.get(i));
+                c=false;
+                break;
+            }
+        }if (c==true){
+            System.out.println("This item is not available");
+        }
+    }
 }
