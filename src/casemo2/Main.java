@@ -5,7 +5,7 @@ import casemo2.model.Album;
 import casemo2.model.Song;
 import casemo2.service.AccountManage;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,9 +29,6 @@ public class Main extends InOut {
         ArrayList<Song> songInAlbum = new ArrayList<>();
         ArrayList<Album> albumInAccount = new ArrayList<>();
         Account account = null;
-
-
-
 
 
 //        album.editSong(inOut.EditNameSong(), inOut.NewEditNameSong());
@@ -62,7 +59,6 @@ public class Main extends InOut {
                             if (AccountManage.getInstance().getListAccount().size() == 0) {
                                 if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
                                     AccountManage.getInstance().add(account);
-                                    WriterAcc(AccountManage.getInstance());
                                     System.out.println(GR + "Register an account successfully!");
                                 } else {
                                     System.out.println(RE + "Invalid username or password!!!!!!" + RS);
@@ -73,7 +69,6 @@ public class Main extends InOut {
                                     if (!AccountManage.getInstance().getListAccount().get(indexAccRe).getName().equals(account.getName())) {
                                         if (checkRegex(account.getName()) && checkRegex(account.getPassword())) {
                                             AccountManage.getInstance().add(account);
-                                            WriterAcc(AccountManage.getInstance());
                                             System.out.println(GR + "Register an account successfully!");
                                             break;
                                         } else {
@@ -115,7 +110,6 @@ public class Main extends InOut {
                                                         if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
                                                             if (checkRegex(album.getName())) {
                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
-                                                                WriterAcc(AccountManage.getInstance());
                                                                 System.out.println(GR + "create successful album" + RS);
                                                                 break;
                                                             } else {
@@ -123,12 +117,10 @@ public class Main extends InOut {
                                                                 break;
                                                             }
                                                         } else {
-                                                            for (int indexAlbum = 0; indexAlbum < account.getListAlbum().size(); indexAlbum++) {
-                                                                if (!account.getListAlbum().get(indexAlbum).getName().equals(album.getName())) {
+                                                            for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
+                                                                if (!AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getName().equals(album.getName())) {
                                                                     if (checkRegex(album.getName())) {
-
-                                                                        account.add(album);
-                                                                        WriterAcc(AccountManage.getInstance());
+                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
                                                                         System.out.println(GR + "create successful album" + RS);
                                                                         break;
                                                                     } else {
@@ -161,10 +153,17 @@ public class Main extends InOut {
                                                                                 System.out.println(RE + "This item is not available" + RS);
                                                                                 break;
                                                                             } else {
-                                                                                String oldName = inOut.EditNameAlbum(), newName = inOut.NewEditNameAlbum();
-                                                                                if (checkRegex(oldName) && checkRegex(newName)) {
-                                                                                    account.edit(oldName, newName);
-                                                                                    System.out.println("Edit name album successful");
+                                                                                String oldName = inOut.EditNameAlbum();
+                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(oldName) != -1) {
+                                                                                    String newName = inOut.NewEditNameAlbum();
+                                                                                    if (checkRegex(oldName) && checkRegex(newName)) {
+                                                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).edit(oldName, newName);
+                                                                                        System.out.println("Edit name album successful");
+                                                                                        break;
+                                                                                    }
+                                                                                } else {
+                                                                                    System.out.println("This item is not available");
+                                                                                    break;
                                                                                 }
                                                                             }
                                                                             break;
@@ -184,67 +183,70 @@ public class Main extends InOut {
 
                                                         break;
                                                     case 3:
+                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
+                                                            System.out.println(RE + "This item is not available" + RS);
+                                                            break;
+                                                        }
                                                         do {
                                                             try {
                                                                 scanner = new Scanner(System.in);
                                                                 String nameAlbum = inOut.DeleteAlbum();
-                                                                System.out.println(CYAN + "You definitely want to delete this album?????");
-                                                                System.out.println(RE + "1. YES" + RS);
-                                                                System.out.println(GR + "2. NO" + RS);
-                                                                System.out.println(YE + "Enter your choice: " + RS);
-                                                                numcheck4 = scanner.nextInt();
-                                                                if (numcheck4 == 1) {
-                                                                    switch (numcheck4) {
-                                                                        case 1:
-                                                                            if (checkAlbumNull(account)) {
-                                                                                System.out.println(RE + "This item is not available" + RS);
+                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbum) != -1) {
+                                                                    System.out.println(CYAN + "You definitely want to delete this album?????");
+                                                                    AccountManage.getInstance().getListAccount().get(indexAccLog).printName(nameAlbum);
+                                                                    System.out.println(RE + "1. YES" + RS);
+                                                                    System.out.println(GR + "2. NO" + RS);
+                                                                    System.out.println(YE + "Enter your choice: " + RS);
+                                                                    numcheck4 = scanner.nextInt();
+                                                                    if (numcheck4 == 1) {
+                                                                        switch (numcheck4) {
+                                                                            case 1:
+                                                                                AccountManage.getInstance().getListAccount().get(indexAccLog).delete(nameAlbum);
+                                                                                AccountManage.getInstance().getListAccount().get(indexAccLog).printListAlbum();
                                                                                 break;
-                                                                            }
-                                                                            account.delete(nameAlbum);
-                                                                            if (checkAlbumNull(account)) {
-                                                                                System.out.println(RE + "This item is not available" + RS);
+                                                                            case 2:
                                                                                 break;
-                                                                            }
-                                                                            account.printListAlbum();
-                                                                            System.out.println("Delete successful");
-                                                                            break;
-                                                                        default:
-                                                                            System.out.println(RE + "This item is not available" + RS);
+                                                                            default:
+                                                                                System.out.println(RE + "This item is not available" + RS);
+                                                                        }
                                                                     }
+                                                                } else {
+                                                                    System.out.println("This item is not available");
                                                                 }
+                                                                break;
                                                             } catch (java.util.InputMismatchException e) {
                                                                 System.err.println("please enter number");
                                                             }
-                                                        } while (numcheck4 != 0 && numcheck4 > 2);
+                                                        } while (numcheck4 != 0);
                                                         break;
                                                     case 4:
-                                                        if (checkAlbumNull(account)) {
+                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
-                                                        account.findRelative(inOut.FindRelativeAbum());
+                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).findRelative(inOut.FindRelativeAbum());
                                                         break;
                                                     case 5:
-                                                        if (checkAlbumNull(account)) {
+                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
-                                                        account.printName(inOut.FindAbsoluteAlbum());
+                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).printName(inOut.FindAbsoluteAlbum());
                                                         break;
                                                     case 6:
-                                                        if (checkAlbumNull(account)) {
+                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
+                                                        } else {
+                                                            AccountManage.getInstance().getListAccount().get(indexAccLog).printListAlbum();
                                                         }
-                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).printListAlbum();
-
                                                         break;
                                                     case 7:
-                                                        if (checkAlbumNull(account)) {
+                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
-                                                        account.print();
+                                                        AccountManage.getInstance().getListAccount().get(indexAccLog).print();
                                                         break;
                                                     default:
                                                         System.out.println(RE + "This item is not available" + RS);
@@ -319,20 +321,20 @@ public class Main extends InOut {
 //        return account;
 //    }
 
-    private static void WriterAcc(AccountManage listAcc) {
-        ObjectOutputStream writer = null;
-
-        try {
-            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\accdata.txt"));
-            writer.writeObject(listAcc);
-        } catch (
-                FileNotFoundException e) {
-            System.err.println("The system cannot find the file specified");
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private static void WriterAcc(AccountManage listAcc) {
+//        ObjectOutputStream writer = null;
+//
+//        try {
+//            writer = new ObjectOutputStream(new FileOutputStream("src\\casemo2\\accdata.txt"));
+//            writer.writeObject(listAcc);
+//        } catch (
+//                FileNotFoundException e) {
+//            System.err.println("The system cannot find the file specified");
+//        } catch (
+//                IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 //
 //    private static void WedSong(List<Song> listSong) {
 //        try {

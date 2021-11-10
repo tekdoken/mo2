@@ -106,6 +106,7 @@ public class Account implements General<Album> , Serializable {
     public void delete(String name) {
         if ( findAbsolute(name)!=-1){
             listAlbum.remove(findAbsolute(name));
+            System.out.println("Delete successful");
         }else{
             System.out.println("This item is not available");
         }

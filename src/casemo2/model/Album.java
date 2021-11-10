@@ -9,7 +9,6 @@ import java.util.List;
 public class Album implements Serializable {
     private String name;
     private List<Song> songs;
-    private Account account;
 
     public Album() {
     }
@@ -33,11 +32,6 @@ public class Album implements Serializable {
         this.songs = songs;
     }
 
-    public Album(String name, List<Song> songs, Account account) {
-        this.name = name;
-        this.songs = songs;
-        this.account = account;
-    }
 
     public String getName() {
         return name;
@@ -63,13 +57,7 @@ public class Album implements Serializable {
         this.songs = songs;
     }
 
-    public Account getAccount() {
-        return account;
-    }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 
     @Override
     public String toString() {

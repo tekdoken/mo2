@@ -5,21 +5,22 @@ import casemo2.model.Account;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManage implements General<Account>, Serializable {
-    private List<Account> listAccount;
+    private List<Account> listAccount=new ArrayList<>();
     private static AccountManage instance;
-    public static final String READ = "src\\casemo2\\accdata.txt";
+    public static final String FILE = "src\\casemo2\\accdata.csv";
 
     public static AccountManage getInstance() throws IOException {
         if (instance == null) instance = new AccountManage();
         return instance;
     }
 
-    private AccountManage() throws IOException {
-            this.listAccount = WriteReadFile.ReadSong(READ);
-    }
+//    private AccountManage() throws IOException {
+//            this.listAccount= WriteReadFile.read(FILE);
+//    }
 
 
     public List<Account> getListAccount() {
@@ -42,6 +43,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void add(Account account) {
         this.listAccount.add(account);
+        WriteReadFile.write(FILE, this.listAccount);
     }
 
     @Override
