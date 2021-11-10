@@ -13,14 +13,14 @@ public class AccountManage implements General<Account>, Serializable {
     private static AccountManage instance;
     public static final String FILE = "src\\casemo2\\accdata.csv";
 
+    private AccountManage() throws IOException {
+            this.listAccount= WriteReadFile.ReadSong(FILE);
+    }
+
     public static AccountManage getInstance() throws IOException {
         if (instance == null) instance = new AccountManage();
         return instance;
     }
-
-//    private AccountManage() throws IOException {
-//            this.listAccount= WriteReadFile.read(FILE);
-//    }
 
 
     public List<Account> getListAccount() {
@@ -43,7 +43,7 @@ public class AccountManage implements General<Account>, Serializable {
     @Override
     public void add(Account account) {
         this.listAccount.add(account);
-        WriteReadFile.write(FILE, this.listAccount);
+        WriteReadFile.WriterAcc(FILE, this.listAccount);
     }
 
     @Override

@@ -1,38 +1,48 @@
 package casemo2;
 
 import casemo2.model.Account;
+import casemo2.service.AccountManage;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WriteReadFile {
 
-    public static void write(String pathFile, List<Account> listAccount) {
-        File file=new File(pathFile);
-        FileWriter fileWriter= null;
-        try {
-            fileWriter = new FileWriter(file);
-            BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
-            bufferedWriter.write(String.valueOf(listAccount));
-            bufferedWriter.close();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static Account writeO(String pathFile, List<Account> listAccount) {
+//    public static void write(String pathFile, List<Account> listAccount) {
+//        File file=new File(pathFile);
+//        FileWriter fileWriter= null;
+//        try {
+//            fileWriter = new FileWriter(file);
+//            BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
+//            bufferedWriter.write(String.valueOf(listAccount));
+//            bufferedWriter.close();
+//            fileWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+    public static List<Account> ReadSong(String pathFile) {
         ObjectInputStream read = null;
-       Account account=null;
+       List<Account> account=null;
         try {
-            read = new ObjectInputStream(new FileInputStream("src\\casemo2\\accdata.txt"));
-            account = (Account) read.readObject();
+            read = new ObjectInputStream(new FileInputStream(pathFile));
+            account = (List<Account>) read.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
         return account;
     }
+    public static void WriterAcc(String pathFile, List<Account> listAcc) {
+        ObjectOutputStream writer = null;
 
-
+        try {
+            writer = new ObjectOutputStream(new FileOutputStream(pathFile));
+            writer.writeObject(listAcc);
+        } catch (Exception e) {
+            System.err.println("The system cannot find the file specified");
+        }
+    }
 
 //    public static List<Account> read(String pathFile) throws IOException {
 //        List<Account> accounts=new ArrayList<>();
