@@ -1,4 +1,4 @@
-package casemo2;
+package casemo2.inoutdata;
 
 import casemo2.model.Account;
 import casemo2.service.AccountManage;

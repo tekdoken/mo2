@@ -59,8 +59,7 @@ public class Album implements Serializable {
 
     @Override
     public String toString() {
-        return "Album name='" + name + '\'' + listSong +
-                '}';
+        return "Album name='" + name + '\'' + listSong ;
     }
 
 

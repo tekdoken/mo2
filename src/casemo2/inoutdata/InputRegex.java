@@ -1,14 +1,14 @@
-package casemo2;
+package casemo2.inoutdata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AccountExample {
+public class InputRegex {
     private static final String ACCOUNT_REGEX = "^\\S+$";
     private static final String PASS_REGEX = "^\\S+$";
     private static final String NAME_REGEX = "^\\S?(.+)+\\S?$";
 
-    public AccountExample() {
+    public InputRegex() {
     }
 
     public boolean Acc(String regex) {

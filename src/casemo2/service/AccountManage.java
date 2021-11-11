@@ -1,6 +1,6 @@
 package casemo2.service;
 
-import casemo2.WriteReadFile;
+import casemo2.inoutdata.WriteReadFile;
 import casemo2.model.Account;
 
 import java.io.IOException;

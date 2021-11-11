@@ -1,5 +1,7 @@
-package casemo2;
+package casemo2.display;
 
+import casemo2.inoutdata.InOut;
+import casemo2.inoutdata.WriteReadFile;
 import casemo2.model.Account;
 import casemo2.model.Album;
 import casemo2.model.Song;
@@ -9,7 +11,7 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main extends InOut {
+public class DisplayMenu extends InOut {
     public static final String RS = "\u001B[0m";
     public static final String RE = "\u001B[31m";
     public static final String GR = "\u001B[32m";
@@ -19,9 +21,7 @@ public class Main extends InOut {
     public static final String CYAN = "\u001B[36m";
 
     public static void main(String[] args) throws IOException {
-
         InOut inOut = new InOut();
-
         Account account = null;
         int numcheck = -1;
         int numcheck2 = -1;
@@ -45,7 +45,7 @@ public class Main extends InOut {
 //         Acconut
                         case 1:
                             account = new Account(inOut.NewUserName(), inOut.NewPass());
-                            if (AccountManage.getInstance().getListAccount().size() == 0) {
+                            if (checkAccNull()) {
                                 if (checkRegex(account.getNameAcc()) && checkRegex(account.getPassword())) {
                                     AccountManage.getInstance().add(account);
                                     System.out.println(GR + "Register an account successfully!");
@@ -56,7 +56,7 @@ public class Main extends InOut {
                             } else {
                                 boolean checkNameAcc = true;
                                 for (int indexAccRe = 0; indexAccRe < AccountManage.getInstance().getListAccount().size(); indexAccRe++) {
-                                    if (AccountManage.getInstance().getListAccount().get(indexAccRe).getNameAcc().equals(account.getNameAcc())) {
+                                    if (checkNameAccDuplicate(account, indexAccRe)) {
                                         System.out.println(RE + "name already exists!!!!" + RS);
                                         checkNameAcc = false;
                                         break;
@@ -77,8 +77,7 @@ public class Main extends InOut {
                         case 2:
                             String nameAcc = inOut.UserNameLogin(), pass = inOut.PassLogin();
                             for (int indexAccLog = 0; indexAccLog < AccountManage.getInstance().getListAccount().size(); indexAccLog++) {
-                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getNameAcc().equals(nameAcc)
-                                        && AccountManage.getInstance().getListAccount().get(indexAccLog).getPassword().equals(pass)) {
+                                if (checkLogin(nameAcc, pass, indexAccLog)) {
                                     System.out.println(GR + "Logged in successfully");
                                     do {
                                         try {
@@ -100,7 +99,7 @@ public class Main extends InOut {
 //                 Album
                                                     case 1:
                                                         Album album = new Album(inOut.NewAlbumName());
-                                                        if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             if (checkRegex(album.getNameAlbum())) {
                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().add(album);
                                                                 System.out.println(GR + "create successful album" + RS);
@@ -112,7 +111,7 @@ public class Main extends InOut {
                                                         } else {
                                                             boolean checkNameAlbum = true;
                                                             for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(album.getNameAlbum())) {
+                                                                if (checkNameAlbumDuplicate(indexAccLog, indexAlbum, album.getNameAlbum())) {
                                                                     System.out.println(RE + "name already exists!!!!" + RS);
                                                                     checkNameAlbum = false;
                                                                     break;
@@ -131,13 +130,13 @@ public class Main extends InOut {
                                                         }
                                                         break;
                                                     case 2:
-                                                        if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         } else {
                                                             String nameAlbumEdit = inOut.EditNameAlbum();
                                                             for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(nameAlbumEdit)) {
+                                                                if (checkNameAlbumDuplicate(indexAccLog, indexAlbum, nameAlbumEdit)) {
                                                                     if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().size() == 0) {
                                                                         Song song = new Song(inOut.NewSongInAlbum());
                                                                         if (checkRegex(song.getNameSong())) {
@@ -169,7 +168,7 @@ public class Main extends InOut {
                                                                                         boolean checkNameSong = true;
                                                                                         if (checkRegex(song.getNameSong())) {
                                                                                             for (int indexSong = 0; indexSong < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().size(); indexSong++) {
-                                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().get(indexSong).getNameSong().equals(song.getNameSong())) {
+                                                                                                if (checkNameSongDuplicate(indexAccLog, indexAlbum, indexSong, song.getNameSong())) {
                                                                                                     System.out.println(RE + "name already exists!!!!" + RS);
                                                                                                     checkNameSong = false;
                                                                                                     break;
@@ -231,7 +230,7 @@ public class Main extends InOut {
                                                                                         if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).findAbsoluteSong(nameSongEdit) != -1) {
                                                                                             String newNameSong = inOut.NewEditNameAlbum();
                                                                                             for (int indexSong = 0; indexSong < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().size(); indexSong++) {
-                                                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().get(indexSong).getNameSong().equals(newNameSong)) {
+                                                                                                if (checkNameSongDuplicate(indexAccLog, indexAlbum, indexSong, newNameSong)) {
                                                                                                     System.out.println(RE + "name already exists!!!!" + RS);
                                                                                                     checkNameSongNew = false;
                                                                                                     break;
@@ -266,7 +265,7 @@ public class Main extends InOut {
                                                         }
                                                         break;
                                                     case 3:
-                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
@@ -274,7 +273,7 @@ public class Main extends InOut {
                                                             try {
                                                                 scanner = new Scanner(System.in);
                                                                 String nameAlbum = inOut.DeleteAlbum();
-                                                                if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbum) != -1) {
+                                                                if (checkExistenceAlbum(indexAccLog, nameAlbum)) {
                                                                     System.out.println(CYAN + "You definitely want to delete this album?????");
                                                                     AccountManage.getInstance().getListAccount().get(indexAccLog).printName(nameAlbum);
                                                                     System.out.println(RE + "1. YES" + RS);
@@ -304,21 +303,21 @@ public class Main extends InOut {
                                                         } while (numcheck4 != 0);
                                                         break;
                                                     case 4:
-                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
                                                         AccountManage.getInstance().getListAccount().get(indexAccLog).findRelative(inOut.FindRelativeAbum());
                                                         break;
                                                     case 5:
-                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
                                                         AccountManage.getInstance().getListAccount().get(indexAccLog).printName(inOut.FindAbsoluteAlbum());
                                                         break;
                                                     case 6:
-                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         } else {
@@ -326,23 +325,23 @@ public class Main extends InOut {
                                                         }
                                                         break;
                                                     case 7:
-                                                        if (checkAlbumNull(AccountManage.getInstance().getListAccount().get(indexAccLog))) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         }
                                                         AccountManage.getInstance().getListAccount().get(indexAccLog).print();
                                                         break;
                                                     case 8:
-                                                        if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0) {
+                                                        if (checkAlbumNull(indexAccLog)) {
                                                             System.out.println(RE + "This item is not available" + RS);
                                                             break;
                                                         } else {
                                                             boolean checkNameNew = true;
                                                             String nameAlbumEdit = inOut.EditNameAlbum();
-                                                            if (AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbumEdit) != -1) {
+                                                            if (checkExistenceAlbum(indexAccLog, nameAlbumEdit)) {
                                                                 String newName = inOut.NewEditNameAlbum();
                                                                 for (int indexAlbum = 0; indexAlbum < AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size(); indexAlbum++) {
-                                                                    if (AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(newName)) {
+                                                                    if (checkNameAlbumDuplicate(indexAccLog, indexAlbum, newName)) {
                                                                         System.out.println(RE + "name already exists!!!!" + RS);
                                                                         checkNameNew = false;
                                                                         break;
@@ -383,8 +382,7 @@ public class Main extends InOut {
                             String newPass = inOut.NewPass();
                             boolean check = true;
                             for (int indexAccPass = 0; indexAccPass < AccountManage.getInstance().getListAccount().size(); indexAccPass++) {
-                                if (AccountManage.getInstance().getListAccount().get(indexAccPass).getNameAcc().equals(nameAcc)
-                                        && AccountManage.getInstance().getListAccount().get(indexAccPass).getPassword().equals(pass)) {
+                                if (checkLogin(nameAcc, pass, indexAccPass)) {
                                     AccountManage.getInstance().edit(pass, newPass);
                                     System.out.println("change Password successfully");
                                     check = false;
@@ -410,7 +408,36 @@ public class Main extends InOut {
 
     }
 
-    private static boolean checkAlbumNull(Account account) {
+    private static boolean checkExistenceAlbum(int indexAccLog, String nameAlbumEdit) throws IOException {
+        return AccountManage.getInstance().getListAccount().get(indexAccLog).findAbsolute(nameAlbumEdit) != -1;
+    }
+
+    private static boolean checkNameSongDuplicate(int indexAccLog, int indexAlbum, int indexSong, String nameSong) throws IOException {
+        return AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getListSong().get(indexSong).getNameSong().equals(nameSong);
+    }
+
+    private static boolean checkNameAlbumDuplicate(int indexAccLog, int indexAlbum, String nameAlbum) throws IOException {
+        return AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).getNameAlbum().equals(nameAlbum);
+    }
+
+    private static boolean checkAlbumNull(int indexAccLog) throws IOException {
+        return AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().size() == 0;
+    }
+
+    private static boolean checkLogin(String nameAcc, String pass, int indexAccLog) throws IOException {
+        return AccountManage.getInstance().getListAccount().get(indexAccLog).getNameAcc().equals(nameAcc)
+                && AccountManage.getInstance().getListAccount().get(indexAccLog).getPassword().equals(pass);
+    }
+
+    private static boolean checkNameAccDuplicate(Account account, int indexAccRe) throws IOException {
+        return AccountManage.getInstance().getListAccount().get(indexAccRe).getNameAcc().equals(account.getNameAcc());
+    }
+
+    private static boolean checkAccNull() throws IOException {
+        return AccountManage.getInstance().getListAccount().size() == 0;
+    }
+
+    private static boolean s(Account account) {
         return account.getListAlbum().size() == 0;
     }
 
