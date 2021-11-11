@@ -11,34 +11,20 @@ import java.util.List;
 public class AccountManage implements General<Account>, Serializable {
     private List<Account> listAccount=new ArrayList<>();
     private static AccountManage instance;
-    public static final String FILE = "src\\casemo2\\accdata.txt";
 
     public static AccountManage getInstance() throws IOException {
         if (instance == null) instance = new AccountManage();
         return instance;
     }
 
-//    private AccountManage() throws IOException {
-//            this.listAccount= WriteReadFile.read(FILE);
-//    }
-
 
     public List<Account> getListAccount() {
         return this.listAccount;
     }
 
-    public int getListAccount1() {
-        return this.listAccount.size();
-    }
-
-    public int getListAccountNa() {
-        return this.listAccount.size();
-    }
-
     public void setListAccount(List<Account> listAccount) {
         this.listAccount = listAccount;
     }
-
 
     @Override
     public void add(Account account) {
