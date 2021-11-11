@@ -1,7 +1,7 @@
-package mini311.display;
+package miniTest311.display;
 
-import mini311.model.Staff;
-import mini311.service.manage.ManageStaff;
+import miniTest311.model.Staff;
+import miniTest311.service.manage.ManageStaff;
 
 import java.io.*;
 import java.util.Scanner;

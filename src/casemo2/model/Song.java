@@ -22,6 +22,6 @@ public class Song implements  Serializable {
 
     @Override
     public String toString() {
-        return "Songname: " + name ;
+        return "Song name: " + name ;
     }
 }

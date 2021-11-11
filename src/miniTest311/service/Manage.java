@@ -1,4 +1,4 @@
-package mini311.service;
+package miniTest311.service;
 
 public interface Manage<W> {
     void add(W w);

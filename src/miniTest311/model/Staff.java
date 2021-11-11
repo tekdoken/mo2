@@ -1,4 +1,4 @@
-package mini311.model;
+package miniTest311.model;
 
 public class Staff {
     private String name;

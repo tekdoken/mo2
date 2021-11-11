@@ -1,11 +1,9 @@
-package mini311.service.manage;
+package miniTest311.service.manage;
 
-import mini311.model.Staff;
-import mini311.service.Manage;
-import minitest2710.model.Student;
+import miniTest311.model.Staff;
+import miniTest311.service.Manage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ManageStaff implements Manage<Staff> {
     private ArrayList<Staff> listStaff;
