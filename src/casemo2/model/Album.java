@@ -59,7 +59,7 @@ public class Album implements Serializable {
     @Override
     public String toString() {
         return String.format(
-                        "Name Album: %-3s List Song: %s",
+                        "Name Album: %-6s List Song: %s",
                 name, listSong
         );
 //        return "Album name='" + name + '\'' + listSong ;
