@@ -23,10 +23,10 @@ public class DisplayMenu extends InOut {
     public static void main(String[] args) throws IOException {
         InOut inOut = new InOut();
         Account account = null;
-        int numcheck = -1;
-        int numcheck2 = -1;
-        int numcheck3 = -1;
-        int numcheck4 = -1;
+        int numCheck = -1;
+        int numCheck2 = -1;
+        int numCheck3 = -1;
+        int numCheck4 = -1;
         WriteReadFile.readFile();
         do {
             try {
@@ -39,10 +39,9 @@ public class DisplayMenu extends InOut {
                 System.out.println("0. Exit" + RS);
                 AccountManage.getInstance().print();
                 System.out.println(YE + "Enter your choice: " + RS);
-                numcheck = scanner.nextInt();
-                if (numcheck != 0) {
-                    switch (numcheck) {
-//         Acconut
+                numCheck = scanner.nextInt();
+                if (numCheck != 0) {
+                    switch (numCheck) {
                         case 1:
                             account = new Account(inOut.NewUserName(), inOut.NewPass());
                             if (checkAccNull()) {
@@ -93,9 +92,9 @@ public class DisplayMenu extends InOut {
                                             System.out.println("8. change name album");
                                             System.out.println("0. Log out" + RS);
                                             System.out.println(YE + "Enter your choice: " + RS);
-                                            numcheck2 = scanner.nextInt();
-                                            if (numcheck2 != 0) {
-                                                switch (numcheck2) {
+                                            numCheck2 = scanner.nextInt();
+                                            if (numCheck2 != 0) {
+                                                switch (numCheck2) {
 //                 Album
                                                     case 1:
                                                         Album album = new Album(inOut.NewAlbumName());
@@ -160,9 +159,9 @@ public class DisplayMenu extends InOut {
                                                                             System.out.println("5. change name song");
                                                                             System.out.println("0. Exit" + RS);
                                                                             System.out.println(YE + "Enter your choice: " + RS);
-                                                                            numcheck3 = scanner.nextInt();
-                                                                            if (numcheck3 != 0) {
-                                                                                switch (numcheck3) {
+                                                                            numCheck3 = scanner.nextInt();
+                                                                            if (numCheck3 != 0) {
+                                                                                switch (numCheck3) {
                                                                                     case 1:
                                                                                         Song song = new Song(inOut.NewSongInAlbum());
                                                                                         boolean checkNameSong = true;
@@ -195,9 +194,9 @@ public class DisplayMenu extends InOut {
                                                                                                     System.out.println(RE + "1. YES" + RS);
                                                                                                     System.out.println(GR + "2. NO" + RS);
                                                                                                     System.out.println(YE + "Enter your choice: " + RS);
-                                                                                                    numcheck4 = scanner.nextInt();
-                                                                                                    if (numcheck4 == 1) {
-                                                                                                        switch (numcheck4) {
+                                                                                                    numCheck4 = scanner.nextInt();
+                                                                                                    if (numCheck4 == 1) {
+                                                                                                        switch (numCheck4) {
                                                                                                             case 1:
                                                                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).deleteSong(nameSong);
                                                                                                                 System.out.println("Delete song successful!");
@@ -216,7 +215,7 @@ public class DisplayMenu extends InOut {
                                                                                             }
                                                                                             WriteReadFile.writeFile();
                                                                                             WriteReadFile.readFile();
-                                                                                        } while (numcheck4 != 0);
+                                                                                        } while (numCheck4 != 0);
                                                                                         break;
                                                                                     case 3:
                                                                                         AccountManage.getInstance().getListAccount().get(indexAccLog).getListAlbum().get(indexAlbum).findRelativeSong(inOut.FindRelativeSong());
@@ -257,7 +256,7 @@ public class DisplayMenu extends InOut {
                                                                         }
                                                                         WriteReadFile.writeFile();
                                                                         WriteReadFile.readFile();
-                                                                    } while (numcheck3 != 0);
+                                                                    } while (numCheck3 != 0);
                                                                 } else {
                                                                     System.out.println(RE + "This item is not available" + RS);
                                                                 }
@@ -279,9 +278,9 @@ public class DisplayMenu extends InOut {
                                                                     System.out.println(RE + "1. YES" + RS);
                                                                     System.out.println(GR + "2. NO" + RS);
                                                                     System.out.println(YE + "Enter your choice: " + RS);
-                                                                    numcheck4 = scanner.nextInt();
-                                                                    if (numcheck4 == 1) {
-                                                                        switch (numcheck4) {
+                                                                    numCheck4 = scanner.nextInt();
+                                                                    if (numCheck4 == 1) {
+                                                                        switch (numCheck4) {
                                                                             case 1:
                                                                                 AccountManage.getInstance().getListAccount().get(indexAccLog).delete(nameAlbum);
                                                                                 System.out.println("Delete song successful!");
@@ -300,7 +299,7 @@ public class DisplayMenu extends InOut {
                                                             }
                                                             WriteReadFile.writeFile();
                                                             WriteReadFile.readFile();
-                                                        } while (numcheck4 != 0);
+                                                        } while (numCheck4 != 0);
                                                         break;
                                                     case 4:
                                                         if (checkAlbumNull(indexAccLog)) {
@@ -369,7 +368,7 @@ public class DisplayMenu extends InOut {
                                         }
                                         WriteReadFile.writeFile();
                                         WriteReadFile.readFile();
-                                    } while (numcheck2 != 0);
+                                    } while (numCheck2 != 0);
 
                                 } else {
                                     System.out.println("Invalid username or password");
@@ -402,7 +401,7 @@ public class DisplayMenu extends InOut {
             }
             WriteReadFile.writeFile();
             WriteReadFile.readFile();
-        } while (numcheck != 0);
+        } while (numCheck != 0);
         //        ReadSong().print();
 
 
