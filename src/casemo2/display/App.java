@@ -24,9 +24,7 @@ public class App extends InOut {
         InOut inOut = new InOut();
         Account account = null;
         int numCheck = -1;
-        int numCheck2 = -1;
-        int numCheck3 = -1;
-        int numCheck4 = -1;
+
         WriteReadFile.readFile();
         do {
             try {
