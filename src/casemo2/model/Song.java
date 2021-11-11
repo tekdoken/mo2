@@ -1,11 +1,8 @@
 package casemo2.model;
 
-import casemo2.service.General;
-
 import java.io.Serializable;
-import java.util.List;
 
-public class Song implements  Serializable {
+public class Song implements Serializable {
     private String name;
 
     public Song(String name) {
@@ -22,6 +19,9 @@ public class Song implements  Serializable {
 
     @Override
     public String toString() {
-        return "Song name: " + name ;
+        return String.format("\n%41s",
+                "Song name: " +  name
+        );
+//        return "\n"+ "Song name: " + name ;
     }
 }

@@ -17,7 +17,6 @@ public class AccountManage implements General<Account>, Serializable {
         return instance;
     }
 
-
     public List<Account> getListAccount() {
         return this.listAccount;
     }

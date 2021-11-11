@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Album implements Serializable {
     private String name;
-    private List<Song> listSong =new ArrayList<>();
+    private List<Song> listSong = new ArrayList<>();
 
     public Album() {
     }
@@ -18,7 +18,6 @@ public class Album implements Serializable {
     public void setSongs(List<Song> songs) {
         this.listSong = songs;
     }
-
 
 
     public Album(String name) {
@@ -40,13 +39,14 @@ public class Album implements Serializable {
     }
 
     public void getSongs(String song) {
-        int r=0;
+        int r = 0;
         for (int i = 0; i < listSong.size(); i++) {
             if (listSong.get(i).getNameSong().contains(song)) {
                 System.out.println(listSong.get(i).getNameSong());
                 r++;
             }
-        }if (r==0){
+        }
+        if (r == 0) {
             System.out.println("This song is not available!!!!");
         }
     }
@@ -56,10 +56,13 @@ public class Album implements Serializable {
     }
 
 
-
     @Override
     public String toString() {
-        return "Album name='" + name + '\'' + listSong ;
+        return String.format(
+                        "Name Album: %-3s List Song: %s",
+                name, listSong
+        );
+//        return "Album name='" + name + '\'' + listSong ;
     }
 
 
@@ -71,8 +74,6 @@ public class Album implements Serializable {
         }
         return -1;
     }
-
-
 
 
     public void editSong(String name, String newName) {
@@ -90,14 +91,16 @@ public class Album implements Serializable {
             System.out.println("This item is not available");
         }
     }
+
     public void findRelativeSong(String name) {
-        boolean cc=true;
+        boolean cc = true;
         for (int i = 0; i < listSong.size(); i++) {
             if (listSong.get(i).getNameSong().contains(name)) {
                 System.out.println(listSong.get(i));
-                cc=false;
+                cc = false;
             }
-        }if (cc==true){
+        }
+        if (cc == true) {
             System.out.println("This item is not available");
         }
     }
@@ -120,15 +123,17 @@ public class Album implements Serializable {
             }
         }
     }
+
     public void printNameSong(String name) {
-        boolean c=true;
+        boolean c = true;
         for (int i = 0; i < listSong.size(); i++) {
             if (listSong.get(i).getNameSong().equals(name)) {
                 System.out.println(listSong.get(i));
-                c=false;
+                c = false;
                 break;
             }
-        }if (c==true){
+        }
+        if (c == true) {
             System.out.println("This item is not available");
         }
     }
