@@ -3,8 +3,6 @@ package casemo2.display;
 import casemo2.inoutdata.InOut;
 import casemo2.inoutdata.WriteReadFile;
 import casemo2.model.Account;
-import casemo2.model.Album;
-import casemo2.model.Song;
 import casemo2.service.AccountManage;
 
 import java.io.IOException;
@@ -35,7 +33,6 @@ public class App extends InOut {
                 System.out.println("2. Account login");
                 System.out.println("3. change Password");
                 System.out.println("0. Exit" + RS);
-                AccountManage.getInstance().print();
                 System.out.println(YE + "Enter your choice: " + RS);
                 numCheck = scanner.nextInt();
                 if (numCheck != 0) {
@@ -72,15 +69,18 @@ public class App extends InOut {
                             }
                             break;
                         case 2:
+                            boolean checkLog = true;
                             String nameAcc = inOut.UserNameLogin(), pass = inOut.PassLogin();
                             for (int indexAccLog = 0; indexAccLog < AccountManage.getInstance().getListAccount().size(); indexAccLog++) {
                                 if (checkLogin(nameAcc, pass, indexAccLog)) {
                                     System.out.println(GR + "Logged in successfully");
                                     MenuAlbum.main(indexAccLog);
-
-                                } else {
-                                    System.out.println("Invalid username or password");
+                                    checkLog = false;
+                                    break;
                                 }
+                            }
+                            if (checkLog == true) {
+                                System.out.println("Invalid username or password");
                             }
                             break;
                         case 3:
