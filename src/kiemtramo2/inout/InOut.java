@@ -1,4 +1,4 @@
-package kiemtra.inout;
+package kiemtramo2.inout;
 
 
 import java.util.Scanner;

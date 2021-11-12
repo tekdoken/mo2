@@ -1,4 +1,4 @@
-package kiemtra.model;
+package kiemtramo2.model;
 
 public class Directory {
     private String name;
