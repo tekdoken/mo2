@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputRegex {
-    private static final String NUMBER_PHONE_REGEX = "^[0-9]{9,}$";
+    private static final String NUMBER_PHONE_REGEX = "^[0-9]+$";
     private static final String NAME_REGEX = "^\\S?(.+)+\\S?$";
     private static final String BIRTHDAY_REGEX = "\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}";
     private static final String EMAIL_REGEX = "^[A-Za-z0-9]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";

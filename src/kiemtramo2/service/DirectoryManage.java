@@ -18,7 +18,6 @@ public class DirectoryManage implements  Serializable {
 
     public void add(Directory directory) {
         this.listDirectory.add(directory);
-        System.out.println("add successful");
     }
 
     

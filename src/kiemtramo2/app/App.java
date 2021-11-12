@@ -3,7 +3,6 @@ package kiemtramo2.app;
 import kiemtramo2.inout.InOut;
 import kiemtramo2.model.Directory;
 import kiemtramo2.service.DirectoryManage;
-import minitest2710.model.Student;
 
 import java.io.*;
 import java.util.InputMismatchException;
@@ -57,6 +56,7 @@ public class App {
                             } else {
                                 Directory directory = new Directory(name, numPhone, group, gender, address, birthday, email);
                                 directoryManage.add(directory);
+                                System.out.println("add successful");
                                 break;
                             }
                         case 3:
@@ -99,12 +99,10 @@ public class App {
                             directoryManage.findRelative(numPhone);
                             break;
                         case 6:
-
                             WriteToFile(directoryManage);
                             break;
                         case 7:
-
-                            ReadFile();
+                            directoryManage=  ReadFile();
                             directoryManage.print();
                             break;
                         default:
@@ -114,7 +112,7 @@ public class App {
             } catch (InputMismatchException | IOException e) {
                 System.err.println("please enter number");
             }
-            WriteToFile(directoryManage);
+//            WriteToFile(directoryManage);
         } while (numCheck != 0);
     }
 
