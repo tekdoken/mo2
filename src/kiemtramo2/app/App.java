@@ -69,23 +69,8 @@ public class App {
                                 break;
                             }
                         case 4:
-                            numPhone = inOut.NumPhone();
-                            if (numPhone.equals(" ")) {
-                                System.out.println("invalid data field!!");
-                                break;
-                            } else {
-                                int selection = 0;
-                                Scanner scanner1 = new Scanner(System.in);
-                                System.out.println("You definitely want to delete this directory?????");
-                                System.out.println("1.yes");
-                                System.out.println("2.no");
-                                selection = scanner1.nextInt();
-                                if (selection == 1) {
-                                    directoryManage.delete(numPhone);
-                                    break;
-                                }
-                                break;
-                            }
+                            DeleteDirectory(directoryManage, inOut);
+                            break;
                         case 5:
                             numPhone = inOut.NumPhone();
                             directoryManage.findRelative(numPhone);
@@ -106,6 +91,27 @@ public class App {
             }
 //            WriteToFile(directoryManage);
         } while (numCheck != 0);
+    }
+
+    private static void DeleteDirectory(DirectoryManage directoryManage, InOut inOut) {
+        String numPhone;
+        numPhone = inOut.NumPhone();
+        if (numPhone.equals(" ")) {
+            System.out.println("invalid data field!!");
+            return;
+        } else {
+            int selection = 0;
+            Scanner scanner1 = new Scanner(System.in);
+            System.out.println("You definitely want to delete this directory?????");
+            System.out.println("1.yes");
+            System.out.println("2.no");
+            selection = scanner1.nextInt();
+            if (selection == 1) {
+                directoryManage.delete(numPhone);
+                return;
+            }
+            return;
+        }
     }
 
     private static void addDirectory(DirectoryManage directoryManage, String name, String numPhone, String group, String gender, String address, String birthday, String email) {
