@@ -49,16 +49,8 @@ public class App {
                             String address = inOut.Address();
                             String birthday = inOut.Birthday();
                             String email = inOut.Email();
-                            if (name.equals(" ") || numPhone.equals(" ") || group.equals(" ") || gender.equals(" ") ||
-                                    address.equals(" ") || birthday.equals(" ") || email.equals(" ")) {
-                                System.out.println("invalid data field!!");
-                                break;
-                            } else {
-                                Directory directory = new Directory(name, numPhone, group, gender, address, birthday, email);
-                                directoryManage.add(directory);
-                                System.out.println("add successful");
-                                break;
-                            }
+                            addDirectory(directoryManage, name, numPhone, group, gender, address, birthday, email);
+                            break;
                         case 3:
                             numPhone = inOut.NumPhone();
                             name = inOut.Name();
@@ -114,6 +106,19 @@ public class App {
             }
 //            WriteToFile(directoryManage);
         } while (numCheck != 0);
+    }
+
+    private static void addDirectory(DirectoryManage directoryManage, String name, String numPhone, String group, String gender, String address, String birthday, String email) {
+        if (name.equals(" ") || numPhone.equals(" ") || group.equals(" ") || gender.equals(" ") ||
+                address.equals(" ") || birthday.equals(" ") || email.equals(" ")) {
+            System.out.println("invalid data field!!");
+            return;
+        } else {
+            Directory directory = new Directory(name, numPhone, group, gender, address, birthday, email);
+            directoryManage.add(directory);
+            System.out.println("add successful");
+            return;
+        }
     }
 
     private static void WriteToFile(DirectoryManage directoryManage) throws IOException {
